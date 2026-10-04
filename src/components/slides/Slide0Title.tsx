@@ -27,7 +27,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
           AI Presentation • اسلاید ۰
         </span>
         <span className={isDark ? 'text-slate-400' : 'text-slate-500'}>
-          زمان تقریبی: ۱۰ ثانیه
+          زمان تقریبی: ۳۰ ثانیه
         </span>
       </div>
 
@@ -43,7 +43,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
               : 'text-slate-900'
           }`}
         >
-          AI AGENTS
+          ایجنت‌ها
         </h1>
 
         <h2
@@ -192,11 +192,17 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
       >
         <div className="flex items-center gap-2">
           <span className="font-semibold text-cyan-500">موضوع:</span>
-          <span>درس هوش مصنوعی • سمینار کلاسی ۱۰ دقیقه‌ای</span>
+          <span>ایجنت‌ها</span>
         </div>
-        <div className="flex items-center gap-2 font-mono">
-          <span>ارائه‌دهنده:</span>
-          <span className="font-semibold text-slate-300">نام و نام خانوادگی</span>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1 font-mono">
+          <div className="flex items-center gap-2">
+            <span>ارائه‌دهنده:</span>
+            <span className={`font-semibold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>مهران یحیی</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span>استاد:</span>
+            <span className={`font-semibold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>دکتر قضاوی</span>
+          </div>
         </div>
       </div>
     </div>
