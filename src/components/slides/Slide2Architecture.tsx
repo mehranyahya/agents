@@ -23,9 +23,9 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۲ • کالبدشکافی سیستم
+            اسلاید ۳ • کالبدشکافی سیستم
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۳۰</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۰۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
