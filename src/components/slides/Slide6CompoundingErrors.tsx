@@ -28,9 +28,9 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
               isDark ? 'bg-red-500/10 text-red-400' : 'bg-red-50 text-red-700'
             }`}
           >
-            اسلاید ۶ • فنی‌ترین بخش: خطاهای زنجیره‌ای
+            اسلاید ۷ • فنی‌ترین بخش: خطاهای زنجیره‌ای
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۲:۰۰</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۴۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
