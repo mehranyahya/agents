@@ -14,7 +14,7 @@ export const SLIDES: SlideData[] = [
   {
     id: 0,
     slug: 'title',
-    title: 'AI AGENTS',
+    title: 'ایجنت‌ها',
     subtitle: 'وقتی هوش مصنوعی فقط جواب نمی‌دهد؛ کار می‌کند',
     timing: '۰:۳۰',
     durationSeconds: 30,
