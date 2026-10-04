@@ -23,9 +23,9 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۴ • واسط دنیای واقعی
+            اسلاید ۵ • واسط دنیای واقعی
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۱۵</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۱۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
