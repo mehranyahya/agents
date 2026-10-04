@@ -23,7 +23,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۸ • جمع‌بندی نهایی
+            اسلاید ۹ • جمع‌بندی نهایی
           </span>
           <span className="text-xs text-slate-400 font-mono">زمان: ۰:۴۰</span>
         </div>
@@ -75,7 +75,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
               تصمیم می‌گیرد، ابزار استفاده می‌کند و نتیجه را می‌بیند.
             </div>
             <div className="text-xs opacity-75 mt-0.5">
-              حلقه بسته ReAct (Decide ➔ Act ➔ Observe ➔ Repeat) برای تعامل با دنیای بیرونی.
+              چرخه Decide ➔ Act ➔ Observe ➔ Repeat برای تعامل با دنیای بیرونی؛ ReAct یکی از الگوهای رایجِ ترکیب استدلال و عمل است.
             </div>
           </div>
         </div>
