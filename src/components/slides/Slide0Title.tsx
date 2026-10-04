@@ -3,17 +3,22 @@ import { Globe, Mail, Code2, Database, Calendar, Bot, ArrowRight, User } from 'l
 
 interface SlideProps {
   theme: 'dark' | 'light';
+  isFullscreen?: boolean;
 }
 
-export const Slide0Title: React.FC<SlideProps> = ({ theme }) => {
+export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
   const isDark = theme === 'dark';
 
   return (
-    <div className="h-full flex flex-col justify-between py-4 px-6 select-none">
+    <div
+      className={`h-full flex flex-col justify-between select-none ${
+        isFullscreen ? 'py-8 px-12 md:px-16' : 'py-4 px-6'
+      }`}
+    >
       {/* Top Header Tag */}
-      <div className="flex items-center justify-between text-xs tracking-wider">
+      <div className="flex items-center justify-between text-xs md:text-sm tracking-wider">
         <span
-          className={`px-3 py-1 rounded-full font-mono uppercase font-semibold ${
+          className={`px-3.5 py-1 rounded-full font-mono uppercase font-semibold ${
             isDark
               ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30'
               : 'bg-blue-50 text-blue-700 border border-blue-200'
@@ -30,7 +35,9 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme }) => {
       <div className="my-auto text-center flex flex-col items-center">
         {/* Title */}
         <h1
-          className={`text-6xl md:text-7xl font-black tracking-tight mb-4 ${
+          className={`font-black tracking-tight mb-4 ${
+            isFullscreen ? 'text-7xl md:text-8xl lg:text-9xl' : 'text-6xl md:text-7xl'
+          } ${
             isDark
               ? 'bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-300 bg-clip-text text-transparent'
               : 'text-slate-900'
@@ -40,23 +47,27 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme }) => {
         </h1>
 
         <h2
-          className={`text-2xl md:text-3xl font-bold mb-3 ${
-            isDark ? 'text-slate-200' : 'text-slate-800'
-          }`}
+          className={`font-bold mb-3 ${
+            isFullscreen ? 'text-3xl md:text-4xl lg:text-5xl' : 'text-2xl md:text-3xl'
+          } ${isDark ? 'text-slate-200' : 'text-slate-800'}`}
         >
           وقتی هوش مصنوعی فقط جواب نمی‌دهد؛ کار می‌کند
         </h2>
 
         <p
-          className={`text-base md:text-lg max-w-xl font-normal ${
-            isDark ? 'text-slate-400' : 'text-slate-600'
-          }`}
+          className={`max-w-2xl font-normal ${
+            isFullscreen ? 'text-xl md:text-2xl mt-1' : 'text-base md:text-lg'
+          } ${isDark ? 'text-slate-400' : 'text-slate-600'}`}
         >
           از مفهوم ساده تا معماری فنی عامل‌های هوشمند
         </p>
 
         {/* Minimal Illustration: Human -> AI Agent -> Tools */}
-        <div className="mt-8 flex items-center justify-center gap-4 md:gap-8 max-w-2xl w-full">
+        <div
+          className={`flex items-center justify-center max-w-3xl w-full ${
+            isFullscreen ? 'mt-12 gap-8 md:gap-14' : 'mt-8 gap-4 md:gap-8 max-w-2xl'
+          }`}
+        >
           {/* Human */}
           <div
             className={`flex flex-col items-center gap-2 p-4 rounded-2xl border transition-all ${

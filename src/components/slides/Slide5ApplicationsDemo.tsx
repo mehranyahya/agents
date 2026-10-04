@@ -17,6 +17,7 @@ import confetti from 'canvas-confetti';
 
 interface SlideProps {
   theme: 'dark' | 'light';
+  isFullscreen?: boolean;
 }
 
 const USE_CASES = [
@@ -52,7 +53,7 @@ const USE_CASES = [
   },
 ];
 
-export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme }) => {
+export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
   const isDark = theme === 'dark';
 
   // Demo simulator state
@@ -77,7 +78,11 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme }) => {
   const resetDemo = () => setDemoStep(0);
 
   return (
-    <div className="h-full flex flex-col justify-between py-3 px-6 select-none">
+    <div
+      className={`h-full flex flex-col justify-between select-none ${
+        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+      }`}
+    >
       {/* Slide Header */}
       <div>
         <div className="flex items-center justify-between text-xs mb-1">
@@ -91,9 +96,9 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme }) => {
           <span className="text-xs text-slate-400 font-mono">زمان: ۱:۴۵</span>
         </div>
         <h2
-          className={`text-3xl md:text-4xl font-extrabold tracking-tight ${
-            isDark ? 'text-white' : 'text-slate-900'
-          }`}
+          className={`font-extrabold tracking-tight ${
+            isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
+          } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
           AI Agents در دنیای واقعی + دمو زنده
         </h2>

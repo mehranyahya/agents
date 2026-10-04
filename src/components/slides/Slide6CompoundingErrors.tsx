@@ -3,9 +3,10 @@ import { AlertTriangle, RefreshCw, Compass, ShieldOff, CheckSquare, ShieldCheck,
 
 interface SlideProps {
   theme: 'dark' | 'light';
+  isFullscreen?: boolean;
 }
 
-export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme }) => {
+export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
   const isDark = theme === 'dark';
 
   // Interactive slider for step accuracy p
@@ -14,7 +15,11 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme }) => {
   const calcSuccess = (n: number) => Math.round(Math.pow(stepAccuracy, n) * 100);
 
   return (
-    <div className="h-full flex flex-col justify-between py-3 px-6 select-none">
+    <div
+      className={`h-full flex flex-col justify-between select-none ${
+        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+      }`}
+    >
       {/* Slide Header */}
       <div>
         <div className="flex items-center justify-between text-xs mb-1">
@@ -28,9 +33,9 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme }) => {
           <span className="text-xs text-slate-400 font-mono">زمان: ۲:۰۰</span>
         </div>
         <h2
-          className={`text-2xl md:text-3xl font-extrabold tracking-tight ${
-            isDark ? 'text-white' : 'text-slate-900'
-          }`}
+          className={`font-extrabold tracking-tight ${
+            isFullscreen ? 'text-3xl md:text-4xl lg:text-5xl mb-1' : 'text-2xl md:text-3xl'
+          } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
           Agent قدرتمند است؛ اما هر قدم می‌تواند اشتباه باشد
         </h2>

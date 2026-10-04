@@ -32,24 +32,39 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   }, []);
 
-  const toggleFullscreen = useCallback(() => {
+  const enterFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen?.().catch(() => {});
-      setIsFullscreen(true);
-    } else {
-      document.exitFullscreen?.().catch(() => {});
-      setIsFullscreen(false);
     }
+    setIsFullscreen(true);
   }, []);
+
+  const exitFullscreen = useCallback(() => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen?.().catch(() => {});
+    }
+    setIsFullscreen(false);
+  }, []);
+
+  const toggleFullscreen = useCallback(() => {
+    if (isFullscreen) {
+      exitFullscreen();
+    } else {
+      enterFullscreen();
+    }
+  }, [isFullscreen, enterFullscreen, exitFullscreen]);
 
   // Listen for fullscreen change event from browser
   useEffect(() => {
     const onFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      // Sync state if user pressed Esc natively
+      if (!document.fullscreenElement && isFullscreen) {
+        setIsFullscreen(false);
+      }
     };
     document.addEventListener('fullscreenchange', onFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
-  }, []);
+  }, [isFullscreen]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -81,13 +96,20 @@ export default function App() {
           e.preventDefault();
           setCurrentSlideIndex(totalSlides - 1);
           break;
-        case 'n':
-        case 'N':
-          setIsNotesOpen((prev) => !prev);
+        case 'Escape':
+          if (isFullscreen) {
+            e.preventDefault();
+            exitFullscreen();
+          }
           break;
         case 'f':
         case 'F':
+          e.preventDefault();
           toggleFullscreen();
+          break;
+        case 'n':
+        case 'N':
+          setIsNotesOpen((prev) => !prev);
           break;
         default:
           // number keys 0-8 for quick jump
@@ -103,7 +125,7 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleNext, handlePrev, totalSlides, toggleFullscreen]);
+  }, [handleNext, handlePrev, totalSlides, toggleFullscreen, isFullscreen, exitFullscreen]);
 
   const isDark = theme === 'dark';
 
@@ -114,36 +136,52 @@ export default function App() {
         isDark ? 'bg-slate-950 text-slate-100' : 'bg-slate-100 text-slate-900'
       }`}
     >
-      {/* Top Presentation Navbar */}
-      <Navbar
-        currentSlideIndex={currentSlideIndex}
-        onPrev={handlePrev}
-        onNext={handleNext}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-        isFullscreen={isFullscreen}
-        onToggleFullscreen={toggleFullscreen}
-        isNotesOpen={isNotesOpen}
-        onToggleNotes={() => setIsNotesOpen((prev) => !prev)}
-        onOpenGoogleSlidesModal={() => setIsGoogleSlidesModalOpen(true)}
-      />
+      {/* Top Presentation Navbar: Hidden completely in fullscreen */}
+      {!isFullscreen && (
+        <Navbar
+          currentSlideIndex={currentSlideIndex}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          isFullscreen={isFullscreen}
+          onToggleFullscreen={toggleFullscreen}
+          isNotesOpen={isNotesOpen}
+          onToggleNotes={() => setIsNotesOpen((prev) => !prev)}
+          onOpenGoogleSlidesModal={() => setIsGoogleSlidesModalOpen(true)}
+        />
+      )}
 
       {/* Main Slide Canvas Area */}
-      <main className="flex-1 flex flex-col items-center justify-center p-3 md:p-6 max-w-6xl w-full mx-auto">
+      <main
+        className={`flex-1 flex flex-col items-center justify-center ${
+          isFullscreen
+            ? 'p-0 m-0 w-screen h-screen max-w-none overflow-hidden'
+            : 'p-3 md:p-6 max-w-6xl w-full mx-auto'
+        }`}
+      >
         <SlideViewer
           currentSlideIndex={currentSlideIndex}
           theme={theme}
           isFullscreen={isFullscreen}
+          onNext={handleNext}
+          onPrev={handlePrev}
+          onExitFullscreen={exitFullscreen}
+          onToggleTheme={toggleTheme}
+          onToggleNotes={() => setIsNotesOpen((prev) => !prev)}
+          isNotesOpen={isNotesOpen}
         />
 
-        {/* Slide Carousel Thumbnails */}
-        <div className="w-full mt-3">
-          <SlideThumbnails
-            currentSlideIndex={currentSlideIndex}
-            onSelectSlide={(idx) => setCurrentSlideIndex(idx)}
-            theme={theme}
-          />
-        </div>
+        {/* Slide Carousel Thumbnails: Hidden completely in fullscreen */}
+        {!isFullscreen && (
+          <div className="w-full mt-3">
+            <SlideThumbnails
+              currentSlideIndex={currentSlideIndex}
+              onSelectSlide={(idx) => setCurrentSlideIndex(idx)}
+              theme={theme}
+            />
+          </div>
+        )}
       </main>
 
       {/* Slide Speaker Notes Drawer */}
