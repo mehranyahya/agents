@@ -23,9 +23,9 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۱ • مفهوم بنیادین
+            اسلاید ۲ • مفهوم بنیادین
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۱۵</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
@@ -106,7 +106,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-extrabold text-lg text-cyan-400">AI Agent (سیستم عامل کنش‌گر)</h3>
+                <h3 className="font-extrabold text-lg text-cyan-400">AI Agent (سیستم کنش‌گر)</h3>
                 <p className="text-xs opacity-75">هدف‌محور، خودکارساز و متصل به ابزارها</p>
               </div>
             </div>
@@ -172,7 +172,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               isDark ? 'bg-cyan-500/20 text-cyan-300' : 'bg-blue-100 text-blue-900'
             }`}
           >
-            نتیجه: سیستم نرم‌افزاری کار را در محیط واقعی به سرانجام می‌رساند.
+            نتیجه: سیستم می‌تواند با کمک ابزارها چند مرحله از کار را در محیط واقعی اجرا کند.
           </div>
         </div>
       </div>
