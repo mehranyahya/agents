@@ -1,0 +1,6 @@
+{
+  "name": "AI Agents Presentation & Slides",
+  "description": "Interactive 10-minute presentation deck and Google Slides creator on AI Agents architecture, loops, and engineering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

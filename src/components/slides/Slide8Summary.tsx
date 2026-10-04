@@ -1,0 +1,132 @@
+import React from 'react';
+import { Target, Cpu, ShieldCheck, Sparkles } from 'lucide-react';
+
+interface SlideProps {
+  theme: 'dark' | 'light';
+}
+
+export const Slide8Summary: React.FC<SlideProps> = ({ theme }) => {
+  const isDark = theme === 'dark';
+
+  return (
+    <div className="h-full flex flex-col justify-between py-3 px-6 select-none">
+      {/* Slide Header */}
+      <div>
+        <div className="flex items-center justify-between text-xs mb-1">
+          <span
+            className={`px-2.5 py-0.5 rounded-full font-mono font-medium ${
+              isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
+            }`}
+          >
+            اسلاید ۸ • جمع‌بندی نهایی
+          </span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۴۰</span>
+        </div>
+        <h2
+          className={`text-3xl md:text-4xl font-extrabold tracking-tight ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}
+        >
+          AI Agent در یک نگاه
+        </h2>
+      </div>
+
+      {/* 3 Big Lines */}
+      <div className="space-y-3 my-auto max-w-2xl mx-auto w-full">
+        {/* Pillar 1 */}
+        <div
+          className={`p-3.5 rounded-2xl border flex items-center gap-4 transition-all shadow-sm ${
+            isDark
+              ? 'bg-slate-900/80 border-slate-800 text-slate-200'
+              : 'bg-white border-slate-200 text-slate-800'
+          }`}
+        >
+          <div className="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 font-black text-xl flex items-center justify-center shrink-0">
+            ۱
+          </div>
+          <div>
+            <div className="font-extrabold text-base md:text-lg text-cyan-400">
+              Agent هدف می‌گیرد، نه فقط سؤال.
+            </div>
+            <div className="text-xs opacity-75 mt-0.5">
+              انتقال تمرکز از پرسش و پاسخ متنی به تحقق هدف مشخص و عملیاتی.
+            </div>
+          </div>
+        </div>
+
+        {/* Pillar 2 */}
+        <div
+          className={`p-3.5 rounded-2xl border flex items-center gap-4 transition-all shadow-sm ${
+            isDark
+              ? 'bg-slate-900/80 border-slate-800 text-slate-200'
+              : 'bg-white border-slate-200 text-slate-800'
+          }`}
+        >
+          <div className="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xl flex items-center justify-center shrink-0">
+            ۲
+          </div>
+          <div>
+            <div className="font-extrabold text-base md:text-lg text-amber-400">
+              تصمیم می‌گیرد، ابزار استفاده می‌کند و نتیجه را می‌بیند.
+            </div>
+            <div className="text-xs opacity-75 mt-0.5">
+              حلقه بسته ReAct (Decide ➔ Act ➔ Observe ➔ Repeat) برای تعامل با دنیای بیرونی.
+            </div>
+          </div>
+        </div>
+
+        {/* Pillar 3 */}
+        <div
+          className={`p-3.5 rounded-2xl border flex items-center gap-4 transition-all shadow-sm ${
+            isDark
+              ? 'bg-slate-900/80 border-slate-800 text-slate-200'
+              : 'bg-white border-slate-200 text-slate-800'
+          }`}
+        >
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 font-black text-xl flex items-center justify-center shrink-0">
+            ۳
+          </div>
+          <div>
+            <div className="font-extrabold text-base md:text-lg text-emerald-400">
+              هرچه استقلال بیشتر باشد، کنترل و ایمنی مهم‌تر می‌شود.
+            </div>
+            <div className="text-xs opacity-75 mt-0.5">
+              مدیریت خطاهای آبشاری (Compounding Error)، گاردریل‌ها و نظارت انسانی.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Boxed Final Equation */}
+      <div
+        className={`p-3 rounded-2xl border text-center font-mono text-sm md:text-base font-bold my-2 shadow-sm ${
+          isDark
+            ? 'bg-slate-900/90 border-cyan-500/30 text-cyan-300'
+            : 'bg-slate-100 border-slate-300 text-slate-900'
+        }`}
+      >
+        <span className="text-slate-400 text-xs font-sans block mb-1">فرمول جامع معماری:</span>
+        AI Agent = Model + Tools + Memory + Autonomy + Feedback
+      </div>
+
+      {/* The Big Final Punchline */}
+      <div
+        className={`p-5 rounded-2xl border-2 text-center transition-all shadow-xl ${
+          isDark
+            ? 'bg-gradient-to-r from-cyan-950 via-slate-900 to-indigo-950 border-cyan-400 text-white shadow-cyan-950/80'
+            : 'bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-500 text-blue-950'
+        }`}
+      >
+        <div className="flex items-center justify-center gap-2 mb-1">
+          <Sparkles className="w-5 h-5 text-cyan-400 animate-spin" style={{ animationDuration: '6s' }} />
+          <span className="text-xs uppercase tracking-widest font-mono font-bold text-cyan-400">
+            FINAL TAKEAWAY
+          </span>
+        </div>
+        <div className="text-2xl md:text-3xl font-black tracking-tight mt-1 text-cyan-300">
+          AI از «تولید پاسخ» به «اجرای کار» حرکت کرده است.
+        </div>
+      </div>
+    </div>
+  );
+};
