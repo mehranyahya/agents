@@ -24,7 +24,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
               : 'bg-blue-50 text-blue-700 border border-blue-200'
           }`}
         >
-          AI Presentation • اسلاید ۰
+          ارائه کلاسی • اسلاید ۱
         </span>
         <span className={isDark ? 'text-slate-400' : 'text-slate-500'}>
           زمان تقریبی: ۳۰ ثانیه
