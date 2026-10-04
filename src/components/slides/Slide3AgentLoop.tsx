@@ -72,9 +72,9 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۳ • سازوکار تکرار
+            اسلاید ۴ • سازوکار تکرار
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۰۰</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
