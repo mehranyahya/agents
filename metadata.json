@@ -1,6 +1,6 @@
 {
   "name": "ایجنت‌ها",
-  "description": "Interactive presentation deck on AI Agents, agent loops, tools, safety, and multi-agent systems.",
+  "description": "Interactive Persian presentation deck on AI Agents, agent loops, tools, safety, and multi-agent systems.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
