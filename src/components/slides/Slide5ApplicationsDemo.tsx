@@ -91,9 +91,9 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۵ • کاربردها و دمو زنده
+            اسلاید ۶ • کاربردها و دمو زنده
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۴۵</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
