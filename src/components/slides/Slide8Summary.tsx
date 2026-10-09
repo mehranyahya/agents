@@ -129,8 +129,26 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
           </span>
         </div>
         <div className="text-2xl md:text-3xl font-black tracking-tight mt-1 text-cyan-300">
-          AI از «تولید پاسخ» به «اجرای کار» حرکت کرده است.
+          در LLM Agents، از «تولید پاسخ» به «اجرای کار» می‌رسیم.
         </div>
+      </div>
+      {/* Academic references — visible but not spoken during the timed talk */}
+      <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] md:text-[11px] pb-0.5 ${
+        isDark ? 'text-slate-400' : 'text-slate-600'
+      }`}>
+        <span className="font-bold">منابع علمی:</span>
+        <a className="underline underline-offset-2 hover:text-cyan-400" target="_blank" rel="noopener noreferrer"
+          href="https://www.pearson.com/en-us/subject-catalog/p/artificial-intelligence-a-modern-approach/P200000003500/9780134610993">
+          Russell &amp; Norvig — AIMA (4th ed.)
+        </a>
+        <a className="underline underline-offset-2 hover:text-cyan-400" target="_blank" rel="noopener noreferrer"
+          href="https://arxiv.org/abs/2210.03629">
+          Yao et al. — ReAct (ICLR 2023)
+        </a>
+        <a className="underline underline-offset-2 hover:text-cyan-400" target="_blank" rel="noopener noreferrer"
+          href="https://modelcontextprotocol.io/specification/2025-06-18/server/tools">
+          MCP — Official Specification
+        </a>
       </div>
     </div>
   );
