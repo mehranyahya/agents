@@ -25,7 +25,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
           >
             اسلاید ۲ • مفهوم بنیادین
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۴۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
@@ -177,20 +177,36 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
         </div>
       </div>
 
-      {/* Core Bottom Takeaway Highlight */}
-      <div
-        className={`p-3.5 rounded-2xl border text-center transition-all ${
-          isDark
-            ? 'bg-slate-900/80 border-cyan-500/40 text-slate-100 shadow-md'
-            : 'bg-white border-blue-300 text-slate-900 shadow-sm'
-        }`}
-      >
-        <div className="text-xl md:text-2xl font-black text-cyan-400 mb-0.5">
-          « Chatbot سؤال می‌گیرد؛ Agent هدف می‌گیرد »
+      {/* Academic anchor: classic agent theory without an extra slide */}
+      <div className={`p-3 rounded-2xl border transition-all ${
+        isDark ? 'bg-slate-900/80 border-cyan-500/40 text-slate-100 shadow-md'
+          : 'bg-white border-blue-300 text-slate-900 shadow-sm'
+      }`}>
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div className="text-base md:text-lg font-black text-cyan-400">
+            «Chatbot سؤال می‌گیرد؛ Agent هدف می‌گیرد»
+          </div>
+          <span className={`text-[10px] font-bold rounded-full px-2 py-1 ${
+            isDark ? 'bg-cyan-500/10 text-cyan-300' : 'bg-blue-50 text-blue-700'
+          }`}>
+            پیوند با مبانی هوش مصنوعی: Rational Agent
+          </span>
         </div>
-        <div className="flex items-center justify-center gap-2 text-xs text-slate-400">
-          <AlertCircle className="w-3.5 h-3.5 text-amber-400 inline" />
-          <span>یادآوری مهم: عامل یک ربات فیزیکی یا انسان‌نما نیست؛ یک معماری نرم‌افزاری هوشمند است.</span>
+        <div dir="ltr" className="flex flex-wrap items-center justify-center gap-1.5 md:gap-3 mt-2 font-mono text-[11px] md:text-xs font-semibold text-cyan-400">
+          <span>Environment</span><span aria-hidden="true">→</span>
+          <span>Percepts</span><span aria-hidden="true">→</span>
+          <span>Agent</span><span aria-hidden="true">→</span>
+          <span>Actions</span><span aria-hidden="true">→</span>
+          <span>Environment</span>
+        </div>
+        <p className={`text-xs text-center leading-relaxed mt-1.5 ${
+          isDark ? 'text-slate-300' : 'text-slate-700'
+        }`}>
+          <strong>عامل عقلانی</strong> بر پایه ادراک‌ها و اطلاعات موجود، کنشی را انتخاب می‌کند که عملکرد مورد انتظار را بیشینه کند.
+        </p>
+        <div className="flex justify-center items-center gap-1.5 mt-1 text-[10px] text-slate-400">
+          <AlertCircle className="w-3 h-3 shrink-0 text-amber-400" />
+          <span>هر Agent لزوماً LLM ندارد؛ عامل‌ها می‌توانند نرم‌افزاری یا رباتیکی باشند. — Russell &amp; Norvig, AIMA (فصل ۲)</span>
         </div>
       </div>
     </div>
