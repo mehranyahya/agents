@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, Pause, RotateCcw, Clock, AlertCircle } from 'lucide-react';
+import { Play, Pause, RotateCcw, Clock } from 'lucide-react';
 import { SLIDES } from '../data/slidesData';
 
 interface TimerProps {
@@ -31,8 +31,7 @@ export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) =
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  // Target duration calculation:
-  // Presentation is ~10 minutes (600s)
+  // Planned: 9:15 (555s); absolute cap: 10:00 (600s).
   const currentSlide = SLIDES[currentSlideIndex];
   const slideTarget = currentSlide ? currentSlide.timing : '۱:۰۰';
 
@@ -42,15 +41,19 @@ export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) =
     0
   );
 
+  const plannedSeconds = SLIDES.reduce((sum, slide) => sum + slide.durationSeconds, 0);
   const isOverPace = totalSeconds > cumulativeTargetSeconds + 20;
+  const isNearHardLimit = totalSeconds >= 570 && totalSeconds < 600;
+  const isPastHardLimit = totalSeconds >= 600;
 
   return (
     <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200">
-      <Clock className={`w-3.5 h-3.5 ${isOverPace ? 'text-red-400 animate-pulse' : 'text-cyan-400'}`} />
+      <Clock className={`w-3.5 h-3.5 ${isPastHardLimit ? 'text-red-500 animate-pulse' : isNearHardLimit || isOverPace ? 'text-amber-400' : 'text-cyan-400'}`} />
 
       <div className="flex items-baseline gap-1 font-mono">
         <span className="font-bold text-sm text-cyan-300">{formatTime(totalSeconds)}</span>
         <span className="text-[10px] text-slate-400">/ ۱۰:۰۰</span>
+        <span className="text-[10px] text-slate-500" title="هدف زمان‌بندی‌شده">هدف: {formatTime(plannedSeconds)}</span>
       </div>
 
       <div className="h-4 w-px bg-slate-800 mx-1" />
@@ -60,9 +63,11 @@ export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) =
         <span className="text-cyan-400 font-mono font-semibold">{slideTarget}</span>
       </div>
 
-      {isOverPace && (
-        <span className="text-[10px] text-red-400 font-medium hidden md:inline">
-          عقب‌تر از زمان‌بندی
+      {(isPastHardLimit || isNearHardLimit || isOverPace) && (
+        <span className={`text-[10px] font-medium hidden lg:inline ${
+          isPastHardLimit ? 'text-red-400' : 'text-amber-400'
+        }`}>
+          {isPastHardLimit ? 'سقف ۱۰ دقیقه تمام شد' : isNearHardLimit ? 'کمتر از ۳۰ ثانیه تا سقف' : 'عقب‌تر از زمان‌بندی'}
         </span>
       )}
 
