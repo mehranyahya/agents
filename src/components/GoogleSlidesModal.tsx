@@ -219,13 +219,13 @@ export const GoogleSlidesModal: React.FC<GoogleSlidesModalProps> = ({
                       <span>تأییدیه ایجاد ارائه در Google Slides:</span>
                     </div>
                     <p className="text-slate-300 leading-relaxed">
-                      یک فایل ارائه جدید با نام{' '}
-                      <span className="font-bold text-white">«AI AGENTS»</span> شامل ۹ اسلاید کامل با
-                      عناوین، دیاگرام‌های ساختاریافته، نکات کلیدی و یادداشت‌های سخنران در Google Drive شما
-                      ایجاد خواهد شد.
+                      یک فایل جدید با نام{' '}
+                      <span className="font-bold text-white">«AI AGENTS»</span> شامل {SLIDES.length} اسلاید متنی
+                      با عنوان‌ها، نکات کلیدی و لینک ابزارها در Google Drive شما ساخته می‌شود.
+                      برای حفظ نمودارهای تعاملی، طراحی اصلی و یادداشت‌های سخنران، از نسخه وب ارائه استفاده کنید.
                     </p>
                     <div className="pt-1 text-[11px] text-slate-400">
-                      تعداد اسلایدها: {SLIDES.length} اسلاید • زمان ارائه: ۱۰ دقیقه
+                      تعداد اسلایدها: {SLIDES.length} • زمان هدف: ۹:۲۵ • سقف: ۱۰ دقیقه
                     </div>
                   </div>
 
