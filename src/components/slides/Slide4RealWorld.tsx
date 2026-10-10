@@ -25,7 +25,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
           >
             اسلاید ۵ • واسط دنیای واقعی
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۱۰</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۰۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
@@ -81,7 +81,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <h3 className="font-bold text-sm text-cyan-400">Tool Calling</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              مدل به جای اقدام فیزیکی، یک درخواست ساختاریافته (JSON) با نام تابع و ورودی‌ها صادر می‌کند.
+              مدل ابزار موردنیاز و ورودی آن را مشخص می‌کند؛ برنامه، درخواست را اجرا می‌کند.
             </p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
@@ -103,7 +103,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <h3 className="font-bold text-sm text-emerald-400">API</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              پل ارتباطی استاندارد با وب‌سرویس‌ها، درگاه‌های پرداخت، دیتابیس‌ها و سرورهای خارجی.
+              راه ارتباط نرم‌افزارها با سرویس‌های دیگر؛ مثل دریافت وضعیت سفارش.
             </p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
@@ -127,7 +127,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <h3 className="font-bold text-sm text-indigo-400">MCP</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              استاندارد باز اتصال هوش مصنوعی به منابع داده مانند پورت USB همگانی.
+              استاندارد باز برای اتصال یکپارچه هوش مصنوعی به ابزارها و منابع داده.
             </p>
 
             {/* MCP Mini Hub */}
@@ -160,11 +160,11 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <h3 className="font-bold text-sm text-amber-400">Computer Use</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              تعامل مستقیم با دسکتاپ: مشاهده اسکرین‌شات صفحه، جابجایی نشانگر ماوس و تایپ کیبورد.
+              تعامل با صفحه رایانه؛ دیدن صفحه، کلیک و تایپ با مجوز کاربر.
             </p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
-            Vision ➔ Coordinates ➔ Click
+            دیدن صفحه ➔ کلیک یا تایپ
           </div>
         </div>
       </div>

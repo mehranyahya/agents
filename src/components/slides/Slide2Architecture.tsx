@@ -25,7 +25,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
           >
             اسلاید ۳ • کالبدشکافی سیستم
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۰۰</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
@@ -64,7 +64,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
               <HardDrive className="w-5 h-5" />
             </div>
             <div className="text-right">
-              <div className="font-bold text-sm">Memory / State (حافظه)</div>
+              <div className="font-bold text-sm">حافظه و وضعیت (Memory)</div>
               <div className="text-[11px] opacity-75">سابقه تصمیمات، وضعیت محیط و داده‌های پیشین</div>
             </div>
           </div>
@@ -83,7 +83,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
                 <Wrench className="w-5 h-5" />
               </div>
               <div className="text-right">
-                <div className="font-bold text-sm">Tools (دست‌ها)</div>
+                <div className="font-bold text-sm">ابزارها (Tools)</div>
                 <div className="text-[11px] opacity-75">وب، APIها، محاسبات، دیتابیس</div>
               </div>
             </div>
@@ -100,7 +100,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
                 <Cpu className="w-7 h-7" />
               </div>
               <div className="font-black text-base tracking-wide">LLM (مغز)</div>
-              <div className="text-[10px] font-mono text-cyan-400 opacity-90">Reasoning Core</div>
+              <div className="text-[10px] font-mono text-cyan-400 opacity-90">تحلیل و تصمیم‌گیری</div>
             </div>
 
             {/* Right Node: Instructions */}
@@ -115,7 +115,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
                 <FileText className="w-5 h-5" />
               </div>
               <div className="text-right">
-                <div className="font-bold text-sm">Instructions (شرح وظایف)</div>
+                <div className="font-bold text-sm">دستورها (Instructions)</div>
                 <div className="text-[11px] opacity-75">مأموریت، پرامپت سیستم و نقشه هدف</div>
               </div>
             </div>
@@ -133,7 +133,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
               <ShieldAlert className="w-5 h-5" />
             </div>
             <div className="text-right">
-              <div className="font-bold text-sm">Guardrails (محدودیت‌ها و امنیت)</div>
+              <div className="font-bold text-sm">امنیت و دسترسی (Guardrails)</div>
               <div className="text-[11px] opacity-75">خطوط قرمز، تأیید انسانی، سقف هزینه و دسترسی مجاز</div>
             </div>
           </div>

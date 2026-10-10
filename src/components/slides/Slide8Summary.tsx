@@ -23,7 +23,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۹ • جمع‌بندی نهایی
+            اسلاید ۱۰ • جمع‌بندی نهایی
           </span>
           <span className="text-xs text-slate-400 font-mono">زمان: ۰:۴۰</span>
         </div>
@@ -96,7 +96,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
               هرچه استقلال بیشتر باشد، کنترل و ایمنی مهم‌تر می‌شود.
             </div>
             <div className="text-xs opacity-75 mt-0.5">
-              مدیریت خطاهای آبشاری (Compounding Error)، گاردریل‌ها و نظارت انسانی.
+              بررسی خروجی، محدودیت دسترسی و نظارت انسان بر اقدامات حساس.
             </div>
           </div>
         </div>

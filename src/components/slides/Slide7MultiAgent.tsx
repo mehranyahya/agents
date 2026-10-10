@@ -24,7 +24,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۸ • سیستم‌های چندعاملی
+            اسلاید ۹ • سیستم‌های چندعاملی
           </span>
           <span className="text-xs text-slate-400 font-mono">زمان: ۰:۴۵</span>
         </div>
@@ -51,7 +51,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             <Users className="w-6 h-6" />
           </div>
           <div className="text-right">
-            <div className="font-extrabold text-base">Orchestrator (عامل مدیر / هماهنگ‌کننده)</div>
+            <div className="font-extrabold text-base">عامل هماهنگ‌کننده (Orchestrator)</div>
             <div className="text-[11px] opacity-80 font-mono">تفسیر هدف کلان، تقسیم مأموریت و جمع‌بندی خروجی</div>
           </div>
         </div>
@@ -74,7 +74,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             <div className="p-2 rounded-xl bg-sky-500/20 text-sky-400 mb-1.5">
               <Search className="w-5 h-5" />
             </div>
-            <div className="font-bold text-sm text-sky-400">Research Agent</div>
+            <div className="font-bold text-sm text-sky-400">عامل پژوهشگر</div>
             <div className="text-xs opacity-70">محقق و جمع‌آوری داده</div>
             <div className="text-[10px] text-slate-400 mt-2 font-mono">Search ➔ Extract ➔ Summarize</div>
           </div>
@@ -88,7 +88,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             <div className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 mb-1.5">
               <Code className="w-5 h-5" />
             </div>
-            <div className="font-bold text-sm text-emerald-400">Coding Agent</div>
+            <div className="font-bold text-sm text-emerald-400">عامل برنامه‌نویس</div>
             <div className="text-xs opacity-70">برنامه‌نویس و مجری کد</div>
             <div className="text-[10px] text-slate-400 mt-2 font-mono">Write Code ➔ Run Tests</div>
           </div>
@@ -102,7 +102,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             <div className="p-2 rounded-xl bg-purple-500/20 text-purple-400 mb-1.5">
               <CheckCircle className="w-5 h-5" />
             </div>
-            <div className="font-bold text-sm text-purple-400">Review Agent</div>
+            <div className="font-bold text-sm text-purple-400">عامل بازبین</div>
             <div className="text-xs opacity-70">بازبین و کنترل کیفیت</div>
             <div className="text-[10px] text-slate-400 mt-2 font-mono">Audit ➔ Benchmark ➔ Approve</div>
           </div>

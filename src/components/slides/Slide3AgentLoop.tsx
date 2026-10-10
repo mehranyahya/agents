@@ -14,7 +14,7 @@ const LOOP_STEPS = [
     color: 'cyan',
     title: '۱. تصمیم‌گیری (Decide)',
     desc: '«باید پروازهای جمعه را با سرویس رزرو جستجو کنم.»',
-    action: 'تولید درخواست Tool Call',
+    action: 'درخواست اجرای ابزار',
   },
   {
     key: 'act_1',
@@ -22,8 +22,8 @@ const LOOP_STEPS = [
     icon: Cog,
     color: 'amber',
     title: '۲. اقدام (Act)',
-    desc: 'فراخوانی ابزار search_flights(date: "2026-10-09", origin: "THR")',
-    action: 'اجرای API در سیستم خارجی',
+    desc: 'فراخوانی ابزار search_flights(day: "Friday")',
+    action: 'اجرای ابزار جست‌وجو',
   },
   {
     key: 'observe_1',
@@ -32,7 +32,7 @@ const LOOP_STEPS = [
     color: 'emerald',
     title: '۳. مشاهده نتیجه (Observe)',
     desc: 'دریافت پاسخ سرور: «۱۲ پرواز با قیمت‌های مختلف یافت شد.»',
-    action: 'بازگشت پاسخ به زمینه مدل',
+    action: 'دریافت نتیجه ابزار',
   },
   {
     key: 'repeat_1',
@@ -40,8 +40,8 @@ const LOOP_STEPS = [
     icon: RotateCw,
     color: 'indigo',
     title: '۴. تکرار و تصمیم بعدی (Repeat)',
-    desc: '«حالا ارزان‌ترین پرواز را برمی‌گزینم و فرم رزرو را پر می‌کنم.»',
-    action: 'ادامه چرخه تا تحقق کامل هدف',
+    desc: '«حالا ارزان‌ترین گزینه‌ها را مقایسه و به کاربر پیشنهاد می‌کنم.»',
+    action: 'تکرار تا رسیدن به نتیجه',
   },
 ];
 

@@ -23,33 +23,33 @@ interface SlideProps {
 const USE_CASES = [
   {
     icon: Code2,
-    title: 'Coding Agent',
+    title: 'برنامه‌نویسی',
     color: 'emerald',
-    steps: 'Find Bug ➔ Edit Code ➔ Run Tests ➔ Fix Again',
+    steps: 'پیدا کردن خطا ← اصلاح کد ← تست',
   },
   {
     icon: Search,
-    title: 'Research Agent',
+    title: 'پژوهش',
     color: 'sky',
-    steps: 'Search ➔ Read ➔ Compare ➔ Report',
+    steps: 'جست‌وجو ← مقایسه منابع ← گزارش',
   },
   {
     icon: Headphones,
-    title: 'Customer Support',
+    title: 'پشتیبانی مشتری',
     color: 'amber',
-    steps: 'Read Ticket ➔ Check Order ➔ Take Action',
+    steps: 'خواندن درخواست ← بررسی سفارش',
   },
   {
     icon: BarChart2,
-    title: 'Data Agent',
+    title: 'تحلیل داده',
     color: 'indigo',
-    steps: 'Data ➔ Code ➔ Analysis ➔ Chart',
+    steps: 'خواندن داده ← تحلیل ← نمودار',
   },
   {
     icon: CalendarDays,
-    title: 'Personal Agent',
+    title: 'دستیار شخصی',
     color: 'rose',
-    steps: 'Email ➔ Calendar ➔ Files ➔ Tasks',
+    steps: 'ایمیل ← تقویم ← پیگیری کارها',
   },
 ];
 
@@ -93,14 +93,14 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
           >
             اسلاید ۶ • کاربردها و دمو زنده
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۰۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          AI Agents در دنیای واقعی + دمو زنده
+          کاربردهای واقعی Agent + شبیه‌سازی
         </h2>
       </div>
 
@@ -142,7 +142,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
             <span className="font-bold text-cyan-400 font-mono">
-              Live Demo: شبیه‌سازی حلقه عیب‌یابی Coding Agent
+              شبیه‌سازی تعاملی: ایجنتِ رفع خطای کد
             </span>
           </div>
 

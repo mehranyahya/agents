@@ -28,9 +28,9 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
               isDark ? 'bg-red-500/10 text-red-400' : 'bg-red-50 text-red-700'
             }`}
           >
-            اسلاید ۷ • فنی‌ترین بخش: خطاهای زنجیره‌ای
+            اسلاید ۸ • خطاهای زنجیره‌ای
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۴۰</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۳۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
@@ -50,7 +50,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
         >
           <div className="flex items-center gap-1.5 text-red-400 font-bold text-xs mb-1">
             <AlertTriangle className="w-4 h-4" />
-            <span>Hallucination</span>
+            <span>اطلاعات نادرست</span>
           </div>
           <p className="text-[11px] opacity-75">اطلاعات اشتباه یا ناموجود تولید می‌کند.</p>
         </div>
@@ -62,7 +62,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
         >
           <div className="flex items-center gap-1.5 text-amber-400 font-bold text-xs mb-1">
             <RefreshCw className="w-4 h-4" />
-            <span>Infinite Loop</span>
+            <span>گیرکردن در چرخه</span>
           </div>
           <p className="text-[11px] opacity-75">در تکرار یک دستور ناموفق گیر می‌کند.</p>
         </div>
@@ -74,7 +74,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
         >
           <div className="flex items-center gap-1.5 text-sky-400 font-bold text-xs mb-1">
             <Compass className="w-4 h-4" />
-            <span>Goal Drift</span>
+            <span>انحراف از هدف</span>
           </div>
           <p className="text-[11px] opacity-75">به تدریج از مأموریت و هدف اصلی منحرف می‌شود.</p>
         </div>
@@ -86,7 +86,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
         >
           <div className="flex items-center gap-1.5 text-purple-400 font-bold text-xs mb-1">
             <ShieldOff className="w-4 h-4" />
-            <span>Prompt Injection</span>
+            <span>دستور مخرب خارجی</span>
           </div>
           <p className="text-[11px] opacity-75">محتوای خارجی کنترل و منطق عامل را فریب می‌دهد.</p>
         </div>
