@@ -73,9 +73,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           }`}
         >
           <span>اسلاید</span>
-          <span className="text-cyan-400 font-bold">{currentSlideIndex}</span>
+          <span className="text-cyan-400 font-bold">{currentSlideIndex + 1}</span>
           <span className="text-slate-500">/</span>
-          <span>{totalSlides - 1}</span>
+          <span>{totalSlides}</span>
         </div>
       </div>
 

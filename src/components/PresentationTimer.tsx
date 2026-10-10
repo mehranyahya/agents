@@ -31,7 +31,7 @@ export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) =
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  // Planned: 9:15 (555s); absolute cap: 10:00 (600s).
+  // Planned: 9:25 (565s); absolute cap: 10:00 (600s).
   const currentSlide = SLIDES[currentSlideIndex];
   const slideTarget = currentSlide ? currentSlide.timing : '۱:۰۰';
 
@@ -59,7 +59,7 @@ export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) =
       <div className="h-4 w-px bg-slate-800 mx-1" />
 
       <div className="hidden sm:flex items-center gap-1 text-[11px] text-slate-400">
-        <span>اسلاید {currentSlideIndex}:</span>
+        <span>اسلاید {currentSlideIndex + 1}:</span>
         <span className="text-cyan-400 font-mono font-semibold">{slideTarget}</span>
       </div>
 

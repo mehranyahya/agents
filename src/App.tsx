@@ -112,8 +112,8 @@ export default function App() {
           setIsNotesOpen((prev) => !prev);
           break;
         default:
-          // number keys 0-8 for quick jump
-          if (e.key >= '0' && e.key <= '8') {
+          // number keys 0-9 for quick jump
+          if (e.key >= '0' && e.key <= '9') {
             const idx = parseInt(e.key, 10);
             if (idx < totalSlides) {
               setCurrentSlideIndex(idx);
