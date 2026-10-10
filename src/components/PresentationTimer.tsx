@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Play, Pause, RotateCcw, Clock } from 'lucide-react';
 import { SLIDES } from '../data/slidesData';
 
 interface TimerProps {
   currentSlideIndex: number;
+  totalSeconds: number;
+  isRunning: boolean;
+  onToggle: () => void;
+  onReset: () => void;
 }
 
-export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) => {
-  const [totalSeconds, setTotalSeconds] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-
-  useEffect(() => {
-    let interval: any = null;
-    if (isRunning) {
-      interval = setInterval(() => {
-        setTotalSeconds((prev) => prev + 1);
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [isRunning]);
-
-  const resetTimer = () => {
-    setIsRunning(false);
-    setTotalSeconds(0);
-  };
+export const PresentationTimer: React.FC<TimerProps> = ({
+  currentSlideIndex, totalSeconds, isRunning, onToggle, onReset
+}) => {
 
   const formatTime = (secs: number) => {
     const m = Math.floor(secs / 60);
@@ -73,7 +62,7 @@ export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) =
 
       <div className="flex items-center gap-1 mr-1">
         <button
-          onClick={() => setIsRunning(!isRunning)}
+          onClick={onToggle}
           className="p-1 rounded hover:bg-slate-800 text-slate-300 transition-colors"
           title={isRunning ? 'توقف تایمر' : 'شروع تایمر'}
         >
@@ -81,7 +70,7 @@ export const PresentationTimer: React.FC<TimerProps> = ({ currentSlideIndex }) =
         </button>
 
         <button
-          onClick={resetTimer}
+          onClick={onReset}
           className="p-1 rounded hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors"
           title="ریست تایمر"
         >

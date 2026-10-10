@@ -8,7 +8,10 @@ import {
   Sun,
   Mic,
   Clock,
-  Sparkles
+  Sparkles,
+  Play,
+  Pause,
+  RotateCcw
 } from 'lucide-react';
 import { Slide0Title } from './slides/Slide0Title';
 import { Slide1ChatbotVsAgent } from './slides/Slide1ChatbotVsAgent';
@@ -24,6 +27,10 @@ import { SLIDES } from '../data/slidesData';
 
 interface SlideViewerProps {
   currentSlideIndex: number;
+  timerSeconds: number;
+  isTimerRunning: boolean;
+  onToggleTimer: () => void;
+  onResetTimer: () => void;
   theme: 'dark' | 'light';
   isFullscreen: boolean;
   onNext?: () => void;
@@ -36,6 +43,10 @@ interface SlideViewerProps {
 
 export const SlideViewer: React.FC<SlideViewerProps> = ({
   currentSlideIndex,
+  timerSeconds,
+  isTimerRunning,
+  onToggleTimer,
+  onResetTimer,
   theme,
   isFullscreen,
   onNext,
@@ -172,6 +183,23 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
+
+                <div className="h-4 w-px bg-slate-700 mx-1" />
+
+                {/* Fullscreen uses the same clock as the normal presenter toolbar. */}
+                <div className="flex items-center gap-1.5" dir="ltr">
+                  <Clock className={`w-3.5 h-3.5 ${timerSeconds >= 600 ? 'text-red-400' : timerSeconds >= 570 ? 'text-amber-400' : 'text-cyan-400'}`} />
+                  <span className={`font-bold tabular-nums ${timerSeconds >= 600 ? 'text-red-400' : 'text-slate-200'}`}>
+                    {`${Math.floor(timerSeconds / 60)}:${String(timerSeconds % 60).padStart(2, '0')}`}
+                  </span>
+                  <span className="text-slate-500">/ 10:00</span>
+                  <button onClick={onToggleTimer} className="p-1 rounded-lg hover:bg-slate-800" title={isTimerRunning ? 'توقف تایمر' : 'شروع تایمر'} aria-label={isTimerRunning ? 'توقف تایمر' : 'شروع تایمر'}>
+                    {isTimerRunning ? <Pause className="w-3.5 h-3.5 text-amber-400" /> : <Play className="w-3.5 h-3.5 text-emerald-400" />}
+                  </button>
+                  <button onClick={onResetTimer} className="p-1 rounded-lg hover:bg-slate-800" title="صفر کردن تایمر" aria-label="صفر کردن تایمر">
+                    <RotateCcw className="w-3 h-3 text-slate-400" />
+                  </button>
+                </div>
 
                 <div className="h-4 w-px bg-slate-700 mx-1" />
 

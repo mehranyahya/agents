@@ -16,6 +16,10 @@ import { SLIDES } from '../data/slidesData';
 
 interface NavbarProps {
   currentSlideIndex: number;
+  timerSeconds: number;
+  isTimerRunning: boolean;
+  onToggleTimer: () => void;
+  onResetTimer: () => void;
   onPrev: () => void;
   onNext: () => void;
   theme: 'dark' | 'light';
@@ -29,6 +33,10 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentSlideIndex,
+  timerSeconds,
+  isTimerRunning,
+  onToggleTimer,
+  onResetTimer,
   onPrev,
   onNext,
   theme,
@@ -81,7 +89,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Middle section: 10-Minute Presentation Timer */}
       <div className="hidden md:flex items-center justify-center">
-        <PresentationTimer currentSlideIndex={currentSlideIndex} />
+        <PresentationTimer
+          currentSlideIndex={currentSlideIndex}
+          totalSeconds={timerSeconds}
+          isRunning={isTimerRunning}
+          onToggle={onToggleTimer}
+          onReset={onResetTimer}
+        />
       </div>
 
       {/* Right section: Slide Nav, Notes, Google Slides, Fullscreen */}
