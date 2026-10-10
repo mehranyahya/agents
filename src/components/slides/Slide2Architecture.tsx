@@ -133,7 +133,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
               <ShieldAlert className="w-5 h-5" />
             </div>
             <div className="text-right">
-              <div className="font-bold text-sm">امنیت و دسترسی (Guardrails)</div>
+              <div className="font-bold text-sm">امنیت و دسترسی</div>
               <div className="text-[11px] opacity-75">خطوط قرمز، تأیید انسانی، سقف هزینه و دسترسی مجاز</div>
             </div>
           </div>

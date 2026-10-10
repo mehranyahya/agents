@@ -157,7 +157,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400">
                 <MonitorPlay className="w-4 h-4" />
               </div>
-              <h3 className="font-bold text-sm text-amber-400">Computer Use</h3>
+              <h3 className="font-bold text-sm text-amber-400">کار با رایانه</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
               تعامل با صفحه رایانه؛ دیدن صفحه، کلیک و تایپ با مجوز کاربر.

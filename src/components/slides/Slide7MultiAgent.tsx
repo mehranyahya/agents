@@ -51,7 +51,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             <Users className="w-6 h-6" />
           </div>
           <div className="text-right">
-            <div className="font-extrabold text-base">عامل هماهنگ‌کننده (Orchestrator)</div>
+            <div className="font-extrabold text-base">عامل هماهنگ‌کننده</div>
             <div className="text-[11px] opacity-80 font-mono">تفسیر هدف کلان، تقسیم مأموریت و جمع‌بندی خروجی</div>
           </div>
         </div>
