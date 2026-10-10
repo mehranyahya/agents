@@ -44,7 +44,7 @@ export const createGoogleSlidesDeck = async (
   const presentation = await createRes.json();
   const presentationId = presentation.presentationId;
   const initialSlides = presentation.slides || [];
-  const firstSlideId = initialSlides[0]?.objectId;
+  let firstSlideId = initialSlides[0]?.objectId;
 
   onProgress?.('در حال آماده‌سازی قالب و صفحات اسلایدها...', 2, 4);
 
@@ -54,19 +54,21 @@ export const createGoogleSlidesDeck = async (
   // Helper for generating unique ID
   const makeId = (prefix: string, index: number) => `${prefix}_${Date.now()}_${index}`;
 
-  // Slide 0 (Title slide) - customize the first slide or update background
-  if (firstSlideId) {
-    // Set background to dark blue/slate
+  // A new presentation is blank and usually has no slides.
+  // Always add its title slide explicitly, before inserting the remaining slides.
+  if (!firstSlideId) {
+    firstSlideId = makeId('title_slide', 0);
     requests.push({
-      updateSlideProperties: {
+      createSlide: {
         objectId: firstSlideId,
-        slideProperties: {
-          notesPage: undefined,
-        },
-        fields: 'notesPage',
+        insertionIndex: 0,
+        slideLayoutReference: { predefinedLayout: 'BLANK' },
       },
     });
+  }
 
+  // Slide 0 (Title slide)
+  if (firstSlideId) {
     const titleBoxId = makeId('title_box', 0);
     const subtitleBoxId = makeId('subtitle_box', 0);
     const footerBoxId = makeId('footer_box', 0);
@@ -396,7 +398,10 @@ export const createGoogleSlidesDeck = async (
   if (!batchRes.ok) {
     const errorData = await batchRes.json().catch(() => ({}));
     console.error('BatchUpdate failed:', errorData);
-    // Still return the created presentation even if some batch elements need manual touch
+    throw new Error(
+      errorData.error?.message ||
+      `ساخت محتوای اسلایدها با خطا روبه‌رو شد (${batchRes.status}). فایل ایجادشده ممکن است خالی باشد؛ آن را به‌عنوان ارائه آماده استفاده نکنید.`
+    );
   }
 
   onProgress?.('ارائه با موفقیت در Google Slides ایجاد شد!', 4, 4);
