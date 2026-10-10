@@ -25,7 +25,6 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
           >
             اسلاید ۵ • واسط دنیای واقعی
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۰۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${

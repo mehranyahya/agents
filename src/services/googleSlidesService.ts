@@ -360,7 +360,7 @@ export const createGoogleSlidesDeck = async (
       {
         insertText: {
           objectId: badgeBoxId,
-          text: `💡 نکته کلیدی: ${slide.keyTakeaway} | زمان‌بندی: ${slide.timing}`,
+          text: `💡 نکته کلیدی: ${slide.keyTakeaway}`,
           insertionIndex: 0,
         },
       },

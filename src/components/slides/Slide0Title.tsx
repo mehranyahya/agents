@@ -26,9 +26,6 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
         >
           ارائه کلاسی • اسلاید ۱
         </span>
-        <span className={isDark ? 'text-slate-400' : 'text-slate-500'}>
-          زمان تقریبی: ۲۵ ثانیه
-        </span>
       </div>
 
       {/* Main Hero Section */}

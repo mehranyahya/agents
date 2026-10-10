@@ -25,7 +25,6 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
           >
             اسلاید ۲ • مفهوم بنیادین
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۳۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${

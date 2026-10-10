@@ -25,7 +25,6 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
           >
             اسلاید ۱۰ • جمع‌بندی نهایی
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۴۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${

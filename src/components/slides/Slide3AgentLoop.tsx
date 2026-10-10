@@ -74,7 +74,6 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
           >
             اسلاید ۴ • سازوکار تکرار
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${

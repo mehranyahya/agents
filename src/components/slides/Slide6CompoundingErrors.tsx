@@ -30,7 +30,6 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
           >
             اسلاید ۸ • خطاهای زنجیره‌ای
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۳۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${

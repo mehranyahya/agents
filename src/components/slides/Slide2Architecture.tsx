@@ -25,7 +25,6 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
           >
             اسلاید ۳ • کالبدشکافی سیستم
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۵۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${

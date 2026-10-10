@@ -26,7 +26,6 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
           >
             اسلاید ۹ • سیستم‌های چندعاملی
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۰:۴۵</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${

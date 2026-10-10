@@ -20,7 +20,6 @@ export const Slide6FeaturedAgents: React.FC<SlideProps> = ({ theme, isFullscreen
       <div>
         <div className="flex items-center justify-between text-xs mb-1">
           <span className={dark ? 'px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400' : 'px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700'}>اسلاید ۷ • ابزارهای واقعی</span>
-          <span className="text-xs text-slate-400">زمان: ۰:۴۰</span>
         </div>
         <h2 className={'font-extrabold tracking-tight ' + (isFullscreen ? 'text-4xl md:text-5xl' : 'text-3xl md:text-4xl') + (dark ? ' text-white' : ' text-slate-900')}>۴ ایجنت واقعی؛ ۴ کاربرد متفاوت</h2>
         <p className="text-xs md:text-sm text-slate-400 mt-1">برای هر ابزار: کاربرد، یک مثال و لینک رسمی قابل کلیک</p>

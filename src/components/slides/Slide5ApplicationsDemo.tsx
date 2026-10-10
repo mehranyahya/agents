@@ -82,7 +82,6 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
           >
             اسلاید ۶ • کاربردها و دمو زنده
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۰۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
