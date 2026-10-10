@@ -69,7 +69,7 @@ export const SpeakerNotesDrawer: React.FC<SpeakerNotesDrawerProps> = ({
                 <div className="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                   {idx + 1}
                 </div>
-                <p className="text-slate-300 text-xs md:text-sm">{note}</p>
+                <p className={isDark ? 'text-slate-200 text-xs md:text-sm' : 'text-slate-800 text-xs md:text-sm'}>{note}</p>
               </div>
             ))}
           </div>
