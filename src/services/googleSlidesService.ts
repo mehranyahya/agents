@@ -298,7 +298,7 @@ export const createGoogleSlidesDeck = async (
         updateTextStyle: {
           objectId: bodyBoxId,
           style: {
-            fontSize: { magnitude: 14, unit: 'PT' },
+            fontSize: { magnitude: slide.slug === 'featured-agents' ? 11 : 14, unit: 'PT' },
             foregroundColor: {
               opaqueColor: { rgbColor: { red: 0.15, green: 0.2, blue: 0.25 } },
             },
@@ -308,7 +308,31 @@ export const createGoogleSlidesDeck = async (
       }
     );
 
-    // 4. Slide Footer & Key Takeaway
+    // Keep links on the real-agents slide clickable in Google Slides exports.
+  if (slide.slug === 'featured-agents') {
+    const officialLinks = [
+      'https://openai.com/index/introducing-dots/',
+      'https://www.antigravity.google/product/antigravity-2',
+      'https://openai.com/index/introducing-deep-research/',
+      'https://www.make.com/en/ai-agents',
+    ];
+
+    officialLinks.forEach((url) => {
+      const startIndex = contentText.indexOf(url);
+      if (startIndex >= 0) {
+        requests.push({
+          updateTextStyle: {
+            objectId: bodyBoxId,
+            textRange: { type: 'FIXED_RANGE', startIndex, endIndex: startIndex + url.length },
+            style: { link: { url } },
+            fields: 'link',
+          },
+        });
+      }
+    });
+  }
+
+  // 4. Slide Footer & Key Takeaway
     const badgeBoxId = makeId('badge', slideIndex);
     requests.push(
       {
