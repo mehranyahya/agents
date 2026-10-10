@@ -135,9 +135,21 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                 isDark ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'
               }`}
             >
+              {/* Minimal progress rule: an orientation aid, not another content element. */}
+              <div
+                role="progressbar"
+                aria-label="پیشرفت ارائه"
+                aria-valuenow={currentSlideIndex + 1}
+                aria-valuemin={0}
+                aria-valuemax={totalSlides}
+                className={`absolute top-0 inset-x-0 h-[3px] z-30 ${isDark ? 'bg-slate-800/60' : 'bg-slate-200'}`}
+              >
+                <div className={`h-full transition-[width] duration-300 ${isDark ? 'bg-cyan-400/80' : 'bg-blue-600/80'}`} style={{ width: `${((currentSlideIndex + 1) / totalSlides) * 100}%` }} />
+              </div>
+
               {/* Subtle Background Mesh Texture */}
               <div
-                className={`absolute inset-0 pointer-events-none opacity-25 ${
+                className={`absolute inset-0 pointer-events-none opacity-15 ${
                   isDark
                     ? 'bg-[radial-gradient(#38bdf8_1.5px,transparent_1.5px)] [background-size:32px_32px]'
                     : 'bg-[radial-gradient(#94a3b8_1.5px,transparent_1.5px)] [background-size:32px_32px]'
@@ -257,9 +269,21 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           : 'bg-white border-slate-200 shadow-slate-200/80 text-slate-900'
       }`}
     >
+      {/* Minimal progress rule: an orientation aid, not another content element. */}
+      <div
+        role="progressbar"
+        aria-label="پیشرفت ارائه"
+        aria-valuenow={currentSlideIndex + 1}
+        aria-valuemin={0}
+        aria-valuemax={totalSlides}
+        className={`absolute top-0 inset-x-0 h-[3px] z-30 ${isDark ? 'bg-slate-800/60' : 'bg-slate-200'}`}
+      >
+        <div className={`h-full transition-[width] duration-300 ${isDark ? 'bg-cyan-400/80' : 'bg-blue-600/80'}`} style={{ width: `${((currentSlideIndex + 1) / totalSlides) * 100}%` }} />
+      </div>
+
       {/* Background visual texture */}
       <div
-        className={`absolute inset-0 pointer-events-none opacity-20 ${
+        className={`absolute inset-0 pointer-events-none opacity-15 ${
           isDark
             ? 'bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]'
             : 'bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:24px_24px]'
