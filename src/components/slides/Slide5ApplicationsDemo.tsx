@@ -173,7 +173,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                     : 'bg-slate-950/40 border-slate-800 opacity-60'
                 }`}
               >
-                <span>1. Read File (`auth.ts`)</span>
+                <span>1. Read File (`discount.ts`)</span>
                 {demoStep >= 1 && <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />}
               </div>
 
@@ -282,7 +282,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                     <span>✓ tests/discount.test.ts (4 passed, 4 total)</span>
                     <br />
                     <span className="text-cyan-300 text-[10px] font-normal">
-                      Task completed successfully in 2 loop iterations!
+                      Demo completed: test passed after the fix.
                     </span>
                   </div>
                 )}

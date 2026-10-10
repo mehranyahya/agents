@@ -25,7 +25,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
           >
             اسلاید ۲ • مفهوم بنیادین
           </span>
-          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۴۰</span>
+          <span className="text-xs text-slate-400 font-mono">زمان: ۱:۳۰</span>
         </div>
         <h2
           className={`font-extrabold tracking-tight ${
@@ -123,7 +123,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               }`}
             >
               <span className="text-xs font-bold text-cyan-400 block mb-1">هدف کاربر:</span>
-              «ارزان‌ترین پرواز جمعه را پیدا کن و رزرو اولیه را انجام بده.»
+              «ارزان‌ترین پرواز جمعه را پیدا کن و گزینه‌ها را مقایسه کن.»
             </div>
 
             {/* Workflow steps */}
@@ -161,8 +161,8 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
                 }`}
               >
                 <Play className="w-4 h-4 text-indigo-400" />
-                <span className="text-[11px] font-bold">۴. اقدام</span>
-                <span className="text-[9px] opacity-70">Checkout API</span>
+                <span className="text-[11px] font-bold">۴. نتیجه</span>
+                <span className="text-[9px] opacity-70">Show Results</span>
               </div>
             </div>
           </div>
