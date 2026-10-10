@@ -107,7 +107,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             </p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
-            REST / GraphQL / gRPC
+            نمونه: دریافت وضعیت سفارش
           </div>
         </div>
 
@@ -141,7 +141,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <span title="Web"><Globe className="w-3 h-3 text-amber-400" /></span>
             </div>
           </div>
-          <div className="mt-2 pt-2 border-t border-indigo-900/60 text-[9px] text-slate-400">
+          <div className="mt-2 pt-2 border-t border-indigo-900/60 text-[10px] text-slate-400">
             «رابط استاندارد اتصال AI به ابزارها»
           </div>
         </div>

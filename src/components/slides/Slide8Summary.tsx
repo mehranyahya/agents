@@ -123,7 +123,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
         }`}
       >
         <div className="flex items-center justify-center gap-2 mb-1">
-          <Sparkles className="w-5 h-5 text-cyan-400 animate-spin" style={{ animationDuration: '6s' }} />
+          <Sparkles className="w-5 h-5 text-cyan-400" />
           <span className="text-xs uppercase tracking-widest font-mono font-bold text-cyan-400">
             FINAL TAKEAWAY
           </span>

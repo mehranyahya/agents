@@ -88,7 +88,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
           </div>
 
           <ArrowRight
-            className={`w-5 h-5 rtl:rotate-180 animate-pulse ${
+            className={`w-5 h-5 rtl:rotate-180 ${
               isDark ? 'text-cyan-400' : 'text-blue-600'
             }`}
           />
@@ -102,21 +102,21 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
             }`}
           >
             <div className="absolute -top-2.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500 text-slate-950">
-              Center
+              هسته تصمیم
             </div>
             <div
               className={`w-14 h-14 rounded-2xl flex items-center justify-center ${
                 isDark ? 'bg-cyan-500/20 text-cyan-400' : 'bg-blue-100 text-blue-600'
               }`}
             >
-              <Bot className="w-8 h-8 animate-pulse-subtle" />
+              <Bot className="w-8 h-8" />
             </div>
             <span className="text-sm font-bold">AI Agent</span>
             <span className="text-[10px] font-mono opacity-80">Decide & Act</span>
           </div>
 
           <ArrowRight
-            className={`w-5 h-5 rtl:rotate-180 animate-pulse ${
+            className={`w-5 h-5 rtl:rotate-180 ${
               isDark ? 'text-cyan-400' : 'text-blue-600'
             }`}
           />

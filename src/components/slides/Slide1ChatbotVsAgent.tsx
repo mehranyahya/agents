@@ -110,7 +110,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
                 <p className="text-xs opacity-75">هدف‌محور، خودکارساز و متصل به ابزارها</p>
               </div>
             </div>
-            <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500 text-slate-950">
+            <span className="text-[11px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500 text-slate-950">
               Autonomous
             </span>
           </div>
@@ -135,7 +135,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               >
                 <Search className="w-4 h-4 text-cyan-400" />
                 <span className="text-[11px] font-bold">۱. جستجو</span>
-                <span className="text-[9px] opacity-70">Search API</span>
+                <span className="text-[11px] opacity-70">Search API</span>
               </div>
               <div
                 className={`p-2 rounded-xl flex flex-col items-center gap-1 border ${
@@ -144,7 +144,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               >
                 <BarChart3 className="w-4 h-4 text-amber-400" />
                 <span className="text-[11px] font-bold">۲. مقایسه</span>
-                <span className="text-[9px] opacity-70">Filter & Sort</span>
+                <span className="text-[11px] opacity-70">Filter & Sort</span>
               </div>
               <div
                 className={`p-2 rounded-xl flex flex-col items-center gap-1 border ${
@@ -153,7 +153,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               >
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span className="text-[11px] font-bold">۳. انتخاب</span>
-                <span className="text-[9px] opacity-70">Best Deal</span>
+                <span className="text-[11px] opacity-70">Best Deal</span>
               </div>
               <div
                 className={`p-2 rounded-xl flex flex-col items-center gap-1 border ${
@@ -162,7 +162,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               >
                 <Play className="w-4 h-4 text-indigo-400" />
                 <span className="text-[11px] font-bold">۴. نتیجه</span>
-                <span className="text-[9px] opacity-70">Show Results</span>
+                <span className="text-[11px] opacity-70">Show Results</span>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
           <div className="text-base md:text-lg font-black text-cyan-400">
             «Chatbot سؤال می‌گیرد؛ Agent هدف می‌گیرد»
           </div>
-          <span className={`text-[10px] font-bold rounded-full px-2 py-1 ${
+          <span className={`text-[11px] font-bold rounded-full px-2 py-1 ${
             isDark ? 'bg-cyan-500/10 text-cyan-300' : 'bg-blue-50 text-blue-700'
           }`}>
             پیوند با مبانی هوش مصنوعی: Rational Agent
@@ -204,7 +204,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
         }`}>
           <strong>عامل عقلانی</strong> بر پایه ادراک‌ها و اطلاعات موجود، کنشی را انتخاب می‌کند که عملکرد مورد انتظار را بیشینه کند.
         </p>
-        <div className="flex justify-center items-center gap-1.5 mt-1 text-[10px] text-slate-400">
+        <div className="flex justify-center items-center gap-1.5 mt-1 text-[11px] text-slate-400">
           <AlertCircle className="w-3 h-3 shrink-0 text-amber-400" />
           <span>هر Agent لزوماً LLM ندارد؛ عامل‌ها می‌توانند نرم‌افزاری یا رباتیکی باشند. — Russell &amp; Norvig, AIMA (فصل ۲)</span>
         </div>
