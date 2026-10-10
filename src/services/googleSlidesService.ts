@@ -202,7 +202,7 @@ export const createGoogleSlidesDeck = async (
     );
   }
 
-  // Create subsequent slides 1 to 8
+  // Create all remaining slides from the shared slide-data source.
   const remainingSlides = SLIDES.slice(1);
 
   remainingSlides.forEach((slide, idx) => {
@@ -243,7 +243,7 @@ export const createGoogleSlidesDeck = async (
       {
         insertText: {
           objectId: titleBoxId,
-          text: `اسلاید ${slide.id}: ${slide.title}\n${slide.subtitle || ''}`,
+          text: `اسلاید ${slide.id + 1}: ${slide.title}\n${slide.subtitle || ''}`,
           insertionIndex: 0,
         },
       },
@@ -423,7 +423,7 @@ function buildSlideBodyText(slide: any): string {
         '  ۲. Act: فراخوانی تابع Search_Flights(date, dest)',
         '  ۳. Observe: دریافت ۱۲ گزینه پرواز از وب‌سرویس',
         '  ۴. Decide: مقایسه قیمت‌ها و گزینش ارزان‌ترین مورد',
-        '  ۵. Act: نهایی‌سازی رزرو پرواز'
+        '  ۵. نتیجه: ارائه گزینه‌های پرواز برای انتخاب کاربر'
       ].join('\n');
 
     case 4:
@@ -452,6 +452,19 @@ function buildSlideBodyText(slide: any): string {
 
     case 6:
       return [
+        '● چهار ایجنت واقعی و لینک‌های رسمی:',
+        '۱. OpenAI dots — دستیار همیشگی؛ پیگیری کارها، ایمیل و تقویم با اجازه کاربر (عرضه محدود)',
+        'https://openai.com/index/introducing-dots/',
+        '۲. Google Antigravity 2.0 — کدنویسی، اصلاح باگ و هماهنگی چند عامل',
+        'https://www.antigravity.google/product/antigravity-2',
+        '۳. ChatGPT Deep Research — تحقیق چندمنبعی و تهیه گزارش مستند',
+        'https://openai.com/index/introducing-deep-research/',
+        '۴. Make AI Agents — اتصال نرم‌افزارها و خودکارسازی فرایندها',
+        'https://www.make.com/en/ai-agents',
+        'دسترسی، هزینه و محدودیت منطقه‌ای بسته به سرویس متفاوت است.'
+      ].join('\n');
+    case 7:
+      return [
         '● چالش خطاهای آبشاری (Compounding Error):',
         '  فرمول موفقیت چندگامی: P(Success) = p^n',
         '  با فرض p = 95% دقت در هر گام مستقل:',
@@ -464,7 +477,7 @@ function buildSlideBodyText(slide: any): string {
         '● راهکارهای مهندسی: تأیید انسان • حداقل دسترسی • سقف مراحل • بررسی خروجی'
       ].join('\n');
 
-    case 7:
+    case 8:
       return [
         '● معماری سیستم‌های چندعاملی (Multi-Agent):',
         '  - مدیر سیستم (Orchestrator): تجزیه مأموریت بزرگ به ریزپروژه‌ها',
@@ -476,7 +489,7 @@ function buildSlideBodyText(slide: any): string {
         '  در تسک‌های شفاف، یک عامل منفرد بهینه و سریع‌تر است.'
       ].join('\n');
 
-    case 8:
+    case 9:
       return [
         '● سه پیام ماندگار از ارائه:',
         '  ۱. Agent هدف می‌گیرد، نه فقط سؤال.',

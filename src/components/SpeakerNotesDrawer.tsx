@@ -33,7 +33,7 @@ export const SpeakerNotesDrawer: React.FC<SpeakerNotesDrawerProps> = ({
             <Mic className="w-4 h-4" />
           </div>
           <span className="font-bold text-sm">
-            یادداشت‌های شفاهی سخنران (اسلاید {currentSlide.id}: {currentSlide.title})
+            یادداشت‌های شفاهی سخنران (اسلاید {currentSlideIndex + 1}: {currentSlide.title})
           </span>
           <span className="px-2 py-0.5 rounded text-[11px] font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
             زمان تخصیص‌یافته: {currentSlide.timing}

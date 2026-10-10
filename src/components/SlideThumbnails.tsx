@@ -20,7 +20,7 @@ export const SlideThumbnails: React.FC<SlideThumbnailsProps> = ({
         const isSelected = currentSlideIndex === idx;
         return (
           <button
-            key={slide.id}
+            key={idx + 1}
             onClick={() => onSelectSlide(idx)}
             className={`shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all text-right ${
               isSelected

@@ -114,7 +114,7 @@ export const GoogleSlidesModal: React.FC<GoogleSlidesModalProps> = ({
             <div>
               <h3 className="font-extrabold text-base">خروجی مستقیم به Google Slides</h3>
               <p className="text-xs text-slate-400">
-                ایجاد ۹ اسلاید کامل در حساب کاربری Google Drive شما
+                ایجاد {SLIDES.length} اسلاید کامل در حساب کاربری Google Drive شما
               </p>
             </div>
           </div>
