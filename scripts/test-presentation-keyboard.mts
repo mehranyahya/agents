@@ -7,15 +7,18 @@ function fakeTarget(focus: Focus) {
   if (focus === 'none') return null;
   return {
     closest(selector: string) {
-      const isMatch = {
+      const elementSelector = {
         button: 'button',
-        link: 'a, summary',
+        link: 'a',
         slider: '[role="slider"]',
-        input: 'input,',
+        input: 'input',
         textarea: 'textarea',
         editable: '[contenteditable]',
       }[focus];
-      return isMatch && selector.includes(isMatch) ? {} : null;
+      // A CSS selector list must match an entire selector, not a substring.
+      // "button" is NOT the same as "[role=spinbutton]".
+      const selectors = selector.split(',').map((s) => s.trim());
+      return elementSelector && selectors.includes(elementSelector) ? {} : null;
     },
   };
 }
