@@ -159,11 +159,11 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <h3 className="font-bold text-sm text-amber-400">کار با رابط کاربری</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              راه جایگزین برای تعامل با نرم‌افزار: دیدن صفحه و کلیک یا تایپ مجاز.
+              وقتی API مناسب در دسترس نیست، عامل با مجوز می‌تواند صفحه را ببیند و کلیک یا تایپ کند.
             </p>
           </div>
           <div className="mt-3 pt-2 border-t border-slate-800 text-xs font-mono text-slate-400">
-            دیدن صفحه ➔ کلیک یا تایپ
+            رابط کاربری ➔ اقدام مجاز
           </div>
         </div>
       </div>
