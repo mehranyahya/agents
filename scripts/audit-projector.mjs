@@ -48,7 +48,50 @@ try {
       });
       results.push({width,height,...stats});
       const name=width+'x'+height+'_slide'+(i+1)+'.png';
-      if(width===1920||[1,3,4,5,7].includes(i))await page.screenshot({path:output+'/'+name});
+      if(width===1920||[1,2,3,4,5,7].includes(i))await page.screenshot({path:output+'/'+name});
+      if(i===2){
+        const qa=await page.evaluate(()=>{
+          const stage=document.querySelector('.presentation-slide--fullscreen');
+          const diagram=stage.querySelector('.architecture-diagram');
+          const parts=['loop-label','memory','tools','llm','instructions','safety'];
+          if(!diagram) return {errors:['missing architecture diagram']};
+          const dr=diagram.getBoundingClientRect();
+          const cards=[...diagram.querySelectorAll('.architecture-card')];
+          const errors=[];
+          const r=cards.map(card=>({name:card.getAttribute('data-diagram-part'),rect:card.getBoundingClientRect(),overflow:card.scrollHeight-card.clientHeight}));
+          // Cards may not cover any of each other's area, in either direction.
+          for(let a=0;a<r.length;a++)for(let b=a+1;b<r.length;b++){
+            const x=Math.min(r[a].rect.right,r[b].rect.right)-Math.max(r[a].rect.left,r[b].rect.left);
+            const y=Math.min(r[a].rect.bottom,r[b].rect.bottom)-Math.max(r[a].rect.top,r[b].rect.top);
+            if(x>2&&y>2)errors.push('cards overlap: '+r[a].name+' / '+r[b].name);
+          }
+          for(const x of r){
+            if(x.overflow>3)errors.push(x.name+' content vertically overflows by '+x.overflow+'px');
+          }
+          const label=diagram.querySelector('[data-diagram-part="loop-label"]').getBoundingClientRect();
+          const memory=diagram.querySelector('[data-diagram-part="memory"]').getBoundingClientRect();
+          if(label.bottom>memory.top+2)errors.push('cycle label overlaps memory card');
+          if(dr.width>stage.getBoundingClientRect().width*.75)errors.push('diagram not narrowed');
+          if(dr.height/dr.width<.38)errors.push('diagram not tall enough');
+          for(const node of [...diagram.querySelectorAll('.architecture-card, [data-diagram-part="loop-label"]')]){
+            const bounds=node.getBoundingClientRect();
+            const walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);
+            let text;
+            while((text=walker.nextNode())){
+              if(!text.textContent?.trim())continue;
+              const range=document.createRange();range.selectNodeContents(text);
+              for(const tr of range.getClientRects()){
+                if(tr.width>0&&tr.height>0&&(tr.left<bounds.left-3||tr.right>bounds.right+3||tr.top<bounds.top-3||tr.bottom>bounds.bottom+3)){
+                  errors.push((node.getAttribute('data-diagram-part')||'label')+' text outside its own card: '+text.textContent.trim().slice(0,35));
+                }
+              }
+            }
+          }
+          return {errors,width:Math.round(dr.width),height:Math.round(dr.height),cardCount:cards.length};
+        });
+        console.log('ARCHITECTURE_QA',width+'x'+height,JSON.stringify(qa));
+        if(qa.errors.length)throw new Error('Slide 3 architecture layout failed: '+qa.errors.join('; '));
+      }
       console.log(JSON.stringify({viewport:width+'x'+height,slide:i+1,fonts:[stats.minFontSize,stats.medianFontSize],clipped:stats.clipped?.length,contentOverflow:(stats.contentScrollHeight||0)-(stats.contentClientHeight||0)}));
       if(stats.clipped?.length)console.log('CLIPPED_TEXT',JSON.stringify(stats.clipped.slice(0,5)));
     }
