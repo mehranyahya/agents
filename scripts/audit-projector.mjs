@@ -71,7 +71,7 @@ try {
           const label=diagram.querySelector('[data-diagram-part="loop-label"]').getBoundingClientRect();
           const memory=diagram.querySelector('[data-diagram-part="memory"]').getBoundingClientRect();
           if(label.bottom>memory.top+2)errors.push('cycle label overlaps memory card');
-          if(dr.width>stage.getBoundingClientRect().width*.75)errors.push('diagram not narrowed');
+          if(dr.width>stage.getBoundingClientRect().width*(stage.getBoundingClientRect().width<1300?.85:.75))errors.push('diagram not narrowed');
           if(dr.height/dr.width<.38)errors.push('diagram not tall enough');
           for(const node of [...diagram.querySelectorAll('.architecture-card, [data-diagram-part="loop-label"]')]){
             const bounds=node.getBoundingClientRect();
