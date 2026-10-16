@@ -113,14 +113,14 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
               P(Success) = p<sup>n</sup>
             </div>
 
-            <div className="mt-2 text-xs text-slate-300">
+            <div className={`mt-2 text-xs ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               p: احتمال موفقیت هر مرحله
               <span className="font-mono font-bold text-cyan-400 mx-1.5">
                 p = {(stepAccuracy * 100).toFixed(0)}%
               </span>
             </div>
 
-            <div className="mt-1 text-xs text-slate-300">n: تعداد مرحله‌های لازم برای موفقیت کل کار</div>
+            <div className={`mt-1 text-xs ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>n: تعداد مرحله‌های لازم برای موفقیت کل کار</div>
 
             {/* Subtle interactive slider */}
             <div className="mt-2 flex items-center gap-2 max-w-xs">
