@@ -16,7 +16,7 @@ const TOOLS = [
 export const Slide6FeaturedAgents: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
   const dark = theme === 'dark';
   return (
-    <div className={'h-full flex flex-col justify-between select-none ' + (isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6')}>
+    <div className={'h-full flex flex-col justify-between select-none ' + (isFullscreen ? 'py-3 px-7 md:px-9' : 'py-3 px-6')}>
       <div>
         <div className="flex items-center justify-between text-xs mb-1">
           <span className={dark ? 'px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400' : 'px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700'}>اسلاید ۷ • ابزارهای واقعی</span>
