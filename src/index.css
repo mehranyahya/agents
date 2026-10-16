@@ -48,3 +48,93 @@
   outline: 2px solid #22d3ee;
   outline-offset: 2px;
 }
+
+
+/*
+ * Projection typography.
+ * The slide itself acts as a size container so lettering follows the actual
+ * 16:9 slide width, not an unrelated browser viewport. Keep the presenter dock
+ * and navigation outside these rules. The compact canvas uses gentler settings;
+ * fullscreen gets the largest readable text that typical layouts can sustain.
+ */
+.presentation-slide {
+  container-type: inline-size;
+  --slide-xs: clamp(13px, 1.18cqw, 16px);
+  --slide-sm: clamp(14px, 1.34cqw, 19px);
+  --slide-base: clamp(16px, 1.55cqw, 22px);
+  --slide-lg: clamp(18px, 1.72cqw, 24px);
+  --slide-xl: clamp(20px, 1.95cqw, 29px);
+  --slide-leading: 1.32;
+}
+
+.presentation-slide--fullscreen {
+  --slide-xs: clamp(15px, 1.18cqw, 21px);
+  --slide-sm: clamp(17px, 1.39cqw, 25px);
+  --slide-base: clamp(19px, 1.59cqw, 29px);
+  --slide-lg: clamp(21px, 1.74cqw, 32px);
+  --slide-xl: clamp(25px, 1.93cqw, 36px);
+}
+
+/* Avoid clipping on data-heavy slides, while still visibly improving on 1080p. */
+.presentation-slide--fullscreen:is([data-slide="1"], [data-slide="3"], [data-slide="4"], [data-slide="5"], [data-slide="7"]) {
+  --slide-xs: clamp(14px, 1.05cqw, 19px);
+  --slide-sm: clamp(16px, 1.25cqw, 23px);
+  --slide-base: clamp(18px, 1.42cqw, 26px);
+  --slide-lg: clamp(20px, 1.61cqw, 29px);
+}
+
+.presentation-slide .text-xs {
+  font-size: var(--slide-xs) !important;
+  line-height: var(--slide-leading) !important;
+}
+
+.presentation-slide .text-sm {
+  font-size: var(--slide-sm) !important;
+  line-height: var(--slide-leading) !important;
+}
+
+.presentation-slide .text-base {
+  font-size: var(--slide-base) !important;
+  line-height: var(--slide-leading) !important;
+}
+
+.presentation-slide .text-lg {
+  font-size: var(--slide-lg) !important;
+  line-height: var(--slide-leading) !important;
+}
+
+.presentation-slide .text-xl {
+  font-size: var(--slide-xl) !important;
+  line-height: 1.25 !important;
+}
+
+/* Fine-print labels become readable too; do not enlarge icons or presentation UI. */
+.presentation-slide [class~="text-[10px]"] {
+  font-size: clamp(12px, 1.0cqw, 16px) !important;
+}
+
+.presentation-slide [class~="text-[11px]"] {
+  font-size: clamp(13px, 1.05cqw, 17px) !important;
+}
+
+.presentation-slide--fullscreen :is(.opacity-70, .opacity-75, .opacity-80) {
+  opacity: .9 !important;
+}
+
+/* On a 720p projector, protect the dense layouts from vertical overflow. */
+@media (max-height: 800px) {
+  .presentation-slide--fullscreen {
+    --slide-xs: clamp(13px, 1.04cqw, 17px);
+    --slide-sm: clamp(15px, 1.18cqw, 20px);
+    --slide-base: clamp(17px, 1.35cqw, 24px);
+    --slide-lg: clamp(18px, 1.48cqw, 27px);
+    --slide-xl: clamp(21px, 1.65cqw, 30px);
+  }
+
+  .presentation-slide--fullscreen:is([data-slide="1"], [data-slide="3"], [data-slide="4"], [data-slide="5"], [data-slide="7"]) {
+    --slide-xs: clamp(13px, .98cqw, 16px);
+    --slide-sm: clamp(15px, 1.12cqw, 19px);
+    --slide-base: clamp(17px, 1.3cqw, 23px);
+    --slide-lg: clamp(18px, 1.43cqw, 26px);
+  }
+}
