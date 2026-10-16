@@ -20,7 +20,10 @@ export const SlideThumbnails: React.FC<SlideThumbnailsProps> = ({
         const isSelected = currentSlideIndex === idx;
         return (
           <button
-            key={idx + 1}
+            key={slide.slug}
+            type="button"
+            aria-label={`رفتن به اسلاید ${idx + 1}: ${slide.title}`}
+            aria-current={isSelected ? 'step' : undefined}
             onClick={() => onSelectSlide(idx)}
             className={`shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-mono transition-all text-right ${
               isSelected
@@ -41,7 +44,7 @@ export const SlideThumbnails: React.FC<SlideThumbnailsProps> = ({
                   : 'bg-slate-200 text-slate-700'
               }`}
             >
-              {slide.id}
+              {idx + 1}
             </span>
 
             <span className="truncate max-w-[120px] font-sans text-[11px] font-medium">
