@@ -52,6 +52,8 @@ export default function App() {
   }, []);
 
   const enterFullscreen = useCallback(() => {
+    // Notes must never appear on the projected fullscreen canvas.
+    setIsNotesOpen(false);
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen?.().catch(() => {});
     }
@@ -88,10 +90,15 @@ export default function App() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't intercept if user is typing in an input
-      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) {
+      // Never steal keyboard activation from an interactive control (especially demo
+      // buttons and the probability slider); honor OS/browser modifiers as well.
+      if (isGoogleSlidesModalOpen || e.altKey || e.ctrlKey || e.metaKey) return;
+      const target = e.target as HTMLElement | null;
+      if (target?.closest('input, textarea, select, button, a, summary, [contenteditable], [role="button"], [role="slider"]')) {
         return;
       }
+      // A long Space key press should not accidentally skip several slides.
+      if (e.repeat && e.key === ' ') return;
 
       switch (e.key) {
         // In Persian RTL: ArrowLeft goes forward, ArrowRight goes backward
@@ -128,15 +135,15 @@ export default function App() {
           break;
         case 'n':
         case 'N':
-          setIsNotesOpen((prev) => !prev);
+          // On a shared projector display, speaker notes could be exposed.
+          if (!isFullscreen) setIsNotesOpen((prev) => !prev);
           break;
         default:
-          // number keys 0-9 for quick jump
-          if (e.key >= '0' && e.key <= '9') {
-            const idx = parseInt(e.key, 10);
-            if (idx < totalSlides) {
-              setCurrentSlideIndex(idx);
-            }
+          // Visible slide numbering is 1–10; keyboard 1–9 goes to slides 1–9,
+          // and 0 goes to slide 10. Internal indices remain 0-based.
+          if (/^[0-9]$/.test(e.key)) {
+            const slideNumber = e.key === '0' ? 10 : Number(e.key);
+            if (slideNumber <= totalSlides) setCurrentSlideIndex(slideNumber - 1);
           }
           break;
       }
@@ -144,7 +151,7 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [handleNext, handlePrev, totalSlides, toggleFullscreen, isFullscreen, exitFullscreen]);
+  }, [handleNext, handlePrev, totalSlides, toggleFullscreen, isFullscreen, exitFullscreen, isGoogleSlidesModalOpen]);
 
   const isDark = theme === 'dark';
 
@@ -195,8 +202,8 @@ export default function App() {
           onPrev={handlePrev}
           onExitFullscreen={exitFullscreen}
           onToggleTheme={toggleTheme}
-          onToggleNotes={() => setIsNotesOpen((prev) => !prev)}
-          isNotesOpen={isNotesOpen}
+          onToggleNotes={isFullscreen ? undefined : () => setIsNotesOpen((prev) => !prev)}
+          isNotesOpen={isNotesOpen && !isFullscreen}
         />
 
         {/* Slide Carousel Thumbnails: Hidden completely in fullscreen */}
@@ -214,7 +221,7 @@ export default function App() {
       {/* Slide Speaker Notes Drawer */}
       <SpeakerNotesDrawer
         currentSlideIndex={currentSlideIndex}
-        isOpen={isNotesOpen}
+        isOpen={isNotesOpen && !isFullscreen}
         onClose={() => setIsNotesOpen(false)}
         theme={theme}
       />
