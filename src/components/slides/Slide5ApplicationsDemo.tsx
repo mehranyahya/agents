@@ -159,7 +159,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
               className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-xs font-medium ${viewMode === 'backup_snapshots'
                 ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
                 : 'bg-slate-800 border-slate-700 text-slate-300'}`}
-            ><ImageIcon className="w-3 h-3" />پشتیبان</button>
+            ><ImageIcon className="w-3 h-3" />خلاصه پشتیبان</button>
           </div>
         </div>
 
@@ -348,7 +348,7 @@ $ submit`}</pre>
             </a>
           </div>
         ) : (
-          /* Backup snapshots of the simulated discount example; not an agent execution trace. */
+          /* Backup textual states of the simulated discount example; not screenshots or a tool trace. */
           <div className="grid grid-cols-3 gap-3 my-auto py-1">
             <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-xs">
               <div className="text-amber-400 font-bold mb-1">۱. گام Act (اجرای تست)</div>
