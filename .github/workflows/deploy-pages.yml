@@ -43,6 +43,20 @@ jobs:
       - name: Build
         run: npm run build -- --base=/agents/
 
+      - name: Visual audit for classroom projection (PR only)
+        if: github.event_name == 'pull_request'
+        run: |
+          npm install --no-save playwright
+          node scripts/audit-projector.mjs
+
+      - name: Upload projector snapshots (PR only)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: projector-snapshots
+          path: projector-snapshots/
+          if-no-files-found: warn
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
 
