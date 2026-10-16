@@ -22,7 +22,7 @@ export const SpeakerNotesDrawer: React.FC<SpeakerNotesDrawerProps> = ({
 
   return (
     <div
-      className={`fixed bottom-0 inset-x-0 z-40 border-t shadow-2xl transition-transform max-h-[42vh] flex flex-col ${
+      className={`fixed bottom-0 inset-x-0 z-[60] border-t shadow-2xl transition-transform max-h-[42vh] flex flex-col ${
         isDark ? 'bg-slate-900 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-800'
       }`}
     >
