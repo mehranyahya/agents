@@ -11,6 +11,7 @@ import {
   XCircle,
   FileCode,
   Image as ImageIcon,
+  ExternalLink,
   Cpu
 } from 'lucide-react';
 
@@ -57,7 +58,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
 
   // Demo simulator state
   const [demoStep, setDemoStep] = useState<number>(0);
-  const [viewMode, setViewMode] = useState<'interactive' | 'backup_snapshots'>('interactive');
+  const [viewMode, setViewMode] = useState<'interactive' | 'real_trace' | 'backup_snapshots'>('interactive');
 
   // Trigger next step in coding agent simulation
   const nextStep = () => {
@@ -130,22 +131,35 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/40" />
             <span className="font-bold text-cyan-400 font-mono">
-              شبیه‌سازی آموزشیِ رفع خطا (نه اجرای زنده کد)
+              {viewMode === 'real_trace' ? 'سند ثبت‌شده SWE-agent • اجرای واقعی در گذشته' : 'شبیه‌سازی آموزشی رفع خطا • بدون اجرای زنده کد'}
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5">
             <button
-              onClick={() => setViewMode(viewMode === 'interactive' ? 'backup_snapshots' : 'interactive')}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono border transition-all ${
-                viewMode === 'backup_snapshots'
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
-                  : 'bg-slate-800 border-slate-700 text-slate-400'
-              }`}
-            >
-              <ImageIcon className="w-3 h-3" />
-              <span>{viewMode === 'backup_snapshots' ? 'حالت تعاملی' : 'اسکرین‌شات‌های پشتیبان'}</span>
-            </button>
+              type="button"
+              onClick={() => setViewMode('interactive')}
+              aria-pressed={viewMode === 'interactive'}
+              className={`px-2 py-1 rounded-lg border text-xs font-medium ${viewMode === 'interactive'
+                ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
+                : 'bg-slate-800 border-slate-700 text-slate-300'}`}
+            >شبیه‌سازی</button>
+            <button
+              type="button"
+              onClick={() => setViewMode('real_trace')}
+              aria-pressed={viewMode === 'real_trace'}
+              className={`px-2 py-1 rounded-lg border text-xs font-medium ${viewMode === 'real_trace'
+                ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                : 'bg-slate-800 border-slate-700 text-slate-300'}`}
+            >سند اجرای واقعی</button>
+            <button
+              type="button"
+              onClick={() => setViewMode('backup_snapshots')}
+              aria-pressed={viewMode === 'backup_snapshots'}
+              className={`flex items-center gap-1 px-2 py-1 rounded-lg border text-xs font-medium ${viewMode === 'backup_snapshots'
+                ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+                : 'bg-slate-800 border-slate-700 text-slate-300'}`}
+            ><ImageIcon className="w-3 h-3" />پشتیبان</button>
           </div>
         </div>
 
@@ -296,8 +310,45 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
               </div>
             </div>
           </div>
+        ) : viewMode === 'real_trace' ? (
+          /* Faithful excerpts of a publicly published SWE-agent tool-call trajectory.
+             This is a recorded past execution, not live code execution in the browser. */
+          <div className="my-auto flex flex-col gap-2.5 py-1" aria-label="سند اجرای واقعی SWE-agent">
+            <p className="text-xs leading-relaxed text-slate-300">
+              گزیده ثبت واقعی ابزارهای <strong className="text-emerald-300">SWE-agent</strong> برای رفع
+              خطای SyntaxError در <span dir="ltr" className="font-mono text-cyan-300">tests/missing_colon.py</span>.
+              این یک ردگیری منتشرشده است؛ اجرای زنده این اسلاید نیست.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="rounded-xl bg-slate-950 border border-slate-700 p-3 space-y-2">
+                <div className="text-emerald-300 font-semibold text-xs">۱. پیدا کردن، خواندن و اصلاح فایل</div>
+                <pre dir="ltr" className="text-left text-xs text-slate-300 font-mono whitespace-pre-wrap break-all">{`find_file missing_colon.py
+open "tests/missing_colon.py"`}</pre>
+                <pre dir="ltr" className="text-left text-xs text-amber-200 font-mono whitespace-pre-wrap break-all">{`- def division(a: float, b: float) -> float
++ def division(a: float, b: float) -> float:`}</pre>
+              </div>
+              <div className="rounded-xl bg-slate-950 border border-emerald-700/50 p-3 space-y-2">
+                <div className="text-emerald-300 font-semibold text-xs">۲. اجرای Python، مشاهده خروجی و پایان</div>
+                <pre dir="ltr" className="text-left text-xs text-slate-300 font-mono whitespace-pre-wrap">{`$ python tests/missing_colon.py
+8.2
+$ submit`}</pre>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  خروجی 8.2 واقعاً در ردگیری ابزار ثبت شده است؛ این یک اجرای فایل است، نه مدرک پاس‌شدن مجموعه‌تست.
+                </p>
+              </div>
+            </div>
+            <a
+              href="https://github.com/SWE-agent/SWE-agent/blob/main/trajectories/demonstrations/function_calling_simple.traj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="self-start inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 underline underline-offset-2 hover:text-cyan-100"
+            >
+              مشاهده فایل ردگیری اصلی SWE-agent در GitHub
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
         ) : (
-          /* Backup Snapshots (If video/demo issues in presentation) */
+          /* Backup snapshots of the simulated discount example; not an agent execution trace. */
           <div className="grid grid-cols-3 gap-3 my-auto py-1">
             <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-xs">
               <div className="text-amber-400 font-bold mb-1">۱. گام Act (اجرای تست)</div>
@@ -329,7 +380,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
         )}
 
         <div className="text-xs text-center text-slate-400 pt-1">
-          نکته اصلی: پس از دیدن نتیجه ناموفق، مسیر اصلاح و آزمون دوباره آغاز می‌شود.
+          {viewMode === 'real_trace' ? 'این قسمت یک اجرای ثبت‌شده واقعی را نقل می‌کند؛ دموی تخفیفِ کنار آن همچنان شبیه‌سازی است.' : 'نکته اصلی: پس از دیدن نتیجه ناموفق، مسیر اصلاح و آزمون دوباره آغاز می‌شود.'}
         </div>
       </div>
     </div>

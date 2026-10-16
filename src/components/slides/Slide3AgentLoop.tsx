@@ -39,9 +39,9 @@ const LOOP_STEPS = [
     phase: 'Repeat',
     icon: RotateCw,
     color: 'indigo',
-    title: '۴. تکرار و تصمیم بعدی (Repeat)',
-    desc: '«بخش بعدی سند را می‌خوانم تا پاسخ کامل شود.»',
-    action: 'تکرار تا رسیدن به نتیجه',
+    title: '۴. بررسی نتیجه و تصمیم بعدی',
+    desc: '«پاسخ ناقص است؛ پس بخش بعدی گزارش را می‌خوانم.»',
+    action: 'بررسی شرط توقف: ادامه',
   },
 ];
 
@@ -101,7 +101,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
         <span className="mx-2 text-slate-500">➔</span>
         <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Observe</span>
         <span className="mx-2 text-slate-500">➔</span>
-        <span className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400">Repeat</span>
+        <span className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400">Check</span>
       </div>
 
       {/* Main Interactive Stage: Circle + Concrete Example */}
@@ -189,6 +189,13 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
                 </div>
                 <div className="font-bold">{LOOP_STEPS[activeStep].title}</div>
                 <div className="text-xs opacity-80 mt-1">{LOOP_STEPS[activeStep].desc}</div>
+                <div className="mt-2 pt-2 border-t border-cyan-500/20 text-xs leading-relaxed">
+                  <span className="text-emerald-400 font-semibold">هدف محقق شد: پایان</span>
+                  <span className="mx-1 text-slate-400">|</span>
+                  <span className="text-amber-400 font-semibold">هنوز ناقص: تکرار</span>
+                  <span className="mx-1 text-slate-400">|</span>
+                  <span className="text-sky-400 font-semibold">اقدام حساس: تأیید</span>
+                </div>
               </div>
             </div>
           </div>
@@ -230,7 +237,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             : 'bg-slate-100 border-slate-200 text-slate-600'
         }`}
       >
-        Agent Loop مفهوم عمومی چرخه است؛ ReAct یک الگوی مشخص برای ترکیب استدلال و اقدام است.
+        پس از مشاهده نتیجه، عامل باید تصمیم بگیرد: ادامه، پایان یا درخواست تأیید. ReAct فقط یکی از الگوهای این چرخه است.
       </div>
     </div>
   );
