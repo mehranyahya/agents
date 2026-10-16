@@ -12,7 +12,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
   return (
     <div
       className={`h-full flex flex-col justify-between select-none ${
-        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+        isFullscreen ? 'py-3 px-7 md:px-9' : 'py-3 px-6'
       }`}
     >
       {/* Slide Header */}
@@ -65,7 +65,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
       </div>
 
       {/* 4 Cards: Tool Calling, API, MCP, Computer Use */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 my-2">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-2 my-2">
         {/* Card 1: Tool Calling */}
         <div
           className={`p-3.5 rounded-xl border flex flex-col justify-between transition-all ${
