@@ -35,105 +35,95 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
         </h2>
       </div>
 
-      {/* Central Architectural Diagram */}
-      <div className="relative my-auto flex flex-col items-center justify-center p-3">
-        {/* Orbit Loop Indicator */}
-        <div
-          className={`absolute inset-4 rounded-3xl border-2 border-dashed pointer-events-none transition-all ${
-            isDark ? 'border-cyan-500/20' : 'border-blue-200'
-          }`}
-        >
-          <div className="absolute top-2 right-4 flex items-center gap-1.5 text-xs font-mono font-semibold text-cyan-400 bg-slate-900/80 px-2 py-0.5 rounded-full border border-cyan-500/30">
-            <RotateCw className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '8s' }} />
-            <span>اجزا در یک چرخه اجرایی با هم کار می‌کنند</span>
-          </div>
-        </div>
-
-        {/* 5-Node Cross Diagram */}
-        <div className="relative z-10 w-full max-w-5xl flex flex-col items-center gap-3">
-          {/* Top Node: Memory / State */}
-          <div
-            className={`flex items-center gap-3 px-5 py-2.5 rounded-2xl border shadow-md transition-all ${
-              isDark
-                ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-200 shadow-emerald-950/30'
-                : 'bg-emerald-50 border-emerald-300 text-emerald-900'
-            }`}
-          >
-            <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400">
-              <HardDrive className="w-5 h-5" />
+      {/* The architecture diagram is intentionally taller and narrower than before:
+          no absolute labels or scale transforms that can overlap surrounding text. */}
+      <div className="flex-1 min-h-0 flex items-center justify-center py-2">
+        <div className={
+          'architecture-diagram w-full max-w-[820px] h-full max-h-[510px] rounded-3xl border px-4 py-3 flex flex-col justify-between gap-1.5 ' +
+          (isDark ? 'bg-slate-900/20 border-cyan-500/25' : 'bg-blue-50/50 border-blue-200')
+        }>
+          {/* The loop indicator participates in normal layout: never floats over Memory. */}
+          <div data-diagram-part="loop-label" className="flex shrink-0 items-center justify-center">
+            <div className={
+              'inline-flex items-center justify-center gap-2 text-xs font-semibold rounded-full px-3 py-1 ' +
+              (isDark ? 'text-cyan-300 bg-cyan-950/60 border border-cyan-500/30' : 'text-blue-800 bg-white border border-blue-200')
+            }>
+              <RotateCw className="w-4 h-4 shrink-0" aria-hidden="true" />
+              <span>اجزا در یک چرخه اجرایی با هم کار می‌کنند</span>
             </div>
-            <div className="text-right">
+          </div>
+
+          {/* Memory / State */}
+          <div data-diagram-part="memory" className={
+            'architecture-card self-center w-full max-w-[650px] min-w-0 flex items-center justify-center gap-3 rounded-2xl border px-4 py-2 text-center shadow-sm ' +
+            (isDark ? 'bg-emerald-950/50 border-emerald-500/50 text-emerald-100' : 'bg-emerald-50 border-emerald-300 text-emerald-900')
+          }>
+            <div className="p-2 shrink-0 rounded-xl bg-emerald-500/20 text-emerald-400">
+              <HardDrive className="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div className="min-w-0 text-right">
               <div className="font-bold text-sm">حافظه و وضعیت (Memory)</div>
-              <div className="text-xs opacity-75">سابقه تصمیمات، وضعیت محیط و داده‌های پیشین</div>
+              <div className="text-xs opacity-80 leading-relaxed">سابقه تصمیمات، وضعیت محیط و داده‌های پیشین</div>
             </div>
           </div>
 
-          {/* Middle Row: Tools <--> LLM <--> Instructions */}
-          <div className="w-full flex items-center justify-between gap-3">
-            {/* Left Node: Tools */}
-            <div
-              className={`flex-1 flex items-center gap-2.5 p-3 rounded-2xl border shadow-md transition-all ${
-                isDark
-                  ? 'bg-amber-950/30 border-amber-500/40 text-amber-200'
-                  : 'bg-amber-50 border-amber-300 text-amber-900'
-              }`}
-            >
+          <div aria-hidden="true" className="mx-auto w-0.5 h-3 shrink-0 rounded-full bg-cyan-500/50" />
+
+          {/* Central relationship: three independent cards with equal room to wrap. */}
+          <div data-diagram-part="middle" className="grid grid-cols-3 gap-3 w-full items-stretch">
+            <div data-diagram-part="tools" className={
+              'architecture-card min-w-0 flex flex-col items-center justify-center gap-1.5 rounded-2xl border px-2.5 py-3 text-center shadow-sm ' +
+              (isDark ? 'bg-amber-950/40 border-amber-500/50 text-amber-100' : 'bg-amber-50 border-amber-300 text-amber-900')
+            }>
               <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400">
-                <Wrench className="w-5 h-5" />
+                <Wrench className="w-5 h-5" aria-hidden="true" />
               </div>
-              <div className="text-right">
+              <div className="min-w-0 w-full">
                 <div className="font-bold text-sm">ابزارها (Tools)</div>
-                <div className="text-xs opacity-75">وب، APIها، محاسبات، دیتابیس</div>
+                <div className="text-xs opacity-80 leading-relaxed">وب، APIها، محاسبات و دیتابیس</div>
               </div>
             </div>
 
-            {/* Central LLM Brain */}
-            <div
-              className={`px-6 py-5 rounded-2xl border-2 shadow-xl flex flex-col items-center text-center transform scale-110 z-20 ${
-                isDark
-                  ? 'bg-gradient-to-b from-slate-900 via-cyan-950/60 to-slate-900 border-cyan-400 text-cyan-100 shadow-cyan-950/80'
-                  : 'bg-white border-blue-500 text-blue-900 shadow-blue-100'
-              }`}
-            >
-              <div className="p-2 rounded-xl bg-cyan-500/20 text-cyan-400 mb-1">
-                <Cpu className="w-7 h-7" />
+            <div data-diagram-part="llm" className={
+              'architecture-card min-w-0 flex flex-col items-center justify-center gap-1.5 rounded-2xl border-2 px-2.5 py-3 text-center shadow-lg ' +
+              (isDark ? 'bg-gradient-to-b from-slate-900 to-cyan-950/70 border-cyan-400 text-cyan-100' : 'bg-white border-blue-500 text-blue-900')
+            }>
+              <div className="p-2 rounded-xl bg-cyan-500/20 text-cyan-400">
+                <Cpu className="w-6 h-6" aria-hidden="true" />
               </div>
-              <div className="font-black text-base tracking-wide">LLM (مغز)</div>
-              <div className="text-xs font-mono text-cyan-400 opacity-90">تحلیل و تصمیم‌گیری</div>
+              <div className="min-w-0 w-full">
+                <div className="font-black text-base">LLM (مغز)</div>
+                <div className="text-xs font-semibold text-cyan-400 leading-relaxed">تحلیل و تصمیم‌گیری</div>
+              </div>
             </div>
 
-            {/* Right Node: Instructions */}
-            <div
-              className={`flex-1 flex items-center gap-2.5 p-3 rounded-2xl border shadow-md transition-all ${
-                isDark
-                  ? 'bg-indigo-950/30 border-indigo-500/40 text-indigo-200'
-                  : 'bg-indigo-50 border-indigo-300 text-indigo-900'
-              }`}
-            >
+            <div data-diagram-part="instructions" className={
+              'architecture-card min-w-0 flex flex-col items-center justify-center gap-1.5 rounded-2xl border px-2.5 py-3 text-center shadow-sm ' +
+              (isDark ? 'bg-indigo-950/40 border-indigo-500/50 text-indigo-100' : 'bg-indigo-50 border-indigo-300 text-indigo-900')
+            }>
               <div className="p-2 rounded-xl bg-indigo-500/20 text-indigo-400">
-                <FileText className="w-5 h-5" />
+                <FileText className="w-5 h-5" aria-hidden="true" />
               </div>
-              <div className="text-right">
+              <div className="min-w-0 w-full">
                 <div className="font-bold text-sm">دستورها (Instructions)</div>
-                <div className="text-xs opacity-75">مأموریت، پرامپت سیستم و نقشه هدف</div>
+                <div className="text-xs opacity-80 leading-relaxed">مأموریت، پرامپت سیستم و نقشه هدف</div>
               </div>
             </div>
           </div>
 
-          {/* Bottom Node: Guardrails */}
-          <div
-            className={`flex items-center gap-3 px-5 py-2.5 rounded-2xl border shadow-md transition-all ${
-              isDark
-                ? 'bg-red-950/30 border-red-500/40 text-red-200 shadow-red-950/30'
-                : 'bg-red-50 border-red-300 text-red-900'
-            }`}
-          >
-            <div className="p-1.5 rounded-lg bg-red-500/20 text-red-400">
-              <ShieldAlert className="w-5 h-5" />
+          <div aria-hidden="true" className="mx-auto w-0.5 h-3 shrink-0 rounded-full bg-cyan-500/50" />
+
+          {/* Safety guardrails anchor the bottom of the vertical architecture. */}
+          <div data-diagram-part="safety" className={
+            'architecture-card self-center w-full max-w-[650px] min-w-0 flex items-center justify-center gap-3 rounded-2xl border px-4 py-2 text-center shadow-sm ' +
+            (isDark ? 'bg-rose-950/40 border-rose-500/50 text-rose-100' : 'bg-rose-50 border-rose-300 text-rose-900')
+          }>
+            <div className="p-2 shrink-0 rounded-xl bg-rose-500/20 text-rose-400">
+              <ShieldAlert className="w-5 h-5" aria-hidden="true" />
             </div>
-            <div className="text-right">
+            <div className="min-w-0 text-right">
               <div className="font-bold text-sm">امنیت و دسترسی</div>
-              <div className="text-xs opacity-75">خطوط قرمز، تأیید انسانی، سقف هزینه و دسترسی مجاز</div>
+              <div className="text-xs opacity-80 leading-relaxed">خطوط قرمز، تأیید انسانی، سقف هزینه و دسترسی مجاز</div>
             </div>
           </div>
         </div>
