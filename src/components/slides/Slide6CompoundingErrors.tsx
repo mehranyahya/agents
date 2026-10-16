@@ -102,7 +102,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
           {/* Formula Display (6 cols) */}
           <div className="md:col-span-6 text-center md:text-right">
-            <div className="text-xs text-slate-400 mb-1 font-mono">مثال آموزشیِ خطای انباشته (Compounding Errors)</div>
+            <div className="text-xs text-slate-400 mb-1 font-mono">مدل ساده برای خطاهای انباشته (Compounding Errors)</div>
             <div
               className={`inline-block px-6 py-3 rounded-2xl border-2 font-mono text-2xl md:text-3xl font-black ${
                 isDark
@@ -113,12 +113,14 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
               P(Success) = p<sup>n</sup>
             </div>
 
-            <div className="mt-2 text-xs text-slate-300">
-              فرض کنیم احتمال موفقیت هر مرحله منفرد:
+            <div className={`mt-2 text-xs ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+              p: احتمال موفقیت هر مرحله
               <span className="font-mono font-bold text-cyan-400 mx-1.5">
                 p = {(stepAccuracy * 100).toFixed(0)}%
               </span>
             </div>
+
+            <div className={`mt-1 text-xs ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>n: تعداد مرحله‌های لازم برای موفقیت کل کار</div>
 
             {/* Subtle interactive slider */}
             <div className="mt-2 flex items-center gap-2 max-w-xs">
