@@ -52,6 +52,31 @@ try {
       console.log(JSON.stringify({viewport:width+'x'+height,slide:i+1,fonts:[stats.minFontSize,stats.medianFontSize],clipped:stats.clipped?.length,contentOverflow:(stats.contentScrollHeight||0)-(stats.contentClientHeight||0)}));
       if(stats.clipped?.length)console.log('CLIPPED_TEXT',JSON.stringify(stats.clipped.slice(0,5)));
     }
+    // Check all states of the interactive coding demo, not just the initial screen.
+    await page.keyboard.press('6');
+    await page.waitForTimeout(100);
+    for(let step=0;step<5;step++){
+      await page.getByRole('button',{name:'گام بعدی شبیه‌سازی'}).click();
+    }
+    await page.screenshot({path:output+'/'+width+'x'+height+'_demo-complete.png'});
+    await page.getByRole('button',{name:'سند اجرای واقعی'}).click();
+    await page.screenshot({path:output+'/'+width+'x'+height+'_real-trace.png'});
+    // Verify none of the visible text overflows the slide stage in these states.
+    const traceOverflow=await page.evaluate(()=>{
+      const stage=document.querySelector('.presentation-slide--fullscreen');
+      const bounds=stage.getBoundingClientRect();
+      const walker=document.createTreeWalker(stage,NodeFilter.SHOW_TEXT);
+      const outside=[];let node;
+      while((node=walker.nextNode())){
+        if(!node.textContent?.trim()||!node.parentElement)continue;
+        const r=document.createRange();r.selectNodeContents(node);
+        if([...r.getClientRects()].some(x=>x.width>0 && x.height>0 &&
+          (x.left<bounds.left-3 || x.right>bounds.right+3 || x.top<bounds.top-3 || x.bottom>bounds.bottom+3)))
+          outside.push(node.textContent.trim().slice(0,80));
+      }
+      return outside;
+    });
+    console.log('TRACE_OVERFLOW',width+'x'+height,traceOverflow.length,JSON.stringify(traceOverflow.slice(0,5)));
     await page.close();
   }
   await writeFile(output+'/metrics.json',JSON.stringify(results,null,2));
