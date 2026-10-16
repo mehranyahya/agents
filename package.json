@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
-    "check:presentation": "node scripts/check-presentation.mjs"
+    "check:presentation": "node scripts/check-presentation.mjs",
+    "test:keyboard": "tsx scripts/test-presentation-keyboard.mts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
