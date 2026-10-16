@@ -30,6 +30,6 @@ assert.ok(!exportModal.includes('۹:۲۵'), 'Outdated export timing must not be 
 assert.ok(exportModal.includes('{talkTime}'), 'Google Slides modal time should be data-driven');
 assert.ok(thumbnailSource.includes('{idx + 1}'), 'Thumbnail numbering should be 1–10');
 assert.ok(app.includes('isOpen={isNotesOpen && !isFullscreen}'), 'Notes must stay off the shared fullscreen canvas');
-assert.ok(app.includes("target?.closest("), 'Interactive controls must retain their keyboard keys');
+assert.ok(app.includes('shouldHandlePresentationKey(e, isGoogleSlidesModalOpen)'), 'App must use the tested keyboard focus guard');
 assert.ok(slides[5].exportBullets.join(' ').includes('SWE-agent'), 'Demo evidence source must be represented');
 console.log('Presentation audit passed: 10 slides, 8:00, 1:45 demo, synchronized text, safe controls.');
