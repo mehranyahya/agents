@@ -13,7 +13,7 @@ const LOOP_STEPS = [
     icon: Brain,
     color: 'cyan',
     title: '۱. تصمیم‌گیری (Decide)',
-    desc: '«باید پروازهای جمعه را با سرویس رزرو جستجو کنم.»',
+    desc: '«برای تهیه پاسخ، باید بخش مرتبط گزارش را پیدا کنم.»',
     action: 'درخواست اجرای ابزار',
   },
   {
@@ -22,7 +22,7 @@ const LOOP_STEPS = [
     icon: Cog,
     color: 'amber',
     title: '۲. اقدام (Act)',
-    desc: 'فراخوانی ابزار search_flights(day: "Friday")',
+    desc: 'جست‌وجو در سند با ابزار search_document(query)',
     action: 'اجرای ابزار جست‌وجو',
   },
   {
@@ -31,7 +31,7 @@ const LOOP_STEPS = [
     icon: Eye,
     color: 'emerald',
     title: '۳. مشاهده نتیجه (Observe)',
-    desc: 'دریافت پاسخ سرور: «۱۲ پرواز با قیمت‌های مختلف یافت شد.»',
+    desc: '«بخش اول گزارش پیدا شد؛ اما اطلاعات هنوز ناقص است.»',
     action: 'دریافت نتیجه ابزار',
   },
   {
@@ -40,7 +40,7 @@ const LOOP_STEPS = [
     icon: RotateCw,
     color: 'indigo',
     title: '۴. تکرار و تصمیم بعدی (Repeat)',
-    desc: '«حالا ارزان‌ترین گزینه‌ها را مقایسه و به کاربر پیشنهاد می‌کنم.»',
+    desc: '«بخش بعدی سند را می‌خوانم تا پاسخ کامل شود.»',
     action: 'تکرار تا رسیدن به نتیجه',
   },
 ];
@@ -80,7 +80,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          Agent Loop: چرخه خودکار تصمیم تا اقدام
+          چرخه ایجنت؛ از اقدام تا بازخورد
         </h2>
       </div>
 
@@ -92,7 +92,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             : 'bg-white border-blue-200 text-blue-900'
         }`}
       >
-        <span className="text-slate-400 text-xs mr-2 font-sans font-normal">فرمول حلقه:</span>
+        <span className="text-slate-400 text-xs mr-2 font-sans font-normal">نمای کلی چرخه:</span>
         <span className="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400">Goal</span>
         <span className="mx-2 text-slate-500">➔</span>
         <span className="px-2 py-0.5 rounded bg-sky-500/20 text-sky-400">Decide</span>
@@ -145,7 +145,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
 
                 <div className="text-left shrink-0">
                   <span
-                    className={`text-[10px] px-2 py-0.5 rounded font-mono font-medium ${
+                    className={`text-xs px-2 py-0.5 rounded font-mono font-medium ${
                       isActive
                         ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30'
                         : 'text-slate-500'
@@ -169,14 +169,14 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
         >
           <div>
             <div className="flex items-center justify-between pb-2 mb-3 border-b border-slate-700/50">
-              <span className="text-xs font-bold text-cyan-400">سناریوی واقعی: رزرو پرواز</span>
-              <span className="text-[10px] font-mono text-slate-400">Flight Agent Demo</span>
+              <span className="text-xs font-bold text-cyan-400">مثال آموزشی: بررسی یک گزارش</span>
+              <span className="text-xs font-mono text-slate-400">Document Agent Simulation</span>
             </div>
 
             <div className="space-y-2 text-xs">
               <div className="p-2 rounded bg-slate-950/60 border border-slate-800 font-mono text-slate-300">
                 <span className="text-cyan-400 font-bold block mb-0.5">🎯 هدف کاربر:</span>
-                «ارزان‌ترین پرواز جمعه را پیدا کن.»
+                «خلاصه نتایج این گزارش را آماده کن.»
               </div>
 
               <div
@@ -184,11 +184,11 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
                   isDark ? 'bg-cyan-950/30 border-cyan-500/30 text-cyan-200' : 'bg-white border-blue-200 text-blue-900'
                 }`}
               >
-                <div className="text-[10px] uppercase font-bold text-cyan-400 mb-1">
+                <div className="text-xs uppercase font-bold text-cyan-400 mb-1">
                   وضعیت گام جاری:
                 </div>
                 <div className="font-bold">{LOOP_STEPS[activeStep].title}</div>
-                <div className="text-[11px] opacity-80 mt-1">{LOOP_STEPS[activeStep].desc}</div>
+                <div className="text-xs opacity-80 mt-1">{LOOP_STEPS[activeStep].desc}</div>
               </div>
             </div>
           </div>
@@ -204,7 +204,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               }`}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-              <span>{isPlaying ? 'توقف پخش' : 'اجرای زنده چرخه'}</span>
+              <span>{isPlaying ? 'توقف پخش' : 'پخش مراحل چرخه'}</span>
             </button>
 
             <button
@@ -230,7 +230,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             : 'bg-slate-100 border-slate-200 text-slate-600'
         }`}
       >
-        چرخه تا زمانی تکرار می‌شود که مدل به شرط خروج (ارضای هدف یا رسیدن به سقف مراحل مجاز) برسد.
+        Agent Loop مفهوم عمومی چرخه است؛ ReAct یک الگوی مشخص برای ترکیب استدلال و اقدام است.
       </div>
     </div>
   );
