@@ -24,31 +24,31 @@ const USE_CASES = [
     icon: Code2,
     title: 'برنامه‌نویسی',
     color: 'emerald',
-    steps: 'پیدا کردن خطا ← اصلاح کد ← تست',
+    steps: 'رفع خطا و آزمون',
   },
   {
     icon: Search,
     title: 'پژوهش',
     color: 'sky',
-    steps: 'جست‌وجو ← مقایسه منابع ← گزارش',
+    steps: 'پژوهش و گزارش',
   },
   {
     icon: Headphones,
-    title: 'پشتیبانی مشتری',
+    title: 'پشتیبانی',
     color: 'amber',
-    steps: 'خواندن درخواست ← بررسی سفارش',
+    steps: 'رسیدگی به درخواست',
   },
   {
     icon: BarChart2,
     title: 'تحلیل داده',
     color: 'indigo',
-    steps: 'خواندن داده ← تحلیل ← نمودار',
+    steps: 'تحلیل و نمودار',
   },
   {
     icon: CalendarDays,
-    title: 'دستیار شخصی',
+    title: 'کارهای شخصی',
     color: 'rose',
-    steps: 'ایمیل ← تقویم ← پیگیری کارها',
+    steps: 'ایمیل و تقویم',
   },
 ];
 
@@ -80,7 +80,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۶ • کاربردها و دمو زنده
+            اسلاید ۶ • کاربردها و شبیه‌سازی
           </span>
         </div>
         <h2
@@ -88,7 +88,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          کاربردهای واقعی Agent + شبیه‌سازی
+          یک ایجنت چطور خطا را رفع می‌کند؟
         </h2>
       </div>
 
@@ -110,7 +110,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                   </div>
                   <h3 className="font-bold text-xs">{uc.title}</h3>
                 </div>
-                <div className="text-[11px] opacity-75 font-mono leading-relaxed">{uc.steps}</div>
+                <div className="text-xs opacity-75 font-mono leading-relaxed">{uc.steps}</div>
               </div>
             </div>
           );
@@ -130,14 +130,14 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/40" />
             <span className="font-bold text-cyan-400 font-mono">
-              شبیه‌سازی تعاملی: ایجنتِ رفع خطای کد
+              شبیه‌سازی آموزشیِ رفع خطا (نه اجرای زنده کد)
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
               onClick={() => setViewMode(viewMode === 'interactive' ? 'backup_snapshots' : 'interactive')}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-mono border transition-all ${
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono border transition-all ${
                 viewMode === 'backup_snapshots'
                   ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
                   : 'bg-slate-800 border-slate-700 text-slate-400'
@@ -184,7 +184,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                 }`}
               >
                 <span>3. Observe Error (Failed)</span>
-                {demoStep >= 3 && <span className="text-[11px] text-red-400 font-bold">1 FAILED</span>}
+                {demoStep >= 3 && <span className="text-xs text-red-400 font-bold">1 FAILED</span>}
               </div>
 
               <div
@@ -205,19 +205,19 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                     : 'bg-slate-950/40 border-slate-800 opacity-60'
                 }`}
               >
-                <span>5. Run Again ➔ PASSED ✓</span>
+                <span>5. Test Again ➔ PASSED ✓</span>
                 {demoStep >= 5 && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />}
               </div>
             </div>
 
             {/* Terminal Window */}
-            <div className="md:col-span-8 bg-slate-950 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-300 min-h-[140px] flex flex-col justify-between">
+            <div className="md:col-span-8 bg-slate-950 rounded-xl p-3 border border-slate-800 font-mono text-xs text-slate-300 min-h-[140px] flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-1.5 text-slate-500 mb-2 border-b border-slate-800 pb-1">
                   <span className="w-2 h-2 rounded-full bg-red-500/80 inline-block" />
                   <span className="w-2 h-2 rounded-full bg-yellow-500/80 inline-block" />
                   <span className="w-2 h-2 rounded-full bg-green-500/80 inline-block" />
-                  <span className="text-[11px] mr-2">bash - agent_sandbox</span>
+                  <span className="text-xs mr-2">bash - agent_sandbox</span>
                 </div>
 
                 {demoStep === 0 && (
@@ -248,7 +248,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                     <br />
                     <span>● testDiscount &gt; expected $80, but received $100</span>
                     <br />
-                    <span className="text-slate-400 text-[11px]">
+                    <span className="text-slate-400 text-xs">
                       Observation: Rate calculation logic omitted percentage subtraction.
                     </span>
                   </div>
@@ -257,7 +257,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                 {demoStep === 4 && (
                   <div className="text-indigo-300">
                     <span className="text-slate-500">$ agent:</span> patch src/discount.ts
-                    <div className="text-emerald-400 text-[11px] mt-1">
+                    <div className="text-emerald-400 text-xs mt-1">
                       + return price * (1 - rate / 100);
                     </div>
                   </div>
@@ -269,7 +269,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
                     <br />
                     <span>✓ tests/discount.test.ts (4 passed, 4 total)</span>
                     <br />
-                    <span className="text-cyan-300 text-[11px] font-normal">
+                    <span className="text-cyan-300 text-xs font-normal">
                       Demo completed: test passed after the fix.
                     </span>
                   </div>
@@ -288,7 +288,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
 
                 <button
                   onClick={resetDemo}
-                  className="flex items-center gap-1 text-[11px] text-slate-400 hover:text-white"
+                  className="flex items-center gap-1 text-xs text-slate-400 hover:text-white"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>ریست</span>
@@ -299,7 +299,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
         ) : (
           /* Backup Snapshots (If video/demo issues in presentation) */
           <div className="grid grid-cols-3 gap-3 my-auto py-1">
-            <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-[11px]">
+            <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-xs">
               <div className="text-amber-400 font-bold mb-1">۱. گام Act (اجرای تست)</div>
               <div className="p-2 rounded bg-slate-900 text-slate-300">
                 $ npm test
@@ -308,7 +308,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
               </div>
             </div>
 
-            <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-[11px]">
+            <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-xs">
               <div className="text-red-400 font-bold mb-1">۲. گام Observe (نمایش Error)</div>
               <div className="p-2 rounded bg-slate-900 text-red-300">
                 FAIL: expected 80, got 100
@@ -317,7 +317,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
               </div>
             </div>
 
-            <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-[11px]">
+            <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-950 font-mono text-xs">
               <div className="text-emerald-400 font-bold mb-1">۳. گام Act Again (اصلاح + Passed)</div>
               <div className="p-2 rounded bg-slate-900 text-emerald-300">
                 Edit applied ➔ Test Passed ✓
@@ -328,8 +328,8 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
           </div>
         )}
 
-        <div className="text-[11px] text-center text-slate-400 pt-1">
-          این دمو نحوه همگرایی حلقه Decide ➔ Act ➔ Observe را در حل مسائل نرم‌افزاری نمایش می‌دهد.
+        <div className="text-xs text-center text-slate-400 pt-1">
+          نکته اصلی: پس از دیدن نتیجه ناموفق، مسیر اصلاح و آزمون دوباره آغاز می‌شود.
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          از «فکر کردن» تا «انجام دادن»
+          مدل چطور از ابزار استفاده می‌کند؟
         </h2>
       </div>
 
@@ -56,7 +56,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
         </span>
         <ArrowLeft className="w-4 h-4 text-slate-500 rtl:rotate-180" />
         <span className="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold font-sans">
-          برنامه / API
+          برنامه میزبان / API
         </span>
         <ArrowLeft className="w-4 h-4 text-slate-500 rtl:rotate-180" />
         <span className="px-2.5 py-1 rounded-lg bg-purple-500/20 text-purple-400 font-bold font-sans">
@@ -83,7 +83,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               مدل ابزار موردنیاز و ورودی آن را مشخص می‌کند؛ برنامه، درخواست را اجرا می‌کند.
             </p>
           </div>
-          <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
+          <div className="mt-3 pt-2 border-t border-slate-800 text-xs font-mono text-slate-400">
             function: execute_task()
           </div>
         </div>
@@ -102,11 +102,11 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <h3 className="font-bold text-sm text-emerald-400">API</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              راه ارتباط نرم‌افزارها با سرویس‌های دیگر؛ مثل دریافت وضعیت سفارش.
+              رابط ارتباط برنامه‌ها با سرویس‌های دیگر؛ مثلاً سامانه سفارش‌ها.
             </p>
           </div>
-          <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
-            نمونه: دریافت وضعیت سفارش
+          <div className="mt-3 pt-2 border-t border-slate-800 text-xs font-mono text-slate-400">
+            نمونه: فراخوانی سرویس فروشگاه
           </div>
         </div>
 
@@ -126,11 +126,11 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <h3 className="font-bold text-sm text-indigo-400">MCP</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              استاندارد باز برای اتصال یکپارچه هوش مصنوعی به ابزارها و منابع داده.
+              استاندارد باز برای معرفی ابزارها و منابع داده به برنامه‌های هوش مصنوعی.
             </p>
 
             {/* MCP Mini Hub */}
-            <div className="mt-2 flex items-center justify-center gap-2 text-[10px] text-slate-400 py-1 bg-slate-950/40 rounded-lg">
+            <div className="mt-2 flex items-center justify-center gap-2 text-xs text-slate-400 py-1 bg-slate-950/40 rounded-lg">
               <span title="Files"><FileSpreadsheet className="w-3 h-3 text-emerald-400" /></span>
               <span>•</span>
               <span title="Email"><Mail className="w-3 h-3 text-red-400" /></span>
@@ -140,8 +140,8 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <span title="Web"><Globe className="w-3 h-3 text-amber-400" /></span>
             </div>
           </div>
-          <div className="mt-2 pt-2 border-t border-indigo-900/60 text-[10px] text-slate-400">
-            «رابط استاندارد اتصال AI به ابزارها»
+          <div className="mt-2 pt-2 border-t border-indigo-900/60 text-xs text-slate-400">
+            «استاندارد اتصال؛ نه جایگزین همه APIها»
           </div>
         </div>
 
@@ -156,13 +156,13 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400">
                 <MonitorPlay className="w-4 h-4" />
               </div>
-              <h3 className="font-bold text-sm text-amber-400">کار با رایانه</h3>
+              <h3 className="font-bold text-sm text-amber-400">کار با رابط کاربری</h3>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
-              تعامل با صفحه رایانه؛ دیدن صفحه، کلیک و تایپ با مجوز کاربر.
+              راه جایگزین برای تعامل با نرم‌افزار: دیدن صفحه و کلیک یا تایپ مجاز.
             </p>
           </div>
-          <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] font-mono text-slate-400">
+          <div className="mt-3 pt-2 border-t border-slate-800 text-xs font-mono text-slate-400">
             دیدن صفحه ➔ کلیک یا تایپ
           </div>
         </div>
@@ -177,9 +177,9 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
         }`}
       >
         <div className="font-sans font-bold text-xs text-cyan-400 mb-2">
-          مثال عینی از گردش Tool Calling در یک سیستم واقعی:
+          یک نمونه از مسیر درخواست ابزار تا پاسخ:
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 text-[11px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 text-xs">
           <div className="p-2 rounded bg-slate-900 border border-slate-800">
             <span className="text-indigo-400 font-bold block mb-1">👤 کاربر:</span>
             «وضعیت سفارش من را بررسی کن.»

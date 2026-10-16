@@ -8,7 +8,7 @@ interface SlideProps {
 
 export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
   const isDark = theme === 'dark';
-  const [showNuance, setShowNuance] = useState(false);
+  const [showNuance, setShowNuance] = useState(true);
 
   return (
     <div
@@ -32,7 +32,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          وقتی یک Agent کافی نیست
+          وقتی چند ایجنت با هم کار می‌کنند
         </h2>
       </div>
 
@@ -51,7 +51,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
           </div>
           <div className="text-right">
             <div className="font-extrabold text-base">عامل هماهنگ‌کننده</div>
-            <div className="text-[11px] opacity-80 font-mono">تفسیر هدف کلان، تقسیم مأموریت و جمع‌بندی خروجی</div>
+            <div className="text-xs opacity-80 font-mono">تفسیر هدف کلان، تقسیم مأموریت و جمع‌بندی خروجی</div>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             </div>
             <div className="font-bold text-sm text-sky-400">عامل پژوهشگر</div>
             <div className="text-xs opacity-70">محقق و جمع‌آوری داده</div>
-            <div className="text-[10px] text-slate-400 mt-2 font-mono">Search ➔ Extract ➔ Summarize</div>
+            <div className="text-xs text-slate-400 mt-2 font-mono">Search ➔ Extract ➔ Summarize</div>
           </div>
 
           {/* Worker 2: Coding */}
@@ -89,7 +89,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             </div>
             <div className="font-bold text-sm text-emerald-400">عامل برنامه‌نویس</div>
             <div className="text-xs opacity-70">برنامه‌نویس و مجری کد</div>
-            <div className="text-[10px] text-slate-400 mt-2 font-mono">Write Code ➔ Run Tests</div>
+            <div className="text-xs text-slate-400 mt-2 font-mono">Write Code ➔ Run Tests</div>
           </div>
 
           {/* Worker 3: Review */}
@@ -103,7 +103,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             </div>
             <div className="font-bold text-sm text-purple-400">عامل بازبین</div>
             <div className="text-xs opacity-70">بازبین و کنترل کیفیت</div>
-            <div className="text-[10px] text-slate-400 mt-2 font-mono">Audit ➔ Benchmark ➔ Approve</div>
+            <div className="text-xs text-slate-400 mt-2 font-mono">Audit ➔ Benchmark ➔ Approve</div>
           </div>
         </div>
 
@@ -129,7 +129,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
           }`}
         >
           <div className="text-base md:text-lg font-bold text-cyan-400">
-            «یک Agent همه‌کاره نیست؛ چند Agent می‌توانند مثل یک تیم تخصصی همکاری کنند.»
+            «تقسیم کار، تخصص را بیشتر می‌کند؛ هماهنگی هم هزینه دارد.»
           </div>
         </div>
 
@@ -140,13 +140,13 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
             className="inline-flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 transition-colors"
           >
             <ShieldAlert className="w-3.5 h-3.5" />
-            <span>نکته مهم مهندسی (شفاهی): {showNuance ? 'بستن' : 'مشاهده تذکر واقع‌بینانه'}</span>
+            <span>هزینه هماهنگی: {showNuance ? 'بستن' : 'مشاهده تذکر واقع‌بینانه'}</span>
           </button>
 
           {showNuance && (
             <div className="mt-1.5 p-2 rounded-xl bg-amber-950/30 border border-amber-500/40 text-amber-200 text-xs max-w-xl mx-auto animate-fade-in">
-              Multi-Agent همیشه بهتر نیست! باعث افزایش تأخیر، مصرف توکن و پیچیدگی دیباگ می‌شود.
-              گاهی یک Agent ساده، ارزان‌تر، سریع‌تر و قابل‌کنترل‌تر است.
+              چندعاملی همیشه بهتر نیست؛ تأخیر، مصرف توکن و پیچیدگی عیب‌یابی بیشتر می‌شود.
+              در مسئله‌های ساده، یک ایجنت می‌تواند سریع‌تر و کم‌هزینه‌تر باشد.
             </div>
           )}
         </div>

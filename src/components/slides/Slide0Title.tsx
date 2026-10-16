@@ -48,7 +48,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
             isFullscreen ? 'text-3xl md:text-4xl lg:text-5xl' : 'text-2xl md:text-3xl'
           } ${isDark ? 'text-slate-200' : 'text-slate-800'}`}
         >
-          وقتی هوش مصنوعی فقط جواب نمی‌دهد؛ کار می‌کند
+          وقتی هوش مصنوعی از پاسخ به اقدام می‌رسد
         </h2>
 
         <p
@@ -56,7 +56,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
             isFullscreen ? 'text-xl md:text-2xl mt-1' : 'text-base md:text-lg'
           } ${isDark ? 'text-slate-400' : 'text-slate-600'}`}
         >
-          از مفهوم ساده تا معماری فنی عامل‌های هوشمند
+          از مفهوم عامل تا معماری، کاربرد و محدودیت‌ها
         </p>
 
         {/* Minimal Illustration: Human -> AI Agent -> Tools */}
@@ -81,7 +81,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
               <User className="w-6 h-6" />
             </div>
             <span className="text-xs font-semibold">Human</span>
-            <span className="text-[10px] opacity-70">تعیین هدف</span>
+            <span className="text-xs opacity-70">تعیین هدف</span>
           </div>
 
           <ArrowRight
@@ -98,7 +98,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
                 : 'bg-white border-blue-300 text-blue-900 shadow-blue-100'
             }`}
           >
-            <div className="absolute -top-2.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500 text-slate-950">
+            <div className="absolute -top-2.5 px-2 py-0.5 rounded-full text-xs font-bold bg-cyan-500 text-slate-950">
               هسته تصمیم
             </div>
             <div
@@ -109,7 +109,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
               <Bot className="w-8 h-8" />
             </div>
             <span className="text-sm font-bold">AI Agent</span>
-            <span className="text-[10px] font-mono opacity-80">Decide & Act</span>
+            <span className="text-xs font-mono opacity-80">Decide & Act</span>
           </div>
 
           <ArrowRight
@@ -168,7 +168,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
                 <Calendar className="w-4 h-4" />
               </div>
               <div
-                className={`p-1.5 rounded-lg flex items-center justify-center text-[10px] font-bold ${
+                className={`p-1.5 rounded-lg flex items-center justify-center text-xs font-bold ${
                   isDark ? 'bg-slate-800 text-slate-400' : 'bg-slate-200 text-slate-600'
                 }`}
               >
@@ -176,7 +176,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
               </div>
             </div>
             <span className="text-xs font-semibold">Tools & APIs</span>
-            <span className="text-[10px] opacity-70">ابزارهای محیطی</span>
+            <span className="text-xs opacity-70">ابزارهای محیطی</span>
           </div>
         </div>
       </div>

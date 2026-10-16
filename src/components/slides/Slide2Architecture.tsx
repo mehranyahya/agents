@@ -31,7 +31,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          داخل یک AI Agent چه خبر است؟
+          قطعات یک ایجنت مدرن
         </h2>
       </div>
 
@@ -43,9 +43,9 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
             isDark ? 'border-cyan-500/20' : 'border-blue-200'
           }`}
         >
-          <div className="absolute top-2 right-4 flex items-center gap-1.5 text-[11px] font-mono font-semibold text-cyan-400 bg-slate-900/80 px-2 py-0.5 rounded-full border border-cyan-500/30">
+          <div className="absolute top-2 right-4 flex items-center gap-1.5 text-xs font-mono font-semibold text-cyan-400 bg-slate-900/80 px-2 py-0.5 rounded-full border border-cyan-500/30">
             <RotateCw className="w-3.5 h-3.5 animate-spin" style={{ animationDuration: '8s' }} />
-            <span>Control Loop (Goal → Decide → Act → Observe → Repeat)</span>
+            <span>اجزا در یک چرخه اجرایی با هم کار می‌کنند</span>
           </div>
         </div>
 
@@ -64,7 +64,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
             </div>
             <div className="text-right">
               <div className="font-bold text-sm">حافظه و وضعیت (Memory)</div>
-              <div className="text-[11px] opacity-75">سابقه تصمیمات، وضعیت محیط و داده‌های پیشین</div>
+              <div className="text-xs opacity-75">سابقه تصمیمات، وضعیت محیط و داده‌های پیشین</div>
             </div>
           </div>
 
@@ -83,7 +83,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
               </div>
               <div className="text-right">
                 <div className="font-bold text-sm">ابزارها (Tools)</div>
-                <div className="text-[11px] opacity-75">وب، APIها، محاسبات، دیتابیس</div>
+                <div className="text-xs opacity-75">وب، APIها، محاسبات، دیتابیس</div>
               </div>
             </div>
 
@@ -99,7 +99,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
                 <Cpu className="w-7 h-7" />
               </div>
               <div className="font-black text-base tracking-wide">LLM (مغز)</div>
-              <div className="text-[10px] font-mono text-cyan-400 opacity-90">تحلیل و تصمیم‌گیری</div>
+              <div className="text-xs font-mono text-cyan-400 opacity-90">تحلیل و تصمیم‌گیری</div>
             </div>
 
             {/* Right Node: Instructions */}
@@ -115,7 +115,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
               </div>
               <div className="text-right">
                 <div className="font-bold text-sm">دستورها (Instructions)</div>
-                <div className="text-[11px] opacity-75">مأموریت، پرامپت سیستم و نقشه هدف</div>
+                <div className="text-xs opacity-75">مأموریت، پرامپت سیستم و نقشه هدف</div>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
             </div>
             <div className="text-right">
               <div className="font-bold text-sm">امنیت و دسترسی</div>
-              <div className="text-[11px] opacity-75">خطوط قرمز، تأیید انسانی، سقف هزینه و دسترسی مجاز</div>
+              <div className="text-xs opacity-75">خطوط قرمز، تأیید انسانی، سقف هزینه و دسترسی مجاز</div>
             </div>
           </div>
         </div>
@@ -148,12 +148,9 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
         }`}
       >
         <div className="font-mono text-lg md:text-xl font-black text-cyan-400">
-          Agent = Model + Tools + Memory + Control Loop
+          مدل + ابزار + حافظه + دستور و کنترل دسترسی
         </div>
-        <div className="mt-1 flex items-center justify-center gap-3 text-xs text-slate-400">
-          <span className="font-semibold text-slate-300">الگوی ReAct (Reasoning + Acting):</span>
-          <span>یکی از الگوهای رایج برای پیوند دادن استدلال و فراخوانی ابزارها است.</span>
-        </div>
+        
       </div>
     </div>
   );
