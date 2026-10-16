@@ -20,7 +20,7 @@ export const PresentationTimer: React.FC<TimerProps> = ({
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  // Planned: 9:25 (565s); absolute cap: 10:00 (600s).
+  // Target speaking time comes from slide data; the instructor's hard cap is 10:00.
   const currentSlide = SLIDES[currentSlideIndex];
   const slideTarget = currentSlide ? currentSlide.timing : '۱:۰۰';
 

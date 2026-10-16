@@ -13,6 +13,9 @@ import {
 import { googleSignIn, getAccessToken, logout, initAuth, auth } from '../services/firebaseAuth';
 import { createGoogleSlidesDeck, CreatePresentationResult } from '../services/googleSlidesService';
 import { SLIDES } from '../data/slidesData';
+
+const totalSeconds = SLIDES.reduce((total, slide) => total + slide.durationSeconds, 0);
+const talkTime = `${Math.floor(totalSeconds / 60)}:${String(totalSeconds % 60).padStart(2, '0')}`;
 import { User } from 'firebase/auth';
 
 interface GoogleSlidesModalProps {
@@ -114,7 +117,7 @@ export const GoogleSlidesModal: React.FC<GoogleSlidesModalProps> = ({
             <div>
               <h3 className="font-extrabold text-base">خروجی مستقیم به Google Slides</h3>
               <p className="text-xs text-slate-400">
-                ایجاد {SLIDES.length} اسلاید کامل در حساب کاربری Google Drive شما
+                ایجاد {SLIDES.length} اسلاید متنی خلاصه در حساب Google Drive شما
               </p>
             </div>
           </div>
@@ -222,10 +225,10 @@ export const GoogleSlidesModal: React.FC<GoogleSlidesModalProps> = ({
                       یک فایل جدید با نام{' '}
                       <span className="font-bold text-white">«AI AGENTS»</span> شامل {SLIDES.length} اسلاید متنی
                       با عنوان‌ها، نکات کلیدی و لینک ابزارها در Google Drive شما ساخته می‌شود.
-                      برای حفظ نمودارهای تعاملی، طراحی اصلی و یادداشت‌های سخنران، از نسخه وب ارائه استفاده کنید.
+                      خروجی Google Slides فقط خلاصه متنی اسلایدهاست؛ نمودارهای تعاملی، دموی کلیکی و یادداشت‌های سخنران در آن منتقل نمی‌شوند. برای ارائه تعاملی، نسخه وب را استفاده کنید.
                     </p>
                     <div className="pt-1 text-[11px] text-slate-400">
-                      تعداد اسلایدها: {SLIDES.length} • زمان هدف: ۹:۲۵ • سقف: ۱۰ دقیقه
+                      تعداد اسلایدها: {SLIDES.length} • زمان هدف: {talkTime} • سقف: ۱۰ دقیقه
                     </div>
                   </div>
 
@@ -261,7 +264,7 @@ export const GoogleSlidesModal: React.FC<GoogleSlidesModalProps> = ({
                       ارائه با موفقیت ایجاد شد!
                     </h4>
                     <p className="text-xs text-slate-300 mt-1">
-                      {createdResult.slideCount} اسلاید آماده ارائه در حساب Google Slides شما قرار گرفت.
+                      {createdResult.slideCount} اسلاید متنی در Google Slides شما ساخته شد. برای ارائه همراه با دمو و نمودارهای تعاملی، نسخه وب را استفاده کنید.
                     </p>
                   </div>
 
