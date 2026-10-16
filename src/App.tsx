@@ -10,6 +10,7 @@ import { SlideThumbnails } from './components/SlideThumbnails';
 import { SpeakerNotesDrawer } from './components/SpeakerNotesDrawer';
 import { GoogleSlidesModal } from './components/GoogleSlidesModal';
 import { SLIDES } from './data/slidesData';
+import { shouldHandlePresentationKey } from './utils/presentationKeyboard';
 
 export default function App() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
@@ -90,15 +91,9 @@ export default function App() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Never steal keyboard activation from an interactive control (especially demo
-      // buttons and the probability slider); honor OS/browser modifiers as well.
-      if (isGoogleSlidesModalOpen || e.altKey || e.ctrlKey || e.metaKey) return;
-      const target = e.target as HTMLElement | null;
-      if (target?.closest('input, textarea, select, button, a, summary, [contenteditable], [role="button"], [role="slider"]')) {
-        return;
-      }
-      // A long Space key press should not accidentally skip several slides.
-      if (e.repeat && e.key === ' ') return;
+      // Arrow navigation works after a demo-button click, but Space still
+      // activates the focused button and sliders retain their arrow keys.
+      if (!shouldHandlePresentationKey(e, isGoogleSlidesModalOpen)) return;
 
       switch (e.key) {
         // In Persian RTL: ArrowLeft goes forward, ArrowRight goes backward
