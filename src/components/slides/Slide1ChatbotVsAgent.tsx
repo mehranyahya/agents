@@ -201,7 +201,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
         <p className={`text-xs text-center leading-relaxed mt-1.5 ${
           isDark ? 'text-slate-300' : 'text-slate-700'
         }`}>
-          <strong>عامل عقلانی</strong> بر پایه ادراک‌ها و اطلاعات موجود، کنشی را انتخاب می‌کند که عملکرد مورد انتظار را بیشینه کند.
+          <strong>عامل عقلانی</strong> با توجه به اطلاعات موجود، کنشی را برمی‌گزیند که انتظار می‌رود طبق یک معیار مشخص، بهترین نتیجه را بدهد.
         </p>
         <div className="flex justify-center items-center gap-1.5 mt-1 text-xs text-slate-400">
           <AlertCircle className="w-3 h-3 shrink-0 text-amber-400" />
