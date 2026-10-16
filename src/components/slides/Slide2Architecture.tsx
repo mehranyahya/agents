@@ -39,7 +39,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
           no absolute labels or scale transforms that can overlap surrounding text. */}
       <div className="flex-1 min-h-0 flex items-center justify-center py-2">
         <div className={
-          'architecture-diagram w-full max-w-[860px] h-full max-h-[510px] rounded-3xl border px-4 py-3 flex flex-col justify-between gap-1.5 ' +
+          'architecture-diagram w-full max-w-[820px] h-full max-h-[510px] rounded-3xl border px-4 py-3 flex flex-col justify-between gap-1.5 ' +
           (isDark ? 'bg-slate-900/20 border-cyan-500/25' : 'bg-blue-50/50 border-blue-200')
         }>
           {/* The loop indicator participates in normal layout: never floats over Memory. */}
