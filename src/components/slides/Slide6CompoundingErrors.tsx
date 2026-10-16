@@ -36,7 +36,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
             isFullscreen ? 'text-3xl md:text-4xl lg:text-5xl mb-1' : 'text-2xl md:text-3xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          Agent قدرتمند است؛ اما هر قدم می‌تواند اشتباه باشد
+          چرا خطا در کارهای چندمرحله‌ای جمع می‌شود؟
         </h2>
       </div>
 
@@ -51,7 +51,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
             <AlertTriangle className="w-4 h-4" />
             <span>اطلاعات نادرست</span>
           </div>
-          <p className="text-[11px] opacity-75">اطلاعات اشتباه یا ناموجود تولید می‌کند.</p>
+          <p className="text-xs opacity-75">اطلاعات اشتباه یا ناموجود تولید می‌کند.</p>
         </div>
 
         <div
@@ -63,7 +63,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
             <RefreshCw className="w-4 h-4" />
             <span>گیرکردن در چرخه</span>
           </div>
-          <p className="text-[11px] opacity-75">در تکرار یک دستور ناموفق گیر می‌کند.</p>
+          <p className="text-xs opacity-75">چند بار یک اقدام ناموفق را تکرار می‌کند.</p>
         </div>
 
         <div
@@ -75,7 +75,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
             <Compass className="w-4 h-4" />
             <span>انحراف از هدف</span>
           </div>
-          <p className="text-[11px] opacity-75">به تدریج از مأموریت و هدف اصلی منحرف می‌شود.</p>
+          <p className="text-xs opacity-75">به تدریج از مأموریت و هدف اصلی منحرف می‌شود.</p>
         </div>
 
         <div
@@ -87,7 +87,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
             <ShieldOff className="w-4 h-4" />
             <span>دستور مخرب خارجی</span>
           </div>
-          <p className="text-[11px] opacity-75">محتوای خارجی کنترل و منطق عامل را فریب می‌دهد.</p>
+          <p className="text-xs opacity-75">محتوای خارجی می‌تواند عامل را از هدف منحرف کند.</p>
         </div>
       </div>
 
@@ -102,7 +102,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
           {/* Formula Display (6 cols) */}
           <div className="md:col-span-6 text-center md:text-right">
-            <div className="text-xs text-slate-400 mb-1 font-mono">قانون خطای فزاینده (Compounding Error):</div>
+            <div className="text-xs text-slate-400 mb-1 font-mono">مثال آموزشیِ خطای انباشته (Compounding Errors)</div>
             <div
               className={`inline-block px-6 py-3 rounded-2xl border-2 font-mono text-2xl md:text-3xl font-black ${
                 isDark
@@ -122,7 +122,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
 
             {/* Subtle interactive slider */}
             <div className="mt-2 flex items-center gap-2 max-w-xs">
-              <span className="text-[10px] text-slate-400 font-mono">تغییر p:</span>
+              <span className="text-xs text-slate-400 font-mono">تغییر p:</span>
               <input
                 type="range"
                 min="0.80"
@@ -134,8 +134,8 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
               />
             </div>
 
-            <div className="mt-2 text-[10px] text-amber-400/90">
-              ⚠️ مدل ساده‌شده با فرض استقلال مراحل (برای درک اثر تجمعی خطاها)
+            <div className="mt-2 text-xs text-amber-400/90">
+              فرض: مراحل مستقل‌اند، احتمال موفقیت هر مرحله یکسان است و همه مراحل باید درست باشند.
             </div>
           </div>
 
@@ -179,8 +179,8 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
             : 'bg-slate-50 border-slate-200 text-slate-800'
         }`}
       >
-        <div className="text-[11px] font-bold text-emerald-400 mb-1.5">
-          راه‌حل‌های مهندسی برای مهار خطاهای عاملی:
+        <div className="text-xs font-bold text-emerald-400 mb-1.5">
+          چهار روش برای کاهش ریسک:
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
           <div className="flex items-center gap-1.5 p-1.5 rounded-lg bg-slate-950/40 border border-slate-800">
