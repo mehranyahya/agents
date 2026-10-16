@@ -49,6 +49,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const isDark = theme === 'dark';
   const totalSlides = SLIDES.length;
+  const plannedSeconds = SLIDES.reduce((sum, slide) => sum + slide.durationSeconds, 0);
+  const plannedLabel = `${Math.floor(plannedSeconds / 60)}:${String(plannedSeconds % 60).padStart(2, '0')}`;
 
   return (
     <header
@@ -69,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               AI Agents Deck
             </span>
             <span className="text-[10px] text-cyan-400 font-mono block">
-              ارائه سمینار ۱۰ دقیقه‌ای
+              هدف {plannedLabel} • سقف ۱۰ دقیقه
             </span>
           </div>
         </div>
@@ -131,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
               : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
           }`}
-          title="یادداشت‌های شفاهی سخنران"
+          title="یادداشت‌ها فقط در حالت عادی نشان داده می‌شوند؛ هنگام ارائه تمام‌صفحه برای حریم خصوصی بسته خواهند شد"
         >
           <Mic className="w-3.5 h-3.5" />
           <span className="hidden lg:inline">یادداشت سخنران</span>
