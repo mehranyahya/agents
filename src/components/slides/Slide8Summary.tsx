@@ -50,10 +50,10 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
           </div>
           <div>
             <div className="font-extrabold text-base md:text-lg text-cyan-400">
-              Agent هدف می‌گیرد، نه فقط سؤال.
+              ایجنت فقط پاسخ نمی‌دهد؛ برای هدف اقدام می‌کند.
             </div>
             <div className="text-xs opacity-75 mt-0.5">
-              انتقال تمرکز از پرسش و پاسخ متنی به تحقق هدف مشخص و عملیاتی.
+              در مدل‌های امروزی، ابزارها امکان انجام بخشی از کار را می‌دهند.
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
               تصمیم می‌گیرد، ابزار استفاده می‌کند و نتیجه را می‌بیند.
             </div>
             <div className="text-xs opacity-75 mt-0.5">
-              چرخه Decide ➔ Act ➔ Observe ➔ Repeat برای تعامل با دنیای بیرونی؛ ReAct یکی از الگوهای رایجِ ترکیب استدلال و عمل است.
+              نتیجه هر قدم، تصمیم قدم بعدی را بهتر هدایت می‌کند.
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
           </div>
           <div>
             <div className="font-extrabold text-base md:text-lg text-emerald-400">
-              هرچه استقلال بیشتر باشد، کنترل و ایمنی مهم‌تر می‌شود.
+              با اختیار بیشتر، نظارت و کنترل اهمیت بیشتری پیدا می‌کند.
             </div>
             <div className="text-xs opacity-75 mt-0.5">
               بررسی خروجی، محدودیت دسترسی و نظارت انسان بر اقدامات حساس.
@@ -101,17 +101,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
         </div>
       </div>
 
-      {/* Boxed Final Equation */}
-      <div
-        className={`p-3 rounded-2xl border text-center font-mono text-sm md:text-base font-bold my-2 shadow-sm ${
-          isDark
-            ? 'bg-slate-900/90 border-cyan-500/30 text-cyan-300'
-            : 'bg-slate-100 border-slate-300 text-slate-900'
-        }`}
-      >
-        <span className="text-slate-400 text-xs font-sans block mb-1">فرمول جامع معماری:</span>
-        AI Agent = Model + Tools + Memory + Autonomy + Feedback
-      </div>
+      
 
       {/* The Big Final Punchline */}
       <div
@@ -128,11 +118,11 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
           </span>
         </div>
         <div className="text-2xl md:text-3xl font-black tracking-tight mt-1 text-cyan-300">
-          در LLM Agents، از «تولید پاسخ» به «اجرای کار» می‌رسیم.
+          مهم فقط هوشمندی نیست؛ مهم پیشبرد قابل‌اعتماد کار است.
         </div>
       </div>
       {/* Academic references — visible but not spoken during the timed talk */}
-      <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] md:text-[11px] pb-0.5 ${
+      <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs md:text-xs pb-0.5 ${
         isDark ? 'text-slate-400' : 'text-slate-600'
       }`}>
         <span className="font-bold">منابع علمی:</span>
@@ -145,7 +135,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
           Yao et al. — ReAct (ICLR 2023)
         </a>
         <a className="underline underline-offset-2 hover:text-cyan-400" target="_blank" rel="noopener noreferrer"
-          href="https://modelcontextprotocol.io/specification/2025-06-18/server/tools">
+          href="https://modelcontextprotocol.io/specification/2026-07-28">
           MCP — Official Specification
         </a>
       </div>
