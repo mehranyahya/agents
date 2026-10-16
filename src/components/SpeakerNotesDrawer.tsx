@@ -51,6 +51,13 @@ export const SpeakerNotesDrawer: React.FC<SpeakerNotesDrawerProps> = ({
 
       {/* Drawer Body */}
       <div className="overflow-y-auto p-6 space-y-4 text-sm leading-relaxed">
+        {/* Short memory hook for easier oral rehearsal. */}
+        <div className={`rounded-xl border px-4 py-2.5 text-sm ${
+          isDark ? 'bg-cyan-950/30 border-cyan-600/30 text-cyan-100' : 'bg-cyan-50 border-cyan-200 text-cyan-900'
+        }`}>
+          <span className="font-bold ml-2">کلید حفظ:</span>
+          <span>{currentSlide.memoryCue}</span>
+        </div>
         {/* Oral script points */}
         <div className="space-y-2.5">
           <div className="text-xs font-bold text-cyan-400 flex items-center gap-1.5">
@@ -75,6 +82,12 @@ export const SpeakerNotesDrawer: React.FC<SpeakerNotesDrawerProps> = ({
           </div>
         </div>
 
+        <div className={`text-xs rounded-xl p-3 border ${
+          isDark ? 'bg-slate-800/40 border-slate-700 text-slate-300' : 'bg-slate-50 border-slate-200 text-slate-700'
+        }`}>
+          <span className="font-bold">راهنمای اجرا: </span>
+          {currentSlide.stageNote}
+        </div>
         {/* Essential Takeaway / Scientific Caution */}
         <div
           className={`p-3 rounded-xl border flex items-start gap-2.5 text-xs ${
