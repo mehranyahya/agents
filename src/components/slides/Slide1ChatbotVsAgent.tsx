@@ -31,7 +31,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          چتبات پاسخ می‌دهد؛ Agent اقدام می‌کند
+          چت‌بات توضیح می‌دهد؛ ایجنت اقدام می‌کند
         </h2>
       </div>
 
@@ -55,7 +55,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
             </div>
             <div>
               <h3 className="font-bold text-lg">Chatbot (سیستم پاسخ‌دهنده)</h3>
-              <p className="text-xs opacity-70">تعامل متنی تک‌مرحله‌ای یا محاوره‌ای</p>
+              <p className="text-xs opacity-70">در این مثال: فقط راهنمایی</p>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               }`}
             >
               <span className="text-xs font-bold text-slate-400 block mb-1">پاسخ سیستم:</span>
-              «۱. به سایت‌های فروش بلیط مراجعه کنید. ۲. مبدا و مقصد را وارد نمایید. ۳. درگاه پرداخت را تکمیل کنید...»
+              «وارد سایت فروش بلیت شوید، مقصد و تاریخ را انتخاب کنید و پروازها را مقایسه کنید.»
             </div>
           </div>
 
@@ -106,10 +106,10 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               </div>
               <div>
                 <h3 className="font-extrabold text-lg text-cyan-400">AI Agent (سیستم کنش‌گر)</h3>
-                <p className="text-xs opacity-75">هدف‌محور، خودکارساز و متصل به ابزارها</p>
+                <p className="text-xs opacity-75">در این مثال: جست‌وجو با ابزار</p>
               </div>
             </div>
-            <span className="text-[11px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500 text-slate-950">
+            <span className="text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500 text-slate-950">
               Autonomous
             </span>
           </div>
@@ -133,8 +133,8 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
                 }`}
               >
                 <Search className="w-4 h-4 text-cyan-400" />
-                <span className="text-[11px] font-bold">۱. جستجو</span>
-                <span className="text-[11px] opacity-70">Search API</span>
+                <span className="text-xs font-bold">۱. جستجو</span>
+                <span className="text-xs opacity-70">Search API</span>
               </div>
               <div
                 className={`p-2 rounded-xl flex flex-col items-center gap-1 border ${
@@ -142,8 +142,8 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
                 }`}
               >
                 <BarChart3 className="w-4 h-4 text-amber-400" />
-                <span className="text-[11px] font-bold">۲. مقایسه</span>
-                <span className="text-[11px] opacity-70">Filter & Sort</span>
+                <span className="text-xs font-bold">۲. مقایسه</span>
+                <span className="text-xs opacity-70">Filter & Sort</span>
               </div>
               <div
                 className={`p-2 rounded-xl flex flex-col items-center gap-1 border ${
@@ -151,8 +151,8 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span className="text-[11px] font-bold">۳. انتخاب</span>
-                <span className="text-[11px] opacity-70">Best Deal</span>
+                <span className="text-xs font-bold">۳. انتخاب</span>
+                <span className="text-xs opacity-70">Best Deal</span>
               </div>
               <div
                 className={`p-2 rounded-xl flex flex-col items-center gap-1 border ${
@@ -160,8 +160,8 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
                 }`}
               >
                 <Play className="w-4 h-4 text-indigo-400" />
-                <span className="text-[11px] font-bold">۴. نتیجه</span>
-                <span className="text-[11px] opacity-70">Show Results</span>
+                <span className="text-xs font-bold">۴. نتیجه</span>
+                <span className="text-xs opacity-70">Show Results</span>
               </div>
             </div>
           </div>
@@ -183,15 +183,15 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
       }`}>
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="text-base md:text-lg font-black text-cyan-400">
-            «Chatbot سؤال می‌گیرد؛ Agent هدف می‌گیرد»
+            «در این مثال، ایجنت بخشی از کار را انجام می‌دهد.»
           </div>
-          <span className={`text-[11px] font-bold rounded-full px-2 py-1 ${
+          <span className={`text-xs font-bold rounded-full px-2 py-1 ${
             isDark ? 'bg-cyan-500/10 text-cyan-300' : 'bg-blue-50 text-blue-700'
           }`}>
             پیوند با مبانی هوش مصنوعی: Rational Agent
           </span>
         </div>
-        <div dir="ltr" className="flex flex-wrap items-center justify-center gap-1.5 md:gap-3 mt-2 font-mono text-[11px] md:text-xs font-semibold text-cyan-400">
+        <div dir="ltr" className="flex flex-wrap items-center justify-center gap-1.5 md:gap-3 mt-2 font-mono text-xs md:text-xs font-semibold text-cyan-400">
           <span>Environment</span><span aria-hidden="true">→</span>
           <span>Percepts</span><span aria-hidden="true">→</span>
           <span>Agent</span><span aria-hidden="true">→</span>
@@ -203,7 +203,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
         }`}>
           <strong>عامل عقلانی</strong> بر پایه ادراک‌ها و اطلاعات موجود، کنشی را انتخاب می‌کند که عملکرد مورد انتظار را بیشینه کند.
         </p>
-        <div className="flex justify-center items-center gap-1.5 mt-1 text-[11px] text-slate-400">
+        <div className="flex justify-center items-center gap-1.5 mt-1 text-xs text-slate-400">
           <AlertCircle className="w-3 h-3 shrink-0 text-amber-400" />
           <span>هر Agent لزوماً LLM ندارد؛ عامل‌ها می‌توانند نرم‌افزاری یا رباتیکی باشند. — Russell &amp; Norvig, AIMA (فصل ۲)</span>
         </div>
