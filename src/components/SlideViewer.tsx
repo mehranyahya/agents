@@ -131,7 +131,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
               so controls never overlap slide content. */}
           <div className="flex-1 min-h-0 w-full flex items-center justify-center px-2 pt-2">
             <div
-              className={`relative w-full h-full max-w-[calc((100vh-5.5rem)*1.7778)] max-h-[calc(100vh-5.5rem)] aspect-[16/9] flex flex-col justify-between overflow-hidden shadow-2xl transition-colors duration-300 ${
+              data-slide={currentSlideIndex}
+              className={`presentation-slide presentation-slide--fullscreen relative w-full h-full max-w-[calc((100vh-5.5rem)*1.7778)] max-h-[calc(100vh-5.5rem)] aspect-[16/9] flex flex-col justify-between overflow-hidden shadow-2xl transition-colors duration-300 ${
                 isDark ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'
               }`}
             >
@@ -263,7 +264,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   // Standard non-fullscreen embedded view
   return (
     <div
-      className={`relative w-full aspect-[16/9] max-h-[82vh] rounded-3xl overflow-hidden border shadow-2xl transition-all duration-300 ${
+      data-slide={currentSlideIndex}
+      className={`presentation-slide presentation-slide--embedded relative w-full aspect-[16/9] max-h-[82vh] rounded-3xl overflow-hidden border shadow-2xl transition-all duration-300 ${
         isDark
           ? 'bg-slate-950 border-slate-800/80 shadow-cyan-950/20 text-slate-100'
           : 'bg-white border-slate-200 shadow-slate-200/80 text-slate-900'

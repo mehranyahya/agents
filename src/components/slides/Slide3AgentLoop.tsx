@@ -61,7 +61,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
   return (
     <div
       className={`h-full flex flex-col justify-between select-none ${
-        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+        isFullscreen ? 'py-3 px-7 md:px-9' : 'py-3 px-6'
       }`}
     >
       {/* Slide Header */}
@@ -105,7 +105,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
       </div>
 
       {/* Main Interactive Stage: Circle + Concrete Example */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 my-auto items-center">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 my-auto items-center">
         {/* Loop Diagram & Steps (7 cols) */}
         <div className="md:col-span-7 space-y-2">
           {LOOP_STEPS.map((step, idx) => {

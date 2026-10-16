@@ -12,7 +12,7 @@ export const Slide0Title: React.FC<SlideProps> = ({ theme, isFullscreen }) => {
   return (
     <div
       className={`h-full flex flex-col justify-between select-none ${
-        isFullscreen ? 'py-8 px-12 md:px-16' : 'py-4 px-6'
+        isFullscreen ? 'py-5 px-8 md:px-10' : 'py-4 px-6'
       }`}
     >
       {/* Top Header Tag */}

@@ -13,7 +13,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
   return (
     <div
       className={`h-full flex flex-col justify-between select-none ${
-        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+        isFullscreen ? 'py-3 px-7 md:px-9' : 'py-3 px-6'
       }`}
     >
       {/* Slide Header */}
@@ -63,7 +63,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
         </div>
 
         {/* 3 Specialized Worker Agents */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl">
           {/* Worker 1: Research */}
           <div
             className={`p-3.5 rounded-xl border transition-all text-center flex flex-col items-center ${

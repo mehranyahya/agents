@@ -17,7 +17,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
   return (
     <div
       className={`h-full flex flex-col justify-between select-none ${
-        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+        isFullscreen ? 'py-3 px-7 md:px-9' : 'py-3 px-6'
       }`}
     >
       {/* Slide Header */}
@@ -41,7 +41,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
       </div>
 
       {/* 4 Risk Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 my-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 my-1">
         <div
           className={`p-2.5 rounded-xl border transition-all ${
             isDark ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-slate-200'

@@ -12,7 +12,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
   return (
     <div
       className={`h-full flex flex-col justify-between select-none ${
-        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+        isFullscreen ? 'py-3 px-7 md:px-9' : 'py-3 px-6'
       }`}
     >
       {/* Slide Header */}
@@ -50,7 +50,7 @@ export const Slide2Architecture: React.FC<SlideProps> = ({ theme, isFullscreen }
         </div>
 
         {/* 5-Node Cross Diagram */}
-        <div className="relative z-10 w-full max-w-xl flex flex-col items-center gap-3">
+        <div className="relative z-10 w-full max-w-5xl flex flex-col items-center gap-3">
           {/* Top Node: Memory / State */}
           <div
             className={`flex items-center gap-3 px-5 py-2.5 rounded-2xl border shadow-md transition-all ${

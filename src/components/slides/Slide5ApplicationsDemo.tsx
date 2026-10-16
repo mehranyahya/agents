@@ -70,7 +70,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
   return (
     <div
       className={`h-full flex flex-col justify-between select-none ${
-        isFullscreen ? 'py-6 px-10 md:px-14' : 'py-3 px-6'
+        isFullscreen ? 'py-3 px-7 md:px-9' : 'py-3 px-6'
       }`}
     >
       {/* Slide Header */}
@@ -94,7 +94,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
       </div>
 
       {/* 5 Compact Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-2.5 my-2">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-2 my-1">
         {USE_CASES.map((uc) => {
           const Icon = uc.icon;
           return (
