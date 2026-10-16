@@ -31,7 +31,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
             isFullscreen ? 'text-4xl md:text-5xl lg:text-6xl mb-1' : 'text-3xl md:text-4xl'
           } ${isDark ? 'text-white' : 'text-slate-900'}`}
         >
-          چت‌بات توضیح می‌دهد؛ ایجنت اقدام می‌کند
+          چت‌بات پاسخ می‌دهد؛ ایجنت کار را پیش می‌برد
         </h2>
       </div>
 
@@ -110,7 +110,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               </div>
             </div>
             <span className="text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-cyan-500 text-slate-950">
-              Autonomous
+              Goal-driven
             </span>
           </div>
 
@@ -171,7 +171,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
               isDark ? 'bg-cyan-500/20 text-cyan-300' : 'bg-blue-100 text-blue-900'
             }`}
           >
-            نتیجه: سیستم می‌تواند با کمک ابزارها چند مرحله از کار را در محیط واقعی اجرا کند.
+            نتیجه: عامل هدف را پیگیری می‌کند، اقدام می‌کند و نتیجه را برای گام بعد می‌سنجد.
           </div>
         </div>
       </div>
@@ -183,7 +183,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
       }`}>
         <div className="flex items-center justify-between gap-3 flex-wrap">
           <div className="text-base md:text-lg font-black text-cyan-400">
-            «در این مثال، ایجنت بخشی از کار را انجام می‌دهد.»
+            «تفاوت فقط ابزار نیست؛ پیگیری هدف و بازبینی نتیجه مهم است.»
           </div>
           <span className={`text-xs font-bold rounded-full px-2 py-1 ${
             isDark ? 'bg-cyan-500/10 text-cyan-300' : 'bg-blue-50 text-blue-700'
@@ -205,7 +205,7 @@ export const Slide1ChatbotVsAgent: React.FC<SlideProps> = ({ theme, isFullscreen
         </p>
         <div className="flex justify-center items-center gap-1.5 mt-1 text-xs text-slate-400">
           <AlertCircle className="w-3 h-3 shrink-0 text-amber-400" />
-          <span>هر Agent لزوماً LLM ندارد؛ عامل‌ها می‌توانند نرم‌افزاری یا رباتیکی باشند. — Russell &amp; Norvig, AIMA (فصل ۲)</span>
+          <span>صرف اتصال به ابزار، یک سیستم را ایجنت نمی‌سازد؛ هر Agent هم لزوماً LLM ندارد. — Russell &amp; Norvig, AIMA</span>
         </div>
       </div>
     </div>
