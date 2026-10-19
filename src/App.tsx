@@ -18,26 +18,6 @@ export default function App() {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false);
   const [isGoogleSlidesModalOpen, setIsGoogleSlidesModalOpen] = useState<boolean>(false);
-  // One shared presentation clock: it must survive fullscreen changes.
-  const [timerSeconds, setTimerSeconds] = useState(0);
-  const [isTimerRunning, setIsTimerRunning] = useState(false);
-
-  useEffect(() => {
-    if (!isTimerRunning) return;
-    const savedSeconds = timerSeconds;
-    const startedAt = Date.now();
-    const interval = window.setInterval(() => {
-      setTimerSeconds(savedSeconds + Math.floor((Date.now() - startedAt) / 1000));
-    }, 250);
-    return () => window.clearInterval(interval);
-  }, [isTimerRunning]);
-
-  const toggleTimer = useCallback(() => setIsTimerRunning((prev) => !prev), []);
-  const resetTimer = useCallback(() => {
-    setIsTimerRunning(false);
-    setTimerSeconds(0);
-  }, []);
-
   const totalSlides = SLIDES.length;
 
   const handleNext = useCallback(() => {
@@ -161,10 +141,6 @@ export default function App() {
       {!isFullscreen && (
         <Navbar
           currentSlideIndex={currentSlideIndex}
-          timerSeconds={timerSeconds}
-          isTimerRunning={isTimerRunning}
-          onToggleTimer={toggleTimer}
-          onResetTimer={resetTimer}
           onPrev={handlePrev}
           onNext={handleNext}
           theme={theme}
@@ -187,10 +163,6 @@ export default function App() {
       >
         <SlideViewer
           currentSlideIndex={currentSlideIndex}
-          timerSeconds={timerSeconds}
-          isTimerRunning={isTimerRunning}
-          onToggleTimer={toggleTimer}
-          onResetTimer={resetTimer}
           theme={theme}
           isFullscreen={isFullscreen}
           onNext={handleNext}
