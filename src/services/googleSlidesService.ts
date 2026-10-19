@@ -55,7 +55,7 @@ export const createGoogleSlidesDeck = async (
   const requests: any[] = [];
 
   // Helper for generating unique ID
-  const makeId = (prefix: string, index: number) => `${prefix}_${Date.now()}_${index}`;
+  const makeId = (prefix: string, index: number) => `${prefix.replace(/[^a-zA-Z0-9_]/g, '_')}_${Date.now()}_${index}`;
 
   // A new presentation is blank and usually has no slides.
   // Always add its title slide explicitly, before inserting the remaining slides.
@@ -313,8 +313,8 @@ export const createGoogleSlidesDeck = async (
       }
     );
 
-    // Link URLs on product slide directly from exportBullets; avoid parallel outdated link lists.
-    if (slide.slug === 'featured-agents') {
+    // Link official no-code tool URLs directly from the exported scenario bullets.
+    if (slide.slug === 'no-code-automation') {
       const urls = contentText.match(/https?:\/\/[^\s]+/g) || [];
       urls.forEach((url) => {
         const startIndex = contentText.indexOf(url);
