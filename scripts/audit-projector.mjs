@@ -157,6 +157,22 @@ try {
     // Verify the same new labels stay legible when the user changes to light mode.
     await page.keyboard.press('6');
     await page.getByRole('button',{name:'تغییر تم'}).click();
+    // Tailwind animates the stage background for 300ms. Capture only the settled state.
+    await page.waitForTimeout(450);
+    const contrast=await page.evaluate(()=>{
+      const stage=document.querySelector('.presentation-slide--fullscreen');
+      const heading=stage.querySelector('h2');
+      const rgb=color=>(color.match(/[0-9.]+/g)||[]).slice(0,3).map(Number);
+      const luminance=color=>{
+        const v=rgb(color).map(n=>{const x=n/255;return x<=0.04045?x/12.92:((x+0.055)/1.055)**2.4;});
+        return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2];
+      };
+      const bg=luminance(getComputedStyle(stage).backgroundColor);
+      const fg=luminance(getComputedStyle(heading).color);
+      return {ratio:(Math.max(bg,fg)+0.05)/(Math.min(bg,fg)+0.05),bg:getComputedStyle(stage).backgroundColor,title:getComputedStyle(heading).color};
+    });
+    console.log('LIGHT_MODE_CONTRAST',width+'x'+height,JSON.stringify(contrast));
+    if(contrast.ratio<7)throw new Error('Slide 6 title contrast insufficient in light mode');
     await page.screenshot({path:output+'/'+width+'x'+height+'_slide6-light.png'});
     const lightModeText=await page.locator('.presentation-slide--fullscreen .concept-full-form').allInnerTexts();
     if(lightModeText.length!==2||lightModeText[0].trim()!=='Application Programming Interface'||lightModeText[1].trim()!=='Model Context Protocol')
