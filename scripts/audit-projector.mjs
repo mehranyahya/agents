@@ -96,7 +96,7 @@ try {
       if(stats.clipped?.length)console.log('CLIPPED_TEXT',JSON.stringify(stats.clipped.slice(0,5)));
     }
     // Check all states of the interactive coding demo, not just the initial screen.
-    await page.keyboard.press('6');
+    await page.keyboard.press('5');
     await page.waitForTimeout(100);
     for(let step=0;step<5;step++){
       await page.getByRole('button',{name:'گام بعدی شبیه‌سازی'}).click();
