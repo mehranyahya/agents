@@ -159,10 +159,10 @@ export const SLIDES: SlideData[] = [
     "oralNotes": [
       "آیا برای وصل‌کردن ابزارها به هم حتماً باید برنامه‌نویسی کنیم؟ نه. ابزارهای تصویری مثل Make و n8n اجازه می‌دهند مراحل کار را بدون نوشتن بیشتر کدها به هم وصل کنیم.",
       "مثلاً ایمیل استاد می‌رسد؛ هوش مصنوعی متن را بررسی می‌کند و اگر تکلیف جدیدی داشت، مهلتش را پیدا می‌کند. بعد از بررسی و تأیید ما، یادآور ساخته می‌شود. این فقط یک طرح آموزشی است، نه سامانه‌ای که الان ساخته یا اجرا کرده باشیم.",
-      "دقت کنید: وصل‌کردن چند مرحله ثابت، خودکارسازی است؛ هر خودکارسازی لزوماً ایجنت نیست. اینجا تحلیل متن و انتخاب اقدام متناسب، بخش هوشمند کار است. البته وقتی اقدام خودکار می‌شود، باید حواسمان به خطا هم باشد."
+      "دقت کنید: وصل‌کردن چند مرحله ثابت، خودکارسازی است؛ هر خودکارسازی لزوماً ایجنت نیست. اینجا تحلیل متن و انتخاب اقدام متناسب، بخش هوشمند کار است. حالا چند محصول واقعی را هم ببینیم که این ایده را به شکل‌های متفاوت اجرا می‌کنند."
     ],
     "memoryCue": "ایمیل استاد ← تحلیل تکلیف ← تأیید ← یادآور",
-    "stageNote": "به سه کارت اصلی اشاره کن. این سناریو اجرا نمی‌شود؛ آن را نمونه قابل ساخت معرفی کن. تفاوت خودکارسازی ثابت با تصمیم‌گیری هوشمند را حتماً بگو.",
+    "stageNote": "به سه کارت اصلی اشاره کن. این سناریو اجرا نمی‌شود؛ آن را نمونه قابل ساخت معرفی کن. سپس وارد دو اسلاید معرفی محصول شو؛ توضیح اضافه لازم نیست.",
     "exportBullets": [
       "موضوع پیشنهادی استاد: خودکارسازی کارها با ابزارهای بدون کد",
       "سناریوی دانشجویی: ایمیل استاد → تشخیص تکلیف و مهلت با AI → ثبت یادآور پس از تأیید",
@@ -174,6 +174,48 @@ export const SLIDES: SlideData[] = [
   },
   {
     "id": 7,
+    "slug": "personal-ai-agent-products",
+    "title": "ایجنت‌های شخصی و همکار",
+    "subtitle": "Dots · Muse · Grok Bot — three real-world approaches",
+    "timing": "۰:۲۰",
+    "durationSeconds": 20,
+    "category": "نمونه‌های واقعی — بخش اول",
+    "keyTakeaway": "Dots روی اهداف مداوم کار می‌کند؛ Muse برای کارهای شخصی است و Grok Bot مجموعه‌ای از بات‌های همکار فراهم می‌کند.",
+    "oralNotes": [
+      "این سه محصول را فقط کوتاه معرفی می‌کنم: Dots برای کارهای پیوسته، Muse برای امور شخصی، و Grok Bot برای همکاری چند بات. ویژگی‌ها و منابع رسمی روی خود اسلاید نوشته شده‌اند."
+    ],
+    "memoryCue": "Dots هدف مداوم • Muse زندگی شخصی • Grok Bot تیم همکار",
+    "stageNote": "متن انگلیسی هر کارت را برای مخاطب روخوانی نکن؛ فقط نام و تفاوت سه محصول را بگو. لینک‌های زیر کارت‌ها برای مطالعه بیشترند.",
+    "exportBullets": [
+      "OpenAI Dots: Always-on ChatGPT worker for ongoing projects; uses selected apps and a cloud computer, reports progress and asks for decisions. https://chatgpt.com/features/dots/",
+      "Meta Muse: Personal agent for bookings, shopping, forms, reminders and long-term goals; secure browser and approvals for sensitive actions. https://ai.meta.com/muse/",
+      "xAI Grok Bot: Team of AI coworkers with roles, computers and connected tools; ongoing delegated tasks and approval checkpoints. https://x.ai/news/introducing-grok-bot",
+      "Access and availability vary by product, user plan and region."
+    ]
+  },
+  {
+    "id": 8,
+    "slug": "open-agent-products",
+    "title": "ایجنت‌های متن‌باز و هماهنگ‌کننده",
+    "subtitle": "OpenClaw · Hermes · MausBot — local agents, skills and orchestration",
+    "timing": "۰:۲۰",
+    "durationSeconds": 20,
+    "category": "نمونه‌های واقعی — بخش دوم",
+    "keyTakeaway": "OpenClaw از کانال‌های پیام‌رسان استفاده می‌کند، Hermes مهارت‌های قابل استفاده مجدد می‌سازد و MausBot مدیریت تیم بات‌ها را فراهم می‌کند.",
+    "oralNotes": [
+      "سه نمونه دیگر هم داریم: OpenClaw که از طریق پیام‌رسان‌ها کار می‌کند؛ Hermes که می‌تواند از تجربه خود مهارت بسازد؛ و MausBot که کار چند عامل را هماهنگ می‌کند. ادامه کار در همه آن‌ها به مجوزها و شیوه استقرار بستگی دارد."
+    ],
+    "memoryCue": "OpenClaw پیام‌رسان • Hermes مهارت و حافظه • MausBot هماهنگی تیم",
+    "stageNote": "نام هر سه و ویژگی اصلی را بگو. عدد ۸۵ هزار مهارت یا ادعای اتصال تضمینی همه ابزارها را بیان نکن؛ چنین اعدادی قابل اتکا نبودند. پایان اسلاید را به بحث خطا و مجوز وصل کن.",
+    "exportBullets": [
+      "OpenClaw: Self-hosted assistant with background gateway and WhatsApp/Telegram channels; extensible with community skills and plugins. Requires an online host. https://openclaw.ai/",
+      "Hermes Agent (Nous Research): Desktop Bot Mode with named roles, models, memory and skills; learning loop can create/improve skills. https://hermes-agent.nousresearch.com/",
+      "MausBot: Open-source workspace coordinating Claude Code, Codex, Grok and other supported bots; Chief of Staff for delegation, supported approvals on desktop/phone. https://mausbot.com/",
+      "Skill counts and direct compatibility with every agent were not independently verified. Access and background operation depend on setup."
+    ]
+  },
+  {
+    "id": 9,
     "slug": "compounding-errors",
     "title": "چرا خطا در کارهای طولانی بیشتر می‌شود؟",
     "subtitle": "مثال احتمال موفقیت چندمرحله‌ای و روش‌های کنترل ریسک",
@@ -197,7 +239,7 @@ export const SLIDES: SlideData[] = [
     ]
   },
   {
-    "id": 8,
+    "id": 10,
     "slug": "multi-agent",
     "title": "وقتی چند ایجنت با هم کار می‌کنند",
     "subtitle": "تقسیم کار، هماهنگی و هزینه در معماری چندعاملی",
@@ -218,7 +260,7 @@ export const SLIDES: SlideData[] = [
     ]
   },
   {
-    "id": 9,
+    "id": 11,
     "slug": "summary",
     "title": "سه نکته‌ای که باید بماند",
     "subtitle": "هدف، چرخه اقدام و کنترل‌پذیری",
