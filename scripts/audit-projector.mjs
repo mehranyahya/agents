@@ -18,7 +18,8 @@ try {
   const results = [];
   for (const [width,height] of [[1920,1080],[1280,720]]){
     const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
-    page.on('pageerror',e=>console.log('BROWSER_ERROR:',e.message));
+    const pageErrors=[];
+    page.on('pageerror',e=>{pageErrors.push(e.message);console.log('BROWSER_ERROR:',e.message);});
     await page.goto('http://127.0.0.1:4173/agents/',{waitUntil:'domcontentloaded'});
     await page.locator('button[title="حالت ارائه تمام‌صفحه"]').click();
     await page.waitForSelector('.presentation-slide--fullscreen');
@@ -53,6 +54,33 @@ try {
         return {slide:Number(st.getAttribute('data-slide'))+1,stageWidth:Math.round(box.width),stageHeight:Math.round(box.height),textCount:items.length,minFontSize:Math.min(...items.map(x=>x.fontSize)),medianFontSize:items.map(x=>x.fontSize).sort((a,b)=>a-b)[Math.floor(items.length/2)],clipped:items.filter(x=>x.clipped),contentScrollHeight:b?.scrollHeight,contentClientHeight:b?.clientHeight};
       });
       results.push({width,height,...stats});
+      if(stats.clipped?.length)throw new Error('Slide '+(i+1)+' text escapes projector stage at '+width+'x'+height+': '+JSON.stringify(stats.clipped.slice(0,4)));
+      if((stats.contentScrollHeight||0)-(stats.contentClientHeight||0)>4)throw new Error('Slide '+(i+1)+' vertically overflows projector stage at '+width+'x'+height);
+      if(i===5){
+        const abbreviationAudit = await page.evaluate(()=>{
+          const stage=document.querySelector('.presentation-slide--fullscreen');
+          const expansions=[...stage.querySelectorAll('.concept-full-form')];
+          const expected=['Application Programming Interface','Model Context Protocol'];
+          const errors=[];
+          if(expansions.length!==2)errors.push('There must be two abbreviations on slide 6');
+          for(const [index,element] of expansions.entries()){
+            if(element.textContent.trim()!==expected[index])errors.push('Wrong abbreviation '+index);
+            const card=element.closest('.rounded-xl.border');
+            if(!card){errors.push('Missing concept card '+index);continue;}
+            const bounds=card.getBoundingClientRect();
+            const line=element.getBoundingClientRect();
+            const style=getComputedStyle(element);
+            if(parseFloat(style.fontSize)<12)errors.push('Expansion text too small: '+style.fontSize);
+            if(line.left<bounds.left-3||line.right>bounds.right+3||line.top<bounds.top-3||line.bottom>bounds.bottom+3)errors.push('Expansion outside its card: '+element.textContent.trim());
+            if(card.scrollHeight>card.clientHeight+3)errors.push('Concept card vertically overflows: '+element.textContent.trim());
+            const heading=element.previousElementSibling;
+            if(heading&&heading.getBoundingClientRect().bottom>line.top+2)errors.push('Heading collides with expansion: '+element.textContent.trim());
+          }
+          return {errors,expansions:expansions.map(e=>({label:e.textContent.trim(),font:getComputedStyle(e).fontSize,lines:Math.round(e.getBoundingClientRect().height/parseFloat(getComputedStyle(e).lineHeight))}))};
+        });
+        console.log('ABBREVIATION_QA',width+'x'+height,JSON.stringify(abbreviationAudit));
+        if(abbreviationAudit.errors.length)throw new Error('Slide 6 abbreviation QA failed: '+abbreviationAudit.errors.join('; '));
+      }
       const name=width+'x'+height+'_slide'+(i+1)+'.png';
       if(width===1920||[1,2,3,4,5,6,7].includes(i))await page.screenshot({path:output+'/'+name});
       if(i===2){
@@ -126,6 +154,14 @@ try {
       return outside;
     });
     console.log('TRACE_OVERFLOW',width+'x'+height,traceOverflow.length,JSON.stringify(traceOverflow.slice(0,5)));
+    // Verify the same new labels stay legible when the user changes to light mode.
+    await page.keyboard.press('6');
+    await page.getByRole('button',{name:'تغییر تم'}).click();
+    await page.screenshot({path:output+'/'+width+'x'+height+'_slide6-light.png'});
+    const lightModeText=await page.locator('.presentation-slide--fullscreen .concept-full-form').allInnerTexts();
+    if(lightModeText.length!==2||lightModeText[0].trim()!=='Application Programming Interface'||lightModeText[1].trim()!=='Model Context Protocol')
+      throw new Error('Slide 6 expansions disappeared in light mode');
+    if(pageErrors.length)throw new Error('Browser errors during projection audit: '+pageErrors.join(' | '));
     await page.close();
   }
   await writeFile(output+'/metrics.json',JSON.stringify(results,null,2));
