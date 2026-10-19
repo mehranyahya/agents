@@ -51,9 +51,6 @@ export const SlideThumbnails: React.FC<SlideThumbnailsProps> = ({
               {slide.title}
             </span>
 
-            <span className="text-[10px] text-slate-500 font-mono hidden sm:inline">
-              {slide.timing}
-            </span>
           </button>
         );
       })}
