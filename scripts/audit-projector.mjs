@@ -65,7 +65,7 @@ try {
           if(expansions.length!==2)errors.push('There must be two abbreviations on slide 6');
           for(const [index,element] of expansions.entries()){
             if(element.textContent.trim()!==expected[index])errors.push('Wrong abbreviation '+index);
-            const card=element.closest('.rounded-xl.border');
+            const card=element.closest('.rounded-xl');
             if(!card){errors.push('Missing concept card '+index);continue;}
             const bounds=card.getBoundingClientRect();
             const line=element.getBoundingClientRect();
