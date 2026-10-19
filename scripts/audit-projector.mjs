@@ -194,6 +194,27 @@ try {
     const lightModeText=await page.locator('.presentation-slide--fullscreen .concept-full-form').allInnerTexts();
     if(lightModeText.length!==2||lightModeText[0].trim()!=='Application Programming Interface'||lightModeText[1].trim()!=='Model Context Protocol')
       throw new Error('Slide 6 expansions disappeared in light mode');
+    // Capture a complete second pass in light theme to catch regressions
+    // that clipping-only checks on the default dark theme cannot reveal.
+    for(let i=0;i<10;i++){
+      await page.keyboard.press(i<9?String(i+1):'0');
+      await page.waitForTimeout(75);
+      const lightClipped=await page.evaluate(()=>{
+        const stage=document.querySelector('.presentation-slide--fullscreen');
+        const bounds=stage.getBoundingClientRect();
+        const walker=document.createTreeWalker(stage,NodeFilter.SHOW_TEXT);
+        let text;const outside=[];
+        while((text=walker.nextNode())){
+          if(!text.textContent?.trim()||!text.parentElement)continue;
+          const range=document.createRange();range.selectNodeContents(text);
+          if([...range.getClientRects()].some(r=>r.width>0&&r.height>0&&(r.left<bounds.left-3||r.right>bounds.right+3||r.top<bounds.top-3||r.bottom>bounds.bottom+3)))
+            outside.push(text.textContent.trim().slice(0,60));
+        }
+        return outside;
+      });
+      if(lightClipped.length)throw new Error('Light slide '+(i+1)+' text clipped at '+width+'x'+height+': '+JSON.stringify(lightClipped.slice(0,3)));
+      if(width===1280)await page.screenshot({path:output+'/'+width+'x'+height+'_light-slide'+(i+1)+'.png'});
+    }
     if(pageErrors.length)throw new Error('Browser errors during projection audit: '+pageErrors.join(' | '));
     await page.close();
   }
