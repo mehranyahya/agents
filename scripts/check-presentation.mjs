@@ -32,6 +32,15 @@ for (const name of ['Dots', 'Muse', 'Grok Bot', 'OpenClaw', 'Hermes', 'MausBot']
   assert.ok(agentCards.includes("name: '"+name+"'"), 'Missing agent product '+name);
 }
 assert.ok(!agentCards.includes('85,000'), 'Unverified fixed skills count must not appear');
+assert.ok(agentCards.includes('dir="rtl"'), 'Product cards must be right-to-left for Persian');
+for (const term of ['دستیار همیشه‌فعال', 'دستیار امور شخصی', 'تیم همکاران هوش مصنوعی', 'دستیار متصل به پیام‌رسان‌ها', 'ایجنت با مهارت‌های یادگیرنده', 'هماهنگ‌کننده تیم ایجنت‌ها', 'منبع رسمی']) {
+  assert.ok(agentCards.includes(term), 'Missing Persian product description: ' + term);
+}
+for (const slide of [slides[7], slides[8]]) {
+  assert.ok(slide.exportBullets.join(' ').includes('دستیار') || slide.exportBullets.join(' ').includes('هماهنگی'), 'Google Slides product export must be Persian');
+  assert.ok(!/Always-on ChatGPT worker|Self-hosted assistant|Team of AI coworkers/.test(slide.exportBullets.join(' ')), 'Old English text must not remain in product export');
+}
+assert.ok(!speakerScript.includes('اطلاعات کامل انگلیسی'), 'The spoken guide must not refer to English product explanations');
 slides.forEach((slide, index) => {
   assert.equal(slide.id, index, 'Slide IDs must be sequential internally');
   assert.ok(slide.title && slide.keyTakeaway && slide.memoryCue && slide.stageNote);
@@ -68,4 +77,4 @@ for (const fullName of ['Application Programming Interface', 'Model Context Prot
   assert.ok(toolsSlideSource.includes(fullName), `Missing expansion on visible slide 6: ${fullName}`);
   assert.ok(slides[5].exportBullets.join(' ').includes(fullName), `Missing expansion in Google Slides export: ${fullName}`);
 }
-console.log('Presentation audit passed: 12 slides, 10:20 rehearsal, two short English agent galleries after slide 7, synchronized notes, no timers.');
+console.log('Presentation audit passed: 12 slides, 10:20 rehearsal, two short Persian agent galleries after slide 7, synchronized notes, no timers.');
