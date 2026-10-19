@@ -23,7 +23,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۵ • واسط دنیای واقعی
+            اسلاید ۶ • واسط دنیای واقعی
           </span>
         </div>
         <h2

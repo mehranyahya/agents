@@ -15,7 +15,11 @@ const slides = JSON.parse(match[1]);
 
 assert.equal(slides.length, 10, 'The live website must retain 10 slides');
 assert.equal(slides.reduce((sum, slide) => sum + slide.durationSeconds, 0), 580, 'Target speaking time must remain 9:40');
-assert.equal(slides[5].durationSeconds, 106, 'Practical slide requires 1:46');
+assert.equal(slides[4].durationSeconds, 106, 'Demo at visible slide 5 requires 1:46');
+assert.equal(slides[4].slug, 'applications-and-demo', 'Slide 5 must be the interactive coding demo');
+assert.equal(slides[5].slug, 'real-world-interface', 'Slide 6 must explain tool calling, API and MCP');
+assert.equal(slides[6].slug, 'no-code-automation', 'Slide 7 must be the professor-requested no-code automation scenario');
+assert.ok(slides[6].exportBullets.some(x => x.includes('Make')), 'No-code tools must appear in exported slide');
 slides.forEach((slide, index) => {
   assert.equal(slide.id, index, 'Slide IDs must be sequential internally');
   assert.ok(slide.title && slide.keyTakeaway && slide.memoryCue && slide.stageNote);
@@ -31,5 +35,5 @@ assert.ok(exportModal.includes('{talkTime}'), 'Google Slides modal time should b
 assert.ok(thumbnailSource.includes('{idx + 1}'), 'Thumbnail numbering should be 1–10');
 assert.ok(app.includes('isOpen={isNotesOpen && !isFullscreen}'), 'Notes must stay off the shared fullscreen canvas');
 assert.ok(app.includes('shouldHandlePresentationKey(e, isGoogleSlidesModalOpen)'), 'App must use the tested keyboard focus guard');
-assert.ok(slides[5].exportBullets.join(' ').includes('SWE-agent'), 'Demo evidence source must be represented');
-console.log('Presentation audit passed: 10 slides, 9:40, 1:46 demo, synchronized speaker notes, safe controls.');
+assert.ok(slides[4].exportBullets.join(' ').includes('SWE-agent'), 'Demo evidence source must be represented on slide 5');
+console.log('Presentation audit passed: 10 slides, 9:40, demo 5 / tools 6 / no-code 7, synchronized speaker notes, safe controls.');

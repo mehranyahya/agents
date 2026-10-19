@@ -25,6 +25,12 @@ try {
     for(let i=0;i<10;i++){
       await page.keyboard.press(i<9?String(i+1):'0');
       await page.waitForTimeout(70);
+      // Check slide-topic mapping visually after the sequence change.
+      if(i>=4 && i<=6){
+        const heading=await page.locator('.presentation-slide--fullscreen h2').first().innerText();
+        const required={4:'خطا',5:'ابزار',6:'بدون کدنویسی'}[i];
+        if(!heading.includes(required))throw new Error('Slide '+(i+1)+' unexpectedly shows '+heading);
+      }
       const stats = await page.evaluate(()=>{
         const st=document.querySelector('.presentation-slide--fullscreen');
         if(!st)return {error:'No slide stage'};
@@ -48,7 +54,7 @@ try {
       });
       results.push({width,height,...stats});
       const name=width+'x'+height+'_slide'+(i+1)+'.png';
-      if(width===1920||[1,2,3,4,5,7].includes(i))await page.screenshot({path:output+'/'+name});
+      if(width===1920||[1,2,3,4,5,6,7].includes(i))await page.screenshot({path:output+'/'+name});
       if(i===2){
         const qa=await page.evaluate(()=>{
           const stage=document.querySelector('.presentation-slide--fullscreen');
@@ -96,7 +102,7 @@ try {
       if(stats.clipped?.length)console.log('CLIPPED_TEXT',JSON.stringify(stats.clipped.slice(0,5)));
     }
     // Check all states of the interactive coding demo, not just the initial screen.
-    await page.keyboard.press('6');
+    await page.keyboard.press('5');
     await page.waitForTimeout(100);
     for(let step=0;step<5;step++){
       await page.getByRole('button',{name:'گام بعدی شبیه‌سازی'}).click();
