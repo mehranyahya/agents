@@ -176,7 +176,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             <div className="space-y-2 text-xs">
               <div className="p-2 rounded bg-slate-950/60 border border-slate-800 font-mono text-slate-300">
                 <span className="text-cyan-400 font-bold block mb-0.5">🎯 هدف کاربر:</span>
-                «خلاصه نتایج این گزارش را آماده کن.»
+                «سه نکته اصلی این گزارش را پیدا کن.»
               </div>
 
               <div
