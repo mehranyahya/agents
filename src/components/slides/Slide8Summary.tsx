@@ -23,7 +23,7 @@ export const Slide8Summary: React.FC<SlideProps> = ({ theme, isFullscreen }) => 
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۱۰ • جمع‌بندی نهایی
+            اسلاید ۱۲ • جمع‌بندی نهایی
           </span>
         </div>
         <h2
