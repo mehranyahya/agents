@@ -13,8 +13,8 @@ const LOOP_STEPS = [
     icon: Brain,
     color: 'cyan',
     title: '۱. تصمیم‌گیری (Decide)',
-    desc: '«برای تهیه پاسخ، باید بخش مرتبط گزارش را پیدا کنم.»',
-    action: 'درخواست اجرای ابزار',
+    desc: '«برای پیدا کردن سه نکته اصلی، اول بخش مرتبط گزارش را جست‌وجو می‌کنم.»',
+    action: 'انتخاب قدم بعدی',
   },
   {
     key: 'act_1',
@@ -22,7 +22,7 @@ const LOOP_STEPS = [
     icon: Cog,
     color: 'amber',
     title: '۲. اقدام (Act)',
-    desc: 'جست‌وجو در سند با ابزار search_document(query)',
+    desc: 'اجرای جست‌وجو در گزارش با search_document(query)',
     action: 'اجرای ابزار جست‌وجو',
   },
   {
@@ -31,17 +31,17 @@ const LOOP_STEPS = [
     icon: Eye,
     color: 'emerald',
     title: '۳. مشاهده نتیجه (Observe)',
-    desc: '«بخش اول گزارش پیدا شد؛ اما اطلاعات هنوز ناقص است.»',
-    action: 'دریافت نتیجه ابزار',
+    desc: '«ابزار بخش اول گزارش را پیدا کرد و برگرداند.»',
+    action: 'دریافت خروجی ابزار',
   },
   {
     key: 'repeat_1',
-    phase: 'Repeat',
+    phase: 'Check',
     icon: RotateCw,
     color: 'indigo',
-    title: '۴. بررسی نتیجه و تصمیم بعدی',
-    desc: '«پاسخ ناقص است؛ پس بخش بعدی گزارش را می‌خوانم.»',
-    action: 'بررسی شرط توقف: ادامه',
+    title: '۴. بررسی نتیجه (Check)',
+    desc: '«آیا سه نکته اصلی پیدا شده؟ نه؛ پس دوباره جست‌وجو می‌کنم.»',
+    action: 'پایان، ادامه یا تأیید',
   },
 ];
 
@@ -93,7 +93,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
         }`}
       >
         <span className="text-slate-400 text-xs mr-2 font-sans font-normal">نمای کلی چرخه:</span>
-        <span className="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400">Goal</span>
+        <span className="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400">Goal (ورودی)</span>
         <span className="mx-2 text-slate-500">➔</span>
         <span className="px-2 py-0.5 rounded bg-sky-500/20 text-sky-400">Decide</span>
         <span className="mx-2 text-slate-500">➔</span>
@@ -101,7 +101,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
         <span className="mx-2 text-slate-500">➔</span>
         <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Observe</span>
         <span className="mx-2 text-slate-500">➔</span>
-        <span className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400">Check</span>
+        <span className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400">Check ↺</span>
       </div>
 
       {/* Main Interactive Stage: Circle + Concrete Example */}
@@ -176,7 +176,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             <div className="space-y-2 text-xs">
               <div className="p-2 rounded bg-slate-950/60 border border-slate-800 font-mono text-slate-300">
                 <span className="text-cyan-400 font-bold block mb-0.5">🎯 هدف کاربر:</span>
-                «خلاصه نتایج این گزارش را آماده کن.»
+                «سه نکته اصلی این گزارش را پیدا کن.»
               </div>
 
               <div
@@ -189,13 +189,15 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
                 </div>
                 <div className="font-bold">{LOOP_STEPS[activeStep].title}</div>
                 <div className="text-xs opacity-80 mt-1">{LOOP_STEPS[activeStep].desc}</div>
-                <div className="mt-2 pt-2 border-t border-cyan-500/20 text-xs leading-relaxed">
-                  <span className="text-emerald-400 font-semibold">هدف محقق شد: پایان</span>
-                  <span className="mx-1 text-slate-400">|</span>
-                  <span className="text-amber-400 font-semibold">هنوز ناقص: تکرار</span>
-                  <span className="mx-1 text-slate-400">|</span>
-                  <span className="text-sky-400 font-semibold">اقدام حساس: تأیید</span>
-                </div>
+                {activeStep === 3 && (
+                  <div className="mt-2 pt-2 border-t border-cyan-500/20 text-xs leading-relaxed">
+                    <span className="text-emerald-400 font-semibold">هدف محقق شد: پایان</span>
+                    <span className="mx-1 text-slate-400">|</span>
+                    <span className="text-amber-400 font-semibold">هنوز ناقص: بازگشت به Decide</span>
+                    <span className="mx-1 text-slate-400">|</span>
+                    <span className="text-sky-400 font-semibold">اقدام حساس: تأیید</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -237,7 +239,7 @@ export const Slide3AgentLoop: React.FC<SlideProps> = ({ theme, isFullscreen }) =
             : 'bg-slate-100 border-slate-200 text-slate-600'
         }`}
       >
-        پس از مشاهده نتیجه، عامل باید تصمیم بگیرد: ادامه، پایان یا درخواست تأیید. ReAct فقط یکی از الگوهای این چرخه است.
+        Observe یعنی «چه نتیجه‌ای دریافت شد؟» و Check یعنی «آیا هدف محقق شده است؟». اگر نه، چرخه به Decide برمی‌گردد.
       </div>
     </div>
   );
