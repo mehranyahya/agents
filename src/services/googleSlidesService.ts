@@ -303,7 +303,7 @@ export const createGoogleSlidesDeck = async (
         updateTextStyle: {
           objectId: bodyBoxId,
           style: {
-            fontSize: { magnitude: slide.slug === 'featured-agents' ? 11 : 14, unit: 'PT' },
+            fontSize: { magnitude: slide.slug === 'personal-ai-agent-products' || slide.slug === 'open-agent-products' ? 10.5 : 14, unit: 'PT' },
             foregroundColor: {
               opaqueColor: { rgbColor: { red: 0.15, green: 0.2, blue: 0.25 } },
             },
