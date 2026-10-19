@@ -162,7 +162,15 @@ try {
     const contrast=await page.evaluate(()=>{
       const stage=document.querySelector('.presentation-slide--fullscreen');
       const heading=stage.querySelector('h2');
-      const rgb=color=>(color.match(/[0-9.]+/g)||[]).slice(0,3).map(Number);
+      // Let Chrome convert both rgb(...) and modern oklch(...) into true sRGB.
+      const rgb=color=>{
+        const canvas=document.createElement('canvas');
+        canvas.width=canvas.height=1;
+        const ctx=canvas.getContext('2d');
+        ctx.fillStyle=color;
+        ctx.fillRect(0,0,1,1);
+        return [...ctx.getImageData(0,0,1,1).data].slice(0,3);
+      };
       const luminance=color=>{
         const v=rgb(color).map(n=>{const x=n/255;return x<=0.04045?x/12.92:((x+0.055)/1.055)**2.4;});
         return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2];
