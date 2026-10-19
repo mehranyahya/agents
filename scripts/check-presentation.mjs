@@ -36,4 +36,9 @@ assert.ok(thumbnailSource.includes('{idx + 1}'), 'Thumbnail numbering should be 
 assert.ok(app.includes('isOpen={isNotesOpen && !isFullscreen}'), 'Notes must stay off the shared fullscreen canvas');
 assert.ok(app.includes('shouldHandlePresentationKey(e, isGoogleSlidesModalOpen)'), 'App must use the tested keyboard focus guard');
 assert.ok(slides[4].exportBullets.join(' ').includes('SWE-agent'), 'Demo evidence source must be represented on slide 5');
+const toolsSlideSource = file('src/components/slides/Slide4RealWorld.tsx');
+for (const fullName of ['Application Programming Interface', 'Model Context Protocol']) {
+  assert.ok(toolsSlideSource.includes(fullName), `Missing expansion on visible slide 6: ${fullName}`);
+  assert.ok(slides[5].exportBullets.join(' ').includes(fullName), `Missing expansion in Google Slides export: ${fullName}`);
+}
 console.log('Presentation audit passed: 10 slides, 9:40, demo 5 / tools 6 / no-code 7, synchronized speaker notes, safe controls.');
