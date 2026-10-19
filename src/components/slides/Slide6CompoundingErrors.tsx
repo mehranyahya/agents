@@ -28,7 +28,7 @@ export const Slide6CompoundingErrors: React.FC<SlideProps> = ({ theme, isFullscr
               isDark ? 'bg-red-500/10 text-red-400' : 'bg-red-50 text-red-700'
             }`}
           >
-            اسلاید ۸ • خطاهای زنجیره‌ای
+            اسلاید ۱۰ • خطاهای زنجیره‌ای
           </span>
         </div>
         <h2

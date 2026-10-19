@@ -28,13 +28,14 @@ try {
     await page.waitForSelector('.presentation-slide--fullscreen');
     if(await page.locator(timerSelector).count())throw new Error('A timer control is visible in fullscreen');
     if((await page.locator('.presentation-slide--fullscreen').innerText()).includes('/ 10:00'))throw new Error('Fullscreen timer is still visible');
-    for(let i=0;i<10;i++){
-      await page.keyboard.press(i<9?String(i+1):'0');
+    for(let i=0;i<12;i++){
+      if(i===0)await page.keyboard.press('Home');
+      else await page.keyboard.press('ArrowLeft');
       await page.waitForTimeout(70);
       // Check slide-topic mapping visually after the sequence change.
-      if(i>=4 && i<=6){
+      if(i>=4 && i<=9){
         const heading=await page.locator('.presentation-slide--fullscreen h2').first().innerText();
-        const required={4:'خطا',5:'ابزار',6:'بدون کدنویسی'}[i];
+        const required={4:'خطا',5:'ابزار',6:'بدون کدنویسی',7:'شخصی',8:'متن‌باز',9:'خطا'}[i];
         if(!heading.includes(required))throw new Error('Slide '+(i+1)+' unexpectedly shows '+heading);
       }
       const stats = await page.evaluate(()=>{
@@ -59,6 +60,31 @@ try {
         return {slide:Number(st.getAttribute('data-slide'))+1,stageWidth:Math.round(box.width),stageHeight:Math.round(box.height),textCount:items.length,minFontSize:Math.min(...items.map(x=>x.fontSize)),medianFontSize:items.map(x=>x.fontSize).sort((a,b)=>a-b)[Math.floor(items.length/2)],clipped:items.filter(x=>x.clipped),contentScrollHeight:b?.scrollHeight,contentClientHeight:b?.clientHeight};
       });
       results.push({width,height,...stats});
+      if(i===7||i===8){
+        const galleryQA=await page.evaluate(()=>{
+          const stage=document.querySelector('.presentation-slide--fullscreen');
+          const cards=[...stage.querySelectorAll('[data-agent-product]')];
+          const errors=[];
+          if(cards.length!==3)errors.push('Expected exactly three product cards');
+          for(const card of cards){
+            const cb=card.getBoundingClientRect();
+            if(card.scrollHeight>card.clientHeight+5)errors.push(card.dataset.agentProduct+' card content vertically overflows');
+            const walker=document.createTreeWalker(card,NodeFilter.SHOW_TEXT);
+            let textNode;
+            while((textNode=walker.nextNode())){
+              if(!textNode.textContent?.trim())continue;
+              const range=document.createRange();range.selectNodeContents(textNode);
+              for(const r of range.getClientRects()){
+                if(r.width>0&&r.height>0&&(r.left<cb.left-4||r.right>cb.right+4||r.top<cb.top-4||r.bottom>cb.bottom+4))
+                  errors.push(card.dataset.agentProduct+' text outside card: '+textNode.textContent.trim().slice(0,35));
+              }
+            }
+          }
+          return {errors,names:cards.map(c=>c.dataset.agentProduct)};
+        });
+        console.log('PRODUCT_GALLERY_QA',width+'x'+height,'slide'+(i+1),JSON.stringify(galleryQA));
+        if(galleryQA.errors.length)throw new Error('Product gallery overflow: '+galleryQA.errors.join('; '));
+      }
       if(stats.clipped?.length)throw new Error('Slide '+(i+1)+' text escapes projector stage at '+width+'x'+height+': '+JSON.stringify(stats.clipped.slice(0,4)));
       if((stats.contentScrollHeight||0)-(stats.contentClientHeight||0)>4)throw new Error('Slide '+(i+1)+' vertically overflows projector stage at '+width+'x'+height);
       if(i===5){
@@ -201,8 +227,9 @@ try {
       throw new Error('Slide 6 expansions disappeared in light mode');
     // Capture a complete second pass in light theme to catch regressions
     // that clipping-only checks on the default dark theme cannot reveal.
-    for(let i=0;i<10;i++){
-      await page.keyboard.press(i<9?String(i+1):'0');
+    for(let i=0;i<12;i++){
+      if(i===0)await page.keyboard.press('Home');
+      else await page.keyboard.press('ArrowLeft');
       await page.waitForTimeout(75);
       const lightClipped=await page.evaluate(()=>{
         const stage=document.querySelector('.presentation-slide--fullscreen');

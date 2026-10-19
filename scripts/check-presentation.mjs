@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 
 const file = (name) => readFileSync(new URL(`../${name}`, import.meta.url), 'utf8');
 const slidesSource = file('src/data/slidesData.ts');
-const speakerScript = file('SPEAKER_SCRIPT_9M40_FA.md');
+const speakerScript = file('SPEAKER_SCRIPT_12SLIDES_FA.md');
 const exportSource = file('src/services/googleSlidesService.ts');
 const exportModal = file('src/components/GoogleSlidesModal.tsx');
 const app = file('src/App.tsx');
@@ -13,13 +13,25 @@ const match = slidesSource.match(/export const SLIDES: SlideData\[\] = (\[[\s\S]
 assert.ok(match, 'Could not find the JSON slide list');
 const slides = JSON.parse(match[1]);
 
-assert.equal(slides.length, 10, 'The live website must retain 10 slides');
-assert.equal(slides.reduce((sum, slide) => sum + slide.durationSeconds, 0), 580, 'Target speaking time must remain 9:40');
+assert.equal(slides.length, 12, 'The live website must have 12 slides');
+assert.equal(slides.reduce((sum, slide) => sum + slide.durationSeconds, 0), 620, 'Approximate rehearsal timing must total 10:20');
 assert.equal(slides[4].durationSeconds, 106, 'Demo at visible slide 5 requires 1:46');
 assert.equal(slides[4].slug, 'applications-and-demo', 'Slide 5 must be the interactive coding demo');
 assert.equal(slides[5].slug, 'real-world-interface', 'Slide 6 must explain tool calling, API and MCP');
 assert.equal(slides[6].slug, 'no-code-automation', 'Slide 7 must be the professor-requested no-code automation scenario');
 assert.ok(slides[6].exportBullets.some(x => x.includes('Make')), 'No-code tools must appear in exported slide');
+assert.equal(slides[7].slug, 'personal-ai-agent-products', 'Slide 8 must cover Dots, Muse, Grok Bot');
+assert.equal(slides[8].slug, 'open-agent-products', 'Slide 9 must cover OpenClaw, Hermes, MausBot');
+assert.equal(slides[9].slug, 'compounding-errors', 'Risk slide must move to visible slide 10');
+assert.equal(slides[10].slug, 'multi-agent', 'Multi-agent slide must move to visible slide 11');
+assert.equal(slides[11].slug, 'summary', 'Summary slide must move to visible slide 12');
+assert.ok(slides[7].oralNotes.join(' ').split(/\s+/).length < 45, 'Slide 8 must need little spoken text');
+assert.ok(slides[8].oralNotes.join(' ').split(/\s+/).length < 50, 'Slide 9 must need little spoken text');
+const agentCards = file('src/components/slides/SlideAgentProducts.tsx');
+for (const name of ['Dots', 'Muse', 'Grok Bot', 'OpenClaw', 'Hermes', 'MausBot']) {
+  assert.ok(agentCards.includes("name: '"+name+"'"), 'Missing agent product '+name);
+}
+assert.ok(!agentCards.includes('85,000'), 'Unverified fixed skills count must not appear');
 slides.forEach((slide, index) => {
   assert.equal(slide.id, index, 'Slide IDs must be sequential internally');
   assert.ok(slide.title && slide.keyTakeaway && slide.memoryCue && slide.stageNote);
@@ -47,7 +59,7 @@ for (const [name, source] of [
   assert.ok(!/PresentationTimer|timerSeconds|isTimerRunning|onToggleTimer|onResetTimer|زمان تخصیص‌یافته|زمان هدف:|سقف: ۱۰ دقیقه|\/ 10:00/.test(source), name + ' must not show a presentation timer');
 }
 assert.ok(!thumbnailSource.includes('{slide.timing}'), 'Thumbnail timings must be hidden');
-assert.ok(thumbnailSource.includes('{idx + 1}'), 'Thumbnail numbering should be 1–10');
+assert.ok(thumbnailSource.includes('{idx + 1}'), 'Thumbnail numbering should be sequential');
 assert.ok(app.includes('isOpen={isNotesOpen && !isFullscreen}'), 'Notes must stay off the shared fullscreen canvas');
 assert.ok(app.includes('shouldHandlePresentationKey(e, isGoogleSlidesModalOpen)'), 'App must use the tested keyboard focus guard');
 assert.ok(slides[4].exportBullets.join(' ').includes('SWE-agent'), 'Demo evidence source must be represented on slide 5');
@@ -56,4 +68,4 @@ for (const fullName of ['Application Programming Interface', 'Model Context Prot
   assert.ok(toolsSlideSource.includes(fullName), `Missing expansion on visible slide 6: ${fullName}`);
   assert.ok(slides[5].exportBullets.join(' ').includes(fullName), `Missing expansion in Google Slides export: ${fullName}`);
 }
-console.log('Presentation audit passed: 10 slides, 9:40, demo 5 / tools 6 / no-code 7, synchronized speaker notes, safe controls.');
+console.log('Presentation audit passed: 12 slides, 10:20 rehearsal, two short English agent galleries after slide 7, synchronized notes, no timers.');
