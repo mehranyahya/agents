@@ -176,7 +176,7 @@ export const SLIDES: SlideData[] = [
     "id": 7,
     "slug": "personal-ai-agent-products",
     "title": "ایجنت‌های شخصی و همکار",
-    "subtitle": "Dots · Muse · Grok Bot — three real-world approaches",
+    "subtitle": "Dots، Muse و Grok Bot؛ سه رویکرد متفاوت در کار با ایجنت‌ها",
     "timing": "۰:۲۰",
     "durationSeconds": 20,
     "category": "نمونه‌های واقعی — بخش اول",
@@ -185,19 +185,19 @@ export const SLIDES: SlideData[] = [
       "این سه محصول را فقط کوتاه معرفی می‌کنم: Dots برای کارهای پیوسته، Muse برای امور شخصی، و Grok Bot برای همکاری چند بات. ویژگی‌ها و منابع رسمی روی خود اسلاید نوشته شده‌اند."
     ],
     "memoryCue": "Dots هدف مداوم • Muse زندگی شخصی • Grok Bot تیم همکار",
-    "stageNote": "متن انگلیسی هر کارت را برای مخاطب روخوانی نکن؛ فقط نام و تفاوت سه محصول را بگو. لینک‌های زیر کارت‌ها برای مطالعه بیشترند.",
+    "stageNote": "توضیحات فارسی کامل روی کارت‌های اسلاید است؛ برای مخاطب همه متن‌ها را روخوانی نکن. فقط نام و تفاوت سه محصول را بگو. لینک منابع رسمی پایین کارت‌هاست.",
     "exportBullets": [
-      "OpenAI Dots: Always-on ChatGPT worker for ongoing projects; uses selected apps and a cloud computer, reports progress and asks for decisions. https://chatgpt.com/features/dots/",
-      "Meta Muse: Personal agent for bookings, shopping, forms, reminders and long-term goals; secure browser and approvals for sensitive actions. https://ai.meta.com/muse/",
-      "xAI Grok Bot: Team of AI coworkers with roles, computers and connected tools; ongoing delegated tasks and approval checkpoints. https://x.ai/news/introducing-grok-bot",
-      "Access and availability vary by product, user plan and region."
+      "Dots از OpenAI: ایجنت همیشه‌فعال در ChatGPT برای هدف‌های ادامه‌دار؛ استفاده از برنامه‌های انتخابی و رایانه ابری، پیگیری کار و درخواست بررسی تصمیم‌ها. https://chatgpt.com/features/dots/",
+      "Muse از Meta: دستیار شخصی برای رزرو، خرید، تکمیل فرم، یادآوری و هدف‌های بلندمدت؛ کار با مرورگر و درخواست تأیید برای اقدام حساس. https://ai.meta.com/muse/",
+      "Grok Bot از xAI: تیم همکاران هوش مصنوعی با نقش‌های مختلف، رایانه و ابزارهای متصل، پیگیری وظایف و نقاط تأیید کاربر. https://x.ai/news/introducing-grok-bot",
+      "دسترسی و قابلیت‌ها بسته به محصول، نوع حساب و منطقه متفاوت‌اند."
     ]
   },
   {
     "id": 8,
     "slug": "open-agent-products",
     "title": "ایجنت‌های متن‌باز و هماهنگ‌کننده",
-    "subtitle": "OpenClaw · Hermes · MausBot — local agents, skills and orchestration",
+    "subtitle": "OpenClaw، Hermes و MausBot؛ اجرا، یادگیری و هماهنگی",
     "timing": "۰:۲۰",
     "durationSeconds": 20,
     "category": "نمونه‌های واقعی — بخش دوم",
@@ -206,12 +206,12 @@ export const SLIDES: SlideData[] = [
       "سه نمونه دیگر هم داریم: OpenClaw که از طریق پیام‌رسان‌ها کار می‌کند؛ Hermes که می‌تواند از تجربه خود مهارت بسازد؛ و MausBot که کار چند عامل را هماهنگ می‌کند. ادامه کار در همه آن‌ها به مجوزها و شیوه استقرار بستگی دارد."
     ],
     "memoryCue": "OpenClaw پیام‌رسان • Hermes مهارت و حافظه • MausBot هماهنگی تیم",
-    "stageNote": "نام هر سه و ویژگی اصلی را بگو. عدد ۸۵ هزار مهارت یا ادعای اتصال تضمینی همه ابزارها را بیان نکن؛ چنین اعدادی قابل اتکا نبودند. پایان اسلاید را به بحث خطا و مجوز وصل کن.",
+    "stageNote": "توضیحات فارسی روی کارت‌هاست؛ لازم نیست همه متن‌ها را بخوانی. فقط تفاوت OpenClaw، Hermes و MausBot را بگو و از ادعاهای عددی تأییدنشده خودداری کن.",
     "exportBullets": [
-      "OpenClaw: Self-hosted assistant with background gateway and WhatsApp/Telegram channels; extensible with community skills and plugins. Requires an online host. https://openclaw.ai/",
-      "Hermes Agent (Nous Research): Desktop Bot Mode with named roles, models, memory and skills; learning loop can create/improve skills. https://hermes-agent.nousresearch.com/",
-      "MausBot: Open-source workspace coordinating Claude Code, Codex, Grok and other supported bots; Chief of Staff for delegation, supported approvals on desktop/phone. https://mausbot.com/",
-      "Skill counts and direct compatibility with every agent were not independently verified. Access and background operation depend on setup."
+      "OpenClaw: دستیار متن‌باز قابل میزبانی شخصی با سرویس پس‌زمینه و کانال‌های واتساپ و تلگرام؛ توسعه با افزونه‌ها و مهارت‌های جامعه کاربری. به میزبان فعال نیاز دارد. https://openclaw.ai/",
+      "Hermes از Nous Research: برنامه دسکتاپ و حالت Bot با نقش، مدل، حافظه و مهارت جداگانه؛ امکان نوشتن و بهبود مهارت‌ها از تجربه. https://hermes-agent.nousresearch.com/",
+      "MausBot: محیط هماهنگی ابزارهایی مانند Claude Code، Codex و Grok؛ بات رئیس دفتر برای تقسیم کار و تأیید اقدامات پشتیبانی‌شده از رایانه یا تلفن. https://mausbot.com/",
+      "تعداد ثابت مهارت‌ها و سازگاری مستقیم با همه ایجنت‌ها تأیید نشده است. امکانات به تنظیمات و مجوزها وابسته‌اند."
     ]
   },
   {
