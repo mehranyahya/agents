@@ -101,7 +101,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               </div>
               <div className="min-w-0">
                 <h3 className="font-bold text-sm text-emerald-400">API</h3>
-                <div dir="ltr" className="concept-full-form text-left font-sans font-medium text-slate-400">
+                <div dir="ltr" className={`concept-full-form text-left font-sans font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   Application Programming Interface
                 </div>
               </div>
@@ -130,7 +130,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               </div>
               <div className="min-w-0">
                 <h3 className="font-bold text-sm text-indigo-400">MCP</h3>
-                <div dir="ltr" className="concept-full-form text-left font-sans font-medium text-slate-400">
+                <div dir="ltr" className={`concept-full-form text-left font-sans font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   Model Context Protocol
                 </div>
               </div>
