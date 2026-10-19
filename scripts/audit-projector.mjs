@@ -177,10 +177,19 @@ try {
       };
       const bg=luminance(getComputedStyle(stage).backgroundColor);
       const fg=luminance(getComputedStyle(heading).color);
-      return {ratio:(Math.max(bg,fg)+0.05)/(Math.min(bg,fg)+0.05),bg:getComputedStyle(stage).backgroundColor,title:getComputedStyle(heading).color};
+      const panel=stage.querySelector('[data-order-request]');
+      const panelBg=luminance(getComputedStyle(panel).backgroundColor);
+      const panelFg=luminance(getComputedStyle(panel).color);
+      return {
+        ratio:(Math.max(bg,fg)+0.05)/(Math.min(bg,fg)+0.05),
+        panelContrast:(Math.max(panelBg,panelFg)+0.05)/(Math.min(panelBg,panelFg)+0.05),
+        bg:getComputedStyle(stage).backgroundColor,
+        title:getComputedStyle(heading).color
+      };
     });
     console.log('LIGHT_MODE_CONTRAST',width+'x'+height,JSON.stringify(contrast));
     if(contrast.ratio<7)throw new Error('Slide 6 title contrast insufficient in light mode');
+    if(contrast.panelContrast<4.5)throw new Error('Slide 6 order-request text is unreadable in light mode');
     await page.screenshot({path:output+'/'+width+'x'+height+'_slide6-light.png'});
     const lightModeText=await page.locator('.presentation-slide--fullscreen .concept-full-form').allInnerTexts();
     if(lightModeText.length!==2||lightModeText[0].trim()!=='Application Programming Interface'||lightModeText[1].trim()!=='Model Context Protocol')
