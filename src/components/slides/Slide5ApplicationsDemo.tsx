@@ -81,7 +81,7 @@ export const Slide5ApplicationsDemo: React.FC<SlideProps> = ({ theme, isFullscre
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۶ • کاربردها و شبیه‌سازی
+            اسلاید ۵ • کاربردها و شبیه‌سازی
           </span>
         </div>
         <h2
