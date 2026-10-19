@@ -76,7 +76,7 @@
 }
 
 /* Avoid clipping on data-heavy slides, while still visibly improving on 1080p. */
-.presentation-slide--fullscreen:is([data-slide="1"], [data-slide="3"], [data-slide="4"], [data-slide="5"], [data-slide="6"], [data-slide="7"]) {
+.presentation-slide--fullscreen:is([data-slide="1"], [data-slide="3"], [data-slide="4"], [data-slide="5"], [data-slide="6"], [data-slide="7"], [data-slide="8"], [data-slide="9"]) {
   --slide-xs: clamp(16px, 1.26cqw, 23px);
   --slide-sm: clamp(19px, 1.47cqw, 27px);
   --slide-base: clamp(21px, 1.63cqw, 30px);
@@ -139,7 +139,7 @@
     --slide-xl: clamp(23px, 2.0cqw, 33px);
   }
 
-  .presentation-slide--fullscreen:is([data-slide="1"], [data-slide="3"], [data-slide="4"], [data-slide="5"], [data-slide="6"], [data-slide="7"]) {
+  .presentation-slide--fullscreen:is([data-slide="1"], [data-slide="3"], [data-slide="4"], [data-slide="5"], [data-slide="6"], [data-slide="7"], [data-slide="8"], [data-slide="9"]) {
     --slide-xs: clamp(15px, 1.34cqw, 18px);
     --slide-sm: clamp(17px, 1.48cqw, 21px);
     --slide-base: clamp(19px, 1.65cqw, 25px);
