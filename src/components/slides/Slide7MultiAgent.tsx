@@ -24,7 +24,7 @@ export const Slide7MultiAgent: React.FC<SlideProps> = ({ theme, isFullscreen }) 
               isDark ? 'bg-cyan-500/10 text-cyan-400' : 'bg-blue-50 text-blue-700'
             }`}
           >
-            اسلاید ۹ • سیستم‌های چندعاملی
+            اسلاید ۱۱ • سیستم‌های چندعاملی
           </span>
         </div>
         <h2
