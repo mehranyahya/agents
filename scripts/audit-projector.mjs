@@ -18,7 +18,8 @@ try {
   const results = [];
   for (const [width,height] of [[1920,1080],[1280,720]]){
     const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
-    page.on('pageerror',e=>console.log('BROWSER_ERROR:',e.message));
+    const pageErrors=[];
+    page.on('pageerror',e=>{pageErrors.push(e.message);console.log('BROWSER_ERROR:',e.message);});
     await page.goto('http://127.0.0.1:4173/agents/',{waitUntil:'domcontentloaded'});
     await page.locator('button[title="حالت ارائه تمام‌صفحه"]').click();
     await page.waitForSelector('.presentation-slide--fullscreen');
@@ -53,6 +54,33 @@ try {
         return {slide:Number(st.getAttribute('data-slide'))+1,stageWidth:Math.round(box.width),stageHeight:Math.round(box.height),textCount:items.length,minFontSize:Math.min(...items.map(x=>x.fontSize)),medianFontSize:items.map(x=>x.fontSize).sort((a,b)=>a-b)[Math.floor(items.length/2)],clipped:items.filter(x=>x.clipped),contentScrollHeight:b?.scrollHeight,contentClientHeight:b?.clientHeight};
       });
       results.push({width,height,...stats});
+      if(stats.clipped?.length)throw new Error('Slide '+(i+1)+' text escapes projector stage at '+width+'x'+height+': '+JSON.stringify(stats.clipped.slice(0,4)));
+      if((stats.contentScrollHeight||0)-(stats.contentClientHeight||0)>4)throw new Error('Slide '+(i+1)+' vertically overflows projector stage at '+width+'x'+height);
+      if(i===5){
+        const abbreviationAudit = await page.evaluate(()=>{
+          const stage=document.querySelector('.presentation-slide--fullscreen');
+          const expansions=[...stage.querySelectorAll('.concept-full-form')];
+          const expected=['Application Programming Interface','Model Context Protocol'];
+          const errors=[];
+          if(expansions.length!==2)errors.push('There must be two abbreviations on slide 6');
+          for(const [index,element] of expansions.entries()){
+            if(element.textContent.trim()!==expected[index])errors.push('Wrong abbreviation '+index);
+            const card=element.closest('.rounded-xl');
+            if(!card){errors.push('Missing concept card '+index);continue;}
+            const bounds=card.getBoundingClientRect();
+            const line=element.getBoundingClientRect();
+            const style=getComputedStyle(element);
+            if(parseFloat(style.fontSize)<12)errors.push('Expansion text too small: '+style.fontSize);
+            if(line.left<bounds.left-3||line.right>bounds.right+3||line.top<bounds.top-3||line.bottom>bounds.bottom+3)errors.push('Expansion outside its card: '+element.textContent.trim());
+            if(card.scrollHeight>card.clientHeight+3)errors.push('Concept card vertically overflows: '+element.textContent.trim());
+            const heading=element.previousElementSibling;
+            if(heading&&heading.getBoundingClientRect().bottom>line.top+2)errors.push('Heading collides with expansion: '+element.textContent.trim());
+          }
+          return {errors,expansions:expansions.map(e=>({label:e.textContent.trim(),font:getComputedStyle(e).fontSize,lines:Math.round(e.getBoundingClientRect().height/parseFloat(getComputedStyle(e).lineHeight))}))};
+        });
+        console.log('ABBREVIATION_QA',width+'x'+height,JSON.stringify(abbreviationAudit));
+        if(abbreviationAudit.errors.length)throw new Error('Slide 6 abbreviation QA failed: '+abbreviationAudit.errors.join('; '));
+      }
       const name=width+'x'+height+'_slide'+(i+1)+'.png';
       if(width===1920||[1,2,3,4,5,6,7].includes(i))await page.screenshot({path:output+'/'+name});
       if(i===2){
@@ -126,6 +154,68 @@ try {
       return outside;
     });
     console.log('TRACE_OVERFLOW',width+'x'+height,traceOverflow.length,JSON.stringify(traceOverflow.slice(0,5)));
+    // Verify the same new labels stay legible when the user changes to light mode.
+    await page.keyboard.press('6');
+    await page.getByRole('button',{name:'تغییر تم'}).click();
+    // Tailwind animates the stage background for 300ms. Capture only the settled state.
+    await page.waitForTimeout(450);
+    const contrast=await page.evaluate(()=>{
+      const stage=document.querySelector('.presentation-slide--fullscreen');
+      const heading=stage.querySelector('h2');
+      // Let Chrome convert both rgb(...) and modern oklch(...) into true sRGB.
+      const rgb=color=>{
+        const canvas=document.createElement('canvas');
+        canvas.width=canvas.height=1;
+        const ctx=canvas.getContext('2d');
+        ctx.fillStyle=color;
+        ctx.fillRect(0,0,1,1);
+        return [...ctx.getImageData(0,0,1,1).data].slice(0,3);
+      };
+      const luminance=color=>{
+        const v=rgb(color).map(n=>{const x=n/255;return x<=0.04045?x/12.92:((x+0.055)/1.055)**2.4;});
+        return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2];
+      };
+      const bg=luminance(getComputedStyle(stage).backgroundColor);
+      const fg=luminance(getComputedStyle(heading).color);
+      const panel=stage.querySelector('[data-order-request]');
+      const panelBg=luminance(getComputedStyle(panel).backgroundColor);
+      const panelFg=luminance(getComputedStyle(panel).color);
+      return {
+        ratio:(Math.max(bg,fg)+0.05)/(Math.min(bg,fg)+0.05),
+        panelContrast:(Math.max(panelBg,panelFg)+0.05)/(Math.min(panelBg,panelFg)+0.05),
+        bg:getComputedStyle(stage).backgroundColor,
+        title:getComputedStyle(heading).color
+      };
+    });
+    console.log('LIGHT_MODE_CONTRAST',width+'x'+height,JSON.stringify(contrast));
+    if(contrast.ratio<7)throw new Error('Slide 6 title contrast insufficient in light mode');
+    if(contrast.panelContrast<4.5)throw new Error('Slide 6 order-request text is unreadable in light mode');
+    await page.screenshot({path:output+'/'+width+'x'+height+'_slide6-light.png'});
+    const lightModeText=await page.locator('.presentation-slide--fullscreen .concept-full-form').allInnerTexts();
+    if(lightModeText.length!==2||lightModeText[0].trim()!=='Application Programming Interface'||lightModeText[1].trim()!=='Model Context Protocol')
+      throw new Error('Slide 6 expansions disappeared in light mode');
+    // Capture a complete second pass in light theme to catch regressions
+    // that clipping-only checks on the default dark theme cannot reveal.
+    for(let i=0;i<10;i++){
+      await page.keyboard.press(i<9?String(i+1):'0');
+      await page.waitForTimeout(75);
+      const lightClipped=await page.evaluate(()=>{
+        const stage=document.querySelector('.presentation-slide--fullscreen');
+        const bounds=stage.getBoundingClientRect();
+        const walker=document.createTreeWalker(stage,NodeFilter.SHOW_TEXT);
+        let text;const outside=[];
+        while((text=walker.nextNode())){
+          if(!text.textContent?.trim()||!text.parentElement)continue;
+          const range=document.createRange();range.selectNodeContents(text);
+          if([...range.getClientRects()].some(r=>r.width>0&&r.height>0&&(r.left<bounds.left-3||r.right>bounds.right+3||r.top<bounds.top-3||r.bottom>bounds.bottom+3)))
+            outside.push(text.textContent.trim().slice(0,60));
+        }
+        return outside;
+      });
+      if(lightClipped.length)throw new Error('Light slide '+(i+1)+' text clipped at '+width+'x'+height+': '+JSON.stringify(lightClipped.slice(0,3)));
+      if(width===1280)await page.screenshot({path:output+'/'+width+'x'+height+'_light-slide'+(i+1)+'.png'});
+    }
+    if(pageErrors.length)throw new Error('Browser errors during projection audit: '+pageErrors.join(' | '));
     await page.close();
   }
   await writeFile(output+'/metrics.json',JSON.stringify(results,null,2));

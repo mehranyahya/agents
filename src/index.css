@@ -108,6 +108,14 @@
   line-height: 1.25 !important;
 }
 
+/* Full English expansions stay readable, but must not compete with the four
+ * concept headings or force their cards to overflow at 720p. */
+.presentation-slide .concept-full-form {
+  font-size: clamp(13px, 1.18cqw, 17px);
+  line-height: 1.25;
+  overflow-wrap: normal;
+}
+
 /* Fine-print labels become readable too; do not enlarge icons or presentation UI. */
 .presentation-slide [class~="text-[10px]"] {
   font-size: clamp(12px, 1.0cqw, 16px) !important;
