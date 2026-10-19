@@ -14,8 +14,6 @@ import { googleSignIn, getAccessToken, logout, initAuth, auth } from '../service
 import { createGoogleSlidesDeck, CreatePresentationResult } from '../services/googleSlidesService';
 import { SLIDES } from '../data/slidesData';
 
-const totalSeconds = SLIDES.reduce((total, slide) => total + slide.durationSeconds, 0);
-const talkTime = `${Math.floor(totalSeconds / 60)}:${String(totalSeconds % 60).padStart(2, '0')}`;
 import { User } from 'firebase/auth';
 
 interface GoogleSlidesModalProps {
