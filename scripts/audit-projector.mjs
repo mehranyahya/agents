@@ -21,8 +21,13 @@ try {
     const pageErrors=[];
     page.on('pageerror',e=>{pageErrors.push(e.message);console.log('BROWSER_ERROR:',e.message);});
     await page.goto('http://127.0.0.1:4173/agents/',{waitUntil:'domcontentloaded'});
+    const timerSelector='[title="شروع تایمر"], [title="توقف تایمر"], [title="ریست تایمر"], [title="صفر کردن تایمر"]';
+    if(await page.locator(timerSelector).count())throw new Error('A timer control is visible in normal view');
+    if((await page.locator('header').first().innerText()).includes('سقف ۱۰ دقیقه'))throw new Error('Navbar still shows a timer limit');
     await page.locator('button[title="حالت ارائه تمام‌صفحه"]').click();
     await page.waitForSelector('.presentation-slide--fullscreen');
+    if(await page.locator(timerSelector).count())throw new Error('A timer control is visible in fullscreen');
+    if((await page.locator('.presentation-slide--fullscreen').innerText()).includes('/ 10:00'))throw new Error('Fullscreen timer is still visible');
     for(let i=0;i<10;i++){
       await page.keyboard.press(i<9?String(i+1):'0');
       await page.waitForTimeout(70);

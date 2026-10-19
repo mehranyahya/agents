@@ -11,15 +11,10 @@ import {
   Layers,
   Sparkles
 } from 'lucide-react';
-import { PresentationTimer } from './PresentationTimer';
 import { SLIDES } from '../data/slidesData';
 
 interface NavbarProps {
   currentSlideIndex: number;
-  timerSeconds: number;
-  isTimerRunning: boolean;
-  onToggleTimer: () => void;
-  onResetTimer: () => void;
   onPrev: () => void;
   onNext: () => void;
   theme: 'dark' | 'light';
@@ -33,10 +28,6 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentSlideIndex,
-  timerSeconds,
-  isTimerRunning,
-  onToggleTimer,
-  onResetTimer,
   onPrev,
   onNext,
   theme,
@@ -49,8 +40,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const isDark = theme === 'dark';
   const totalSlides = SLIDES.length;
-  const plannedSeconds = SLIDES.reduce((sum, slide) => sum + slide.durationSeconds, 0);
-  const plannedLabel = `${Math.floor(plannedSeconds / 60)}:${String(plannedSeconds % 60).padStart(2, '0')}`;
 
   return (
     <header
@@ -71,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               AI Agents Deck
             </span>
             <span className="text-[10px] text-cyan-400 font-mono block">
-              هدف {plannedLabel} • سقف ۱۰ دقیقه
+              ارائه دانشگاهی ایجنت‌های هوش مصنوعی
             </span>
           </div>
         </div>
@@ -87,17 +76,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="text-slate-500">/</span>
           <span>{totalSlides}</span>
         </div>
-      </div>
-
-      {/* Middle section: 10-Minute Presentation Timer */}
-      <div className="hidden md:flex items-center justify-center">
-        <PresentationTimer
-          currentSlideIndex={currentSlideIndex}
-          totalSeconds={timerSeconds}
-          isRunning={isTimerRunning}
-          onToggle={onToggleTimer}
-          onReset={onResetTimer}
-        />
       </div>
 
       {/* Right section: Slide Nav, Notes, Google Slides, Fullscreen */}

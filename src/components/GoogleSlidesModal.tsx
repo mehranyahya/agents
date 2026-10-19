@@ -14,8 +14,6 @@ import { googleSignIn, getAccessToken, logout, initAuth, auth } from '../service
 import { createGoogleSlidesDeck, CreatePresentationResult } from '../services/googleSlidesService';
 import { SLIDES } from '../data/slidesData';
 
-const totalSeconds = SLIDES.reduce((total, slide) => total + slide.durationSeconds, 0);
-const talkTime = `${Math.floor(totalSeconds / 60)}:${String(totalSeconds % 60).padStart(2, '0')}`;
 import { User } from 'firebase/auth';
 
 interface GoogleSlidesModalProps {
@@ -228,7 +226,7 @@ export const GoogleSlidesModal: React.FC<GoogleSlidesModalProps> = ({
                       خروجی Google Slides فقط خلاصه متنی اسلایدهاست؛ نمودارهای تعاملی، دموی کلیکی و یادداشت‌های سخنران در آن منتقل نمی‌شوند. برای ارائه تعاملی، نسخه وب را استفاده کنید.
                     </p>
                     <div className="pt-1 text-[11px] text-slate-400">
-                      تعداد اسلایدها: {SLIDES.length} • زمان هدف: {talkTime} • سقف: ۱۰ دقیقه
+                      تعداد اسلایدها: {SLIDES.length} • خروجی متنی (بدون نمایشگر زمان)
                     </div>
                   </div>
 

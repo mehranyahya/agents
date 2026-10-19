@@ -31,7 +31,22 @@ slides.forEach((slide, index) => {
 });
 assert.ok(exportSource.includes('slide.exportBullets'), 'Google Slides export must use shared slide data');
 assert.ok(!exportModal.includes('۹:۲۵'), 'Outdated export timing must not be visible');
-assert.ok(exportModal.includes('{talkTime}'), 'Google Slides modal time should be data-driven');
+// Timing metadata remains for the printable script, but the deck UI has no timers.
+assert.ok(!exportModal.includes('{talkTime}'), 'Export modal must not display timing');
+const navbar = file('src/components/Navbar.tsx');
+const viewer = file('src/components/SlideViewer.tsx');
+const notesDrawer = file('src/components/SpeakerNotesDrawer.tsx');
+for (const [name, source] of [
+  ['App', app],
+  ['Navbar', navbar],
+  ['SlideViewer', viewer],
+  ['SpeakerNotesDrawer', notesDrawer],
+  ['SlideThumbnails', thumbnailSource],
+  ['GoogleSlidesModal', exportModal],
+]) {
+  assert.ok(!/PresentationTimer|timerSeconds|isTimerRunning|onToggleTimer|onResetTimer|زمان تخصیص‌یافته|زمان هدف:|سقف: ۱۰ دقیقه|\/ 10:00/.test(source), name + ' must not show a presentation timer');
+}
+assert.ok(!thumbnailSource.includes('{slide.timing}'), 'Thumbnail timings must be hidden');
 assert.ok(thumbnailSource.includes('{idx + 1}'), 'Thumbnail numbering should be 1–10');
 assert.ok(app.includes('isOpen={isNotesOpen && !isFullscreen}'), 'Notes must stay off the shared fullscreen canvas');
 assert.ok(app.includes('shouldHandlePresentationKey(e, isGoogleSlidesModalOpen)'), 'App must use the tested keyboard focus guard');
