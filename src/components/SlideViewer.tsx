@@ -16,6 +16,7 @@ import { Slide3AgentLoop } from './slides/Slide3AgentLoop';
 import { Slide4RealWorld } from './slides/Slide4RealWorld';
 import { Slide5ApplicationsDemo } from './slides/Slide5ApplicationsDemo';
 import { Slide6NoCodeAutomation } from './slides/Slide6NoCodeAutomation';
+import { Slide7AgentProducts, Slide8AgentProducts } from './slides/SlideAgentProducts';
 import { Slide6CompoundingErrors } from './slides/Slide6CompoundingErrors';
 import { Slide7MultiAgent } from './slides/Slide7MultiAgent';
 import { Slide8Summary } from './slides/Slide8Summary';
@@ -96,10 +97,14 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       case 6:
         return <Slide6NoCodeAutomation theme={theme} isFullscreen={isFullscreen} />;
       case 7:
-        return <Slide6CompoundingErrors theme={theme} isFullscreen={isFullscreen} />;
+        return <Slide7AgentProducts theme={theme} isFullscreen={isFullscreen} />;
       case 8:
-        return <Slide7MultiAgent theme={theme} isFullscreen={isFullscreen} />;
+        return <Slide8AgentProducts theme={theme} isFullscreen={isFullscreen} />;
       case 9:
+        return <Slide6CompoundingErrors theme={theme} isFullscreen={isFullscreen} />;
+      case 10:
+        return <Slide7MultiAgent theme={theme} isFullscreen={isFullscreen} />;
+      case 11:
         return <Slide8Summary theme={theme} isFullscreen={isFullscreen} />;
       default:
         return <Slide0Title theme={theme} isFullscreen={isFullscreen} />;
