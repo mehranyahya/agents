@@ -190,7 +190,7 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
           یک نمونه از مسیر درخواست ابزار تا پاسخ:
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-2 text-xs">
-          <div className="p-2 rounded bg-slate-900 border border-slate-800">
+          <div data-order-request className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-100">
             <span className="text-indigo-400 font-bold block mb-1">👤 کاربر:</span>
             «وضعیت سفارش من را بررسی کن.»
           </div>
