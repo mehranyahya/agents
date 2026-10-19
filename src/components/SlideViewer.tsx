@@ -19,7 +19,7 @@ import { Slide2Architecture } from './slides/Slide2Architecture';
 import { Slide3AgentLoop } from './slides/Slide3AgentLoop';
 import { Slide4RealWorld } from './slides/Slide4RealWorld';
 import { Slide5ApplicationsDemo } from './slides/Slide5ApplicationsDemo';
-import { Slide6FeaturedAgents } from './slides/Slide6FeaturedAgents';
+import { Slide6NoCodeAutomation } from './slides/Slide6NoCodeAutomation';
 import { Slide6CompoundingErrors } from './slides/Slide6CompoundingErrors';
 import { Slide7MultiAgent } from './slides/Slide7MultiAgent';
 import { Slide8Summary } from './slides/Slide8Summary';
@@ -102,11 +102,11 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       case 3:
         return <Slide3AgentLoop theme={theme} isFullscreen={isFullscreen} />;
       case 4:
-        return <Slide4RealWorld theme={theme} isFullscreen={isFullscreen} />;
-      case 5:
         return <Slide5ApplicationsDemo theme={theme} isFullscreen={isFullscreen} />;
+      case 5:
+        return <Slide4RealWorld theme={theme} isFullscreen={isFullscreen} />;
       case 6:
-        return <Slide6FeaturedAgents theme={theme} isFullscreen={isFullscreen} />;
+        return <Slide6NoCodeAutomation theme={theme} isFullscreen={isFullscreen} />;
       case 7:
         return <Slide6CompoundingErrors theme={theme} isFullscreen={isFullscreen} />;
       case 8:
