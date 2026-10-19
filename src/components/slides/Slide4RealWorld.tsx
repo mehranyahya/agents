@@ -99,7 +99,12 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400">
                 <Network className="w-4 h-4" />
               </div>
-              <h3 className="font-bold text-sm text-emerald-400">API</h3>
+              <div className="min-w-0">
+                <h3 className="font-bold text-sm text-emerald-400">API</h3>
+                <div dir="ltr" className="concept-full-form text-left font-sans font-medium text-slate-400">
+                  Application Programming Interface
+                </div>
+              </div>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
               رابط ارتباط برنامه‌ها با سرویس‌های دیگر؛ مثلاً سامانه سفارش‌ها.
@@ -123,7 +128,12 @@ export const Slide4RealWorld: React.FC<SlideProps> = ({ theme, isFullscreen }) =
               <div className="p-1.5 rounded-lg bg-indigo-500/20 text-indigo-400">
                 <Layers className="w-4 h-4" />
               </div>
-              <h3 className="font-bold text-sm text-indigo-400">MCP</h3>
+              <div className="min-w-0">
+                <h3 className="font-bold text-sm text-indigo-400">MCP</h3>
+                <div dir="ltr" className="concept-full-form text-left font-sans font-medium text-slate-400">
+                  Model Context Protocol
+                </div>
+              </div>
             </div>
             <p className="text-xs opacity-80 leading-relaxed">
               استاندارد باز برای معرفی ابزارها و منابع داده به برنامه‌های هوش مصنوعی.
